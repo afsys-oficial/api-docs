@@ -64,6 +64,14 @@ Por padrão, **X-Key-Inflection = snake**
 
 # Autenticação
 
+O processo de autenticação do AFSYS-API é realizado através da requisição ``POST /auth/login``, que deve retornar um token de identificação válido por 24 horas. Esse token tem como objetivo identificar quem é o usuário que está requisitando o recurso do AFSYS-API.
+
+Essa identificação é importante para registrar o requerente e, ao mesmo tempo, verificar se o mesmo tem permissão para acessar o recurso solicitado.
+
+Para obter um token de identificação válido, é necessário passar um usuário e senha ativo no sistema.
+
+# Autenticação SLATE
+
 > To authorize, use this code:
 
 
@@ -82,7 +90,7 @@ Kittn expects for the API key to be included in all API requests to the server i
 `Authorization: meowmeowmeow`
 
 <aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
+  You must replace <code>meowmeowmeow</code> with your personal API key.
 </aside>
 
 # Kittens
@@ -123,13 +131,13 @@ This endpoint retrieves all kittens.
 
 ### Query Parameters
 
-Parameter | Default | Description
---------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
+Parameter    | Default | Description
+------------ | ------- | -----------
+include_cats | false   | If set to true, the result will also include cats.
+available    | true    | If set to false, the result will include kittens that have already been adopted.
 
 <aside class="success">
-Remember — a happy kitten is an authenticated kitten!
+  Remember — a happy kitten is an authenticated kitten!
 </aside>
 
 ## Get a Specific Kitten
@@ -163,7 +171,7 @@ This endpoint retrieves a specific kitten.
 
 Parameter | Description
 --------- | -----------
-ID | The ID of the kitten to retrieve
+ID        | The ID of the kitten to retrieve
 
 ## Delete a Specific Kitten
 
@@ -192,5 +200,4 @@ This endpoint deletes a specific kitten.
 
 Parameter | Description
 --------- | -----------
-ID | The ID of the kitten to delete
-
+ID        | The ID of the kitten to delete
