@@ -13,7 +13,7 @@ includes:
 search: true
 ---
 
-# AFSYS-API V2
+# Introdução
 
 Disponibilizamos essa API com o intuito de fornecer acesso aos recursos do Afsys - Gestão Sindical por meio da arquitetura RESTful, dessa forma, você poderá fazer uso dos recursos do nosso sistema fora do nosso ambiente UI, e com isso, contextualizar melhor as funcionalidades dentro da sua necessidade.
 

@@ -61,6 +61,19 @@ html, body {
   font-size: 13px;
   font-weight: bold;
 
+  ::placeholder {
+    color: #8298b9;
+    opacity: 1;
+  }
+
+  :-ms-input-placeholder {
+    color: #8298b9;
+  }
+
+  ::-ms-input-placeholder {
+    color: #8298b9;
+  }
+
   // language selector for mobile devices
   .lang-selector {
     display: none;
@@ -71,9 +84,18 @@ html, body {
   }
 
   // This is the logo at the top of the ToC
+  .logo-content {
+    background-color: #fff;
+    padding: 10px 20px 20px 20px;
+    width: 142px;
+    border-radius: 0 0 20px 20px;
+    margin: 0 auto 30px auto;
+  }
+
   .logo {
     display: block;
     max-width: 100%;
+    margin: 0 auto;
     margin-bottom: $logo-margin;
   }
 
