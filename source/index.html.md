@@ -33,7 +33,7 @@ Disponibilizamos abaixo as urls de acesso aos nossos ambientes:
 
 # Códigos de status
 
-No AFSYS-API, os status de retorno das requisições devem ser esperados conforme especificado nas situações abaixo: 
+No AFSYS-API, os status de retorno das requisições devem ser esperados conforme especificado nas situações abaixo:
 
 CÓDIGO | DESCRIÇÃO                | SITUAÇÃO
 -------|--------------------------|-----------------------------------------------
@@ -70,71 +70,42 @@ Essa identificação é importante para registrar o requerente e, ao mesmo tempo
 
 Para obter um token de identificação válido, é necessário passar um usuário e senha ativo no sistema.
 
-# Autenticação SLATE
+# Obtendo Token
 
-> To authorize, use this code:
+> Para autenticar utilize o trecho a seguir:
 
 
 ```shell
 # With shell, you can just pass the correct header with each request
-curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
+curl -X POST "https://painel.afsys.com.br/api/v1/autenticar" \
+  -d email=EMAIL \
+  -d senha=SENHA \
 ```
 
-> Make sure to replace `meowmeowmeow` with your API key.
-
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
-
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
-
-`Authorization: meowmeowmeow`
+> Substitua EMAIL e SENHA pelos dados que lhes forem passados.
 
 <aside class="notice">
-  You must replace <code>meowmeowmeow</code> with your personal API key.
+  Substitua <code>EMAIL</code> e <code>SENHA</code> pelos dados que lhes forem passados.
 </aside>
 
-# Kittens
-
-## Get All Kittens
-
-```shell
-curl "http://example.com/api/kittens"
-  -H "Authorization: meowmeowmeow"
-```
-
-> The above command returns JSON structured like this:
+> Tendo como retorno o json abaixo:
 
 ```json
-[
-  {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
-  }
-]
+  {"auth_token":"TOKEN"}
 ```
 
-This endpoint retrieves all kittens.
+O token possui 24 horas para expiração.
 
 ### HTTP Request
 
-`GET http://example.com/api/kittens`
+`POST https://painel.afsys.com.br/api/v1/autenticar`
 
 ### Query Parameters
 
-Parameter    | Default | Description
------------- | ------- | -----------
-include_cats | false   | If set to true, the result will also include cats.
-available    | true    | If set to false, the result will include kittens that have already been adopted.
+Parametro    | Tipo |
+------------ | ------- |
+email | string   |
+senha    | string    |
 
 <aside class="success">
   Remember — a happy kitten is an authenticated kitten!
