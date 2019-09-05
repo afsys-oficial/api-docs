@@ -7,9 +7,6 @@ language_tabs: # must be one of https://git.io/vQNgJ
 toc_footers:
   - <a href="https://afsys.com.br" target="_blank">Afsys - Gestão Sindical</a>
 
-includes:
-  - errors
-
 search: true
 ---
 
@@ -44,7 +41,10 @@ CÓDIGO | DESCRIÇÃO                | SITUAÇÃO
 403    | *Forbidden*              | Acesso proibido ao recurso requisitado (usuário sem permissão)
 404    | *Resource Not Found*     | Registro ou recurso não encontrado
 422    | *Unprocessable Entity*   | Quando ocorrer erros de validação, como, um campo obrigatório não informado
+429    | *Too Many Requests*      | Excedeu o seu limite de requisições por minuto
 500    | *Internal Server Error*  | Quando ocorrer um erro interno no recurso da API
+502    | *Bad Gateway*            | Sistema em atualização, voltaremos em poucos segundos
+503    | *Service Unavailable*    | No momento estamos offline para manutenção no sistema, tente mais tarde
 
 # Controle de retornos
 
@@ -58,7 +58,7 @@ Por padrão, **X-Key-Inflection = snake**
 
 *CamelCase* é a prática de escrever palavras compostas ou frases, onde cada palavra é iniciada com maiúsculas e unidas sem espaços.
 
-*SnakeCase* é a prática de escrever palavras compostas ou frases, onde as palavras são separadas por um caractere de sublinhado (_) e sem espaços.
+*SnakeCase* é a prática de escrever palavras compostas ou frases, onde as palavras são separadas por um caractere de sublinhado (\_) e sem espaços.
 
 *DashCase* é a prática de escrever palavras compostas ou frases, onde as palavras são separadas por um caractere de traço (-) e sem espaços.
 
@@ -70,105 +70,37 @@ Essa identificação é importante para registrar o requerente e, ao mesmo tempo
 
 Para obter um token de identificação válido, é necessário passar um usuário e senha ativo no sistema.
 
-# Obtendo Token
+## Obtendo o Token
 
-> Para autenticar utilize o trecho a seguir:
-
+> Exemplo de requisição:
 
 ```shell
 # With shell, you can just pass the correct header with each request
-curl -X POST "https://painel.afsys.com.br/api/v1/autenticar" \
+curl -X POST "https://webapi.afsys.com.br/api/v1/autenticar" \
   -d email=EMAIL \
   -d senha=SENHA \
 ```
-
-> Substitua EMAIL e SENHA pelos dados que lhes forem passados.
-
 <aside class="notice">
-  Substitua <code>EMAIL</code> e <code>SENHA</code> pelos dados que lhes forem passados.
+  Substitua os atributos <code>EMAIL</code> e <code>SENHA</code> pelos dados fornecidos pelo administrador do sistema.
 </aside>
 
-> Tendo como retorno o json abaixo:
+> Exemplo de resposta:
 
 ```json
-  {"auth_token":"TOKEN"}
+{
+  "auth_token": "TOKEN"
+}
 ```
 
-O token possui 24 horas para expiração.
+O token de identificação é válido por 24 horas.
 
 ### HTTP Request
 
-`POST https://painel.afsys.com.br/api/v1/autenticar`
+`POST https://webapi.afsys.com.br/api/v1/autenticar`
 
 ### Query Parameters
 
-Parametro    | Tipo |
+Parametro    | Tipo    |
 ------------ | ------- |
-email | string   |
-senha    | string    |
-
-<aside class="success">
-  Remember — a happy kitten is an authenticated kitten!
-</aside>
-
-## Get a Specific Kitten
-
-```shell
-curl "http://example.com/api/kittens/2"
-  -H "Authorization: meowmeowmeow"
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
-}
-```
-
-This endpoint retrieves a specific kitten.
-
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
-
-### HTTP Request
-
-`GET http://example.com/kittens/<ID>`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID        | The ID of the kitten to retrieve
-
-## Delete a Specific Kitten
-
-```shell
-curl "http://example.com/api/kittens/2"
-  -X DELETE
-  -H "Authorization: meowmeowmeow"
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "id": 2,
-  "deleted" : ":("
-}
-```
-
-This endpoint deletes a specific kitten.
-
-### HTTP Request
-
-`DELETE http://example.com/kittens/<ID>`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID        | The ID of the kitten to delete
+email        | string  |
+senha        | string  |
