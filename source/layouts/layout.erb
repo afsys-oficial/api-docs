@@ -43,7 +43,7 @@ under the License.
     <% end %>
   </head>
 
-  <body class="<%= page_classes %>" data-languages="<%=h language_tabs.map{ |lang| lang.is_a?(Hash) ? lang.keys.first : lang }.to_json %>" style="display: none; opacity: 0; filter: alpha(opacity=0);">
+  <body class="<%= page_classes %>" data-languages="<%=h language_tabs.map{ |lang| lang.is_a?(Hash) ? lang.keys.first : lang }.to_json %>" style="display:none">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -115,5 +115,5 @@ under the License.
       </div>
     </div>
   </body>
-  <script>function fadeIn(n,e,o,t){0==o?(increment=2,n.style.display="block"):increment=-2,opc=o,intervalo=setInterval(function(){opc==t?(0==t&&(n.style.display="none"),clearInterval(intervalo)):(opc+=increment,n.style.opacity=opc/100,n.style.filter="alpha(opacity="+opc+")")},10*e)}window.onload=function(){var n=document.getElementsByTagName("body");"/apidoc"==window.location.pathname?window.location.href="/apidoc/":fadeIn(n[0],1,0,100)};</script>
+  <script>var n=document.getElementsByTagName("body");"/apidoc"==window.location.pathname?window.location.href="/apidoc/":n[0].style.display="block";</script>
 </html>
