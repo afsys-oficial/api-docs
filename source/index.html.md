@@ -76,7 +76,7 @@ Para obter um token de identificação válido, é necessário passar um usuári
 
 ```shell
 # With shell, you can just pass the correct header with each request
-curl -X POST "https://webapi.afsys.com.br/api/v1/autenticar" \
+curl -X POST "https://webapi.afsys.com.br/api/v2/autenticar" \
   -d email=EMAIL \
   -d senha=SENHA \
 ```
@@ -96,7 +96,7 @@ O token de identificação é válido por 24 horas.
 
 ### HTTP Request
 
-`POST https://webapi.afsys.com.br/api/v1/autenticar`
+`POST https://webapi.afsys.com.br/api/v2/autenticar`
 
 ### Query Parameters
 
