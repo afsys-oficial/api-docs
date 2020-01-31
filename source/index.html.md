@@ -104,3 +104,296 @@ Parametro    | Tipo    |
 ------------ | ------- |
 email        | string  |
 senha        | string  |
+
+# Boletos
+
+Esse recurso fornece os recursos necessários para LISTAR, VISUALIZAR, CRIAR e CANCELAR boletos no sistema
+
+## Listar boletos
+
+> Exemplo de requisição:
+
+```shell
+curl -X GET "https://webapi.afsys.com.br/v2/boletos" \
+     -H "Authorization: Bearer SEU-TOKEN"
+```
+
+> Exemplo de resposta:
+
+```json
+[
+  {
+    "id": 2257282,
+    "conta_id": 115,
+    "cliente_id": 196825,
+    "associado_id": null,
+    "convenio_id": 516,
+    "remessa_id": null,
+    "registrado": true,
+    "remessa_local": false,
+    "data_emissao": "2020-01-31",
+    "data_remessa": null,
+    "data_pagamento": null,
+    "data_credito": null,
+    "status": "O",
+    "layout": "santander",
+    "competencia": "04/2018",
+    "numero_documento": "20039757",
+    "nosso_numero": "200000039757",
+    "data_vencimento": "2018-05-10",
+    "pagador_nome": "NOME DO PAGADOR",
+    "pagador_documento": "12345678901234",
+    "juros": null,
+    "multa": null,
+    "desconto": null,
+    "valor": "163.92",
+    "valor_pago": null,
+    "visualizacao": 0,
+    "ultima_visualizacao": null,
+    "data_cancelamento": null,
+    "link_boleto": "https://app.afsys.com.br/boletos/impresso/M15804934474595003",
+    "cliente": {
+      "id": 196825,
+      "conta_id": 115,
+      "pessoa_juridica": true,
+      "cpf": null,
+      "nome": "",
+      "cnpj": "12345678901234",
+      "razao_social": "NOME DO PAGADOR",
+      "nome_fantasia": "Tantô Temakeria"
+    },
+    "associado": null
+  }
+  ...
+]
+```
+
+### HTTP Request
+
+`GET https://webapi.afsys.com.br/api/v2/boletos`
+
+### Query Parameters
+
+Você poderá filtrar os boletos pelos parâmetros abaixo:
+
+Parametro           | Tipo    | Exemplo
+------------------- | ------- | ----------------------------------------
+convenio_id         | integer | 123
+cliente_id          | integer | 123
+associado_id        | integer | 123
+status              | string  | O, E, O, R, A, I, B, D, P, V, C, N ou J
+emissao_inicial     | string  | 01/01/2020 ou 2020-01-01
+emissao_final       | string  | 01/01/2020 ou 2020-01-01
+vencimento_inicial  | string  | 01/01/2020 ou 2020-01-01
+vencimento_final    | string  | 01/01/2020 ou 2020-01-01
+nosso_numero        | string  | AB0000123456
+seu_numero          | string  | AB0000123456
+\_page              | string  | 1
+\_limit             | string  | 30
+
+## Visualizar boleto
+
+> Exemplo de requisição:
+
+```shell
+curl -X GET "https://webapi.afsys.com.br/v2/boletos/123" \
+     -H "Authorization: Bearer SEU-TOKEN"
+```
+
+> Exemplo de resposta:
+
+```json
+{
+  "id": 2257282,
+  "conta_id": 115,
+  "cliente_id": 196825,
+  "associado_id": null,
+  "convenio_id": 516,
+  "remessa_id": null,
+  "registrado": true,
+  "remessa_local": false,
+  "data_emissao": "2020-01-31",
+  "data_remessa": null,
+  "data_pagamento": null,
+  "data_credito": null,
+  "status": "O",
+  "layout": "santander",
+  "competencia": "04/2018",
+  "numero_documento": "20039757",
+  "nosso_numero": "200000039757",
+  "data_vencimento": "2018-05-10",
+  "pagador_nome": "NOME DO PAGADOR",
+  "pagador_documento": "12345678901234",
+  "juros": null,
+  "multa": null,
+  "desconto": null,
+  "valor": "163.92",
+  "valor_pago": null,
+  "visualizacao": 0,
+  "ultima_visualizacao": null,
+  "data_cancelamento": null,
+  "link_boleto": "https://app.afsys.com.br/boletos/impresso/M95581049374544003",
+  "cliente": {
+    "id": 196825,
+    "conta_id": 115,
+    "pessoa_juridica": true,
+    "cpf": null,
+    "nome": "",
+    "cnpj": "12345678901234",
+    "razao_social": "NOME DO PAGADOR",
+    "nome_fantasia": "Tantô Temakeria"
+  },
+  "associado": null
+}
+```
+
+### HTTP Request
+
+`GET https://webapi.afsys.com.br/api/v2/boletos`
+
+## Criar boleto
+
+> Exemplo de requisição:
+
+```shell
+curl -X POST "https://webapi.afsys.com.br/v2/boletos/123" \
+     -H "Authorization: Bearer SEU-TOKEN" \
+     -d "boleto[associado_id]=79616" \
+     -d "boleto[convenio_id]=80" \
+     -d "boleto[data_vencimento]=2020-02-20" \
+     -d "boleto[valor]=127.32" \
+     -d "boleto[competencia_mes]=2" \
+     -d "boleto[competencia_ano]=2020" \
+     -d "boleto[enviar_email]=false"
+```
+
+### Query Parameters
+
+Parametro          | Tipo    | Exemplo
+------------------ | ------- | ----------------------------------------
+convenio_id        | integer | 123
+cliente_id         | integer | 123
+associado_id       | integer | 123
+data_vencimento    | date    | 01/01/2020 ou 2020-01-01
+valor              | integer | 123.12
+competencia_mes    | integer | 01
+competencia_ano    | integer | 2020
+enviar_email       | boolean | TRUE ou FALSE
+
+> Exemplo de resposta:
+
+```json
+{
+  "id": 2257282,
+  "conta_id": 115,
+  "cliente_id": 196825,
+  "associado_id": null,
+  "convenio_id": 516,
+  "remessa_id": null,
+  "registrado": true,
+  "remessa_local": false,
+  "data_emissao": "2020-01-31",
+  "data_remessa": null,
+  "data_pagamento": null,
+  "data_credito": null,
+  "status": "O",
+  "layout": "santander",
+  "competencia": "04/2018",
+  "numero_documento": "20039757",
+  "nosso_numero": "200000039757",
+  "data_vencimento": "2018-05-10",
+  "pagador_nome": "NOME DO PAGADOR",
+  "pagador_documento": "12345678901234",
+  "juros": null,
+  "multa": null,
+  "desconto": null,
+  "valor": "163.92",
+  "valor_pago": null,
+  "visualizacao": 0,
+  "ultima_visualizacao": null,
+  "data_cancelamento": null,
+  "link_boleto": "https://app.afsys.com.br/boletos/impresso/M95581049374544003",
+  "cliente": {
+    "id": 196825,
+    "conta_id": 115,
+    "pessoa_juridica": true,
+    "cpf": null,
+    "nome": "",
+    "cnpj": "12345678901234",
+    "razao_social": "NOME DO PAGADOR",
+    "nome_fantasia": "Tantô Temakeria"
+  },
+  "associado": null
+}
+```
+
+### HTTP Request
+
+`POST https://webapi.afsys.com.br/api/v2/boletos`
+
+## Cancelar boleto
+
+> Exemplo de requisição:
+
+```shell
+curl -X PATCH "https://webapi.afsys.com.br/v2/boletos/123/cancelar" \
+     -H "Authorization: Bearer SEU-TOKEN" \
+     -d "boleto[motivo_cancelamento]=Mensagem de cancelamento" \
+```
+
+> Exemplo de resposta:
+
+```json
+{
+  "id": 2257282,
+  "conta_id": 115,
+  "cliente_id": 196825,
+  "associado_id": null,
+  "convenio_id": 516,
+  "remessa_id": null,
+  "registrado": true,
+  "remessa_local": false,
+  "data_emissao": "2020-01-31",
+  "data_remessa": null,
+  "data_pagamento": null,
+  "data_credito": null,
+  "status": "C",
+  "layout": "santander",
+  "competencia": "04/2018",
+  "numero_documento": "20039757",
+  "nosso_numero": "200000039757",
+  "data_vencimento": "2018-05-10",
+  "pagador_nome": "NOME DO PAGADOR",
+  "pagador_documento": "12345678901234",
+  "juros": null,
+  "multa": null,
+  "desconto": null,
+  "valor": "163.92",
+  "valor_pago": null,
+  "visualizacao": 0,
+  "ultima_visualizacao": null,
+  "data_cancelamento": null,
+  "link_boleto": "https://app.afsys.com.br/boletos/impresso/M95581049374544003",
+  "cliente": {
+    "id": 196825,
+    "conta_id": 115,
+    "pessoa_juridica": true,
+    "cpf": null,
+    "nome": "",
+    "cnpj": "12345678901234",
+    "razao_social": "NOME DO PAGADOR",
+    "nome_fantasia": "NOME DO PAGADOR"
+  },
+  "associado": null
+}
+```
+
+### Query Parameters
+
+Parametro             | Tipo    | Exemplo
+--------------------- | ------- | ----------------------------------------
+motivo_cancelamento   | text    | Boleto com problema
+
+### HTTP Request
+
+`PATCH https://webapi.afsys.com.br/api/v2/boletos/:id/cancelar`
