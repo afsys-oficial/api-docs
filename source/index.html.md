@@ -397,3 +397,100 @@ motivo_cancelamento   | text    | Boleto com problema
 ### HTTP Request
 
 `PATCH https://webapi.afsys.com.br/api/v2/boletos/:id/cancelar`
+
+### HTTP Request
+
+`POST https://webapi.afsys.com.br/v2/contas/previsao_orcamentaria`
+
+## Previsão orçamentaria
+
+> Exemplo de requisição:
+
+```shell
+curl -H "Authorization: SEU-TOKEN" -X POST https://webapi.afsys.com.br/v2/contas/previsao_orcamentaria
+```
+
+> Exemplo de resposta:
+
+```json
+{
+  "ano": 2010,
+  "valor": 10,
+  "valor_baixado": 10
+}
+
+
+```
+
+### Query Parameters
+
+Parametro             | Tipo    | Exemplo
+--------------------- | ------- | ----------------------------------------
+motivo_cancelamento   | text    | Boleto com problema
+
+### HTTP Request
+
+`https://webapi.afsys.com.br/v2/contas/previsao_orcamentaria`
+
+### HTTP Request
+
+`POST https://webapi.afsys.com.br/v2/contas/previsao_orcamentaria`
+
+## Mensalidades
+
+> Exemplo de requisição:
+
+```shell
+curl -H "Authorization: SEU-TOKEN" -X POST https://webapi.afsys.com.br/v2/mensalidades
+```
+
+> Exemplo de resposta:
+
+```json
+{
+  "id": 2257282,
+  "conta_id": 115,
+  "cliente_id": 196825,
+  "associado_id": null,
+  "convenio_id": 516,
+  "remessa_id": null,
+  "registrado": true,
+  "remessa_local": false,
+  "data_emissao": "2020-01-31",
+  "data_remessa": null,
+  "data_pagamento": null,
+  "data_credito": null,
+  "status": "C",
+  "layout": "santander",
+  "competencia": "04/2018",
+  "numero_documento": "20039757",
+  "nosso_numero": "200000039757",
+  "data_vencimento": "2018-05-10",
+  "pagador_nome": "NOME DO PAGADOR",
+  "pagador_documento": "12345678901234",
+  "juros": null,
+  "multa": null,
+  "desconto": null,
+  "valor": "163.92",
+  "valor_pago": null,
+  "visualizacao": 0,
+  "ultima_visualizacao": null,
+  "data_cancelamento": null,
+  "link_boleto": "https://app.afsys.com.br/boletos/impresso/M95581049374544003",
+  "cliente": {
+    "id": 196825,
+    "conta_id": 115,
+    "pessoa_juridica": true,
+    "cpf": null,
+    "nome": "",
+    "cnpj": "12345678901234",
+    "razao_social": "NOME DO PAGADOR",
+    "nome_fantasia": "NOME DO PAGADOR"
+  },
+  "associado": null
+}
+```
+
+### HTTP Request
+
+`https://webapi.afsys.com.br/v2/mensalidades`
