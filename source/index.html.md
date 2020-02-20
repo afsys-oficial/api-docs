@@ -105,6 +105,52 @@ Parametro    | Tipo    |
 email        | string  |
 senha        | string  |
 
+
+# Convênios
+
+Os convênios são utilizados para definir a carteira de cobrança adquirida com banco e as regras de multas, juros e descontos.
+
+## Listar convênios
+
+> Exemplo de requisição:
+
+```shell
+curl -X GET "https://webapi.afsys.com.br/v2/convenios" \
+     -H "Authorization: Bearer SEU-TOKEN"
+```
+
+> Exemplo de resposta:
+
+```json
+[
+  {
+    "id": 568,
+    "ativo": true,
+    "visualiza": true,
+    "padrao": false,
+    "competencia": false,
+    "mensagem_competencia": true,
+    "acordo": false,
+    "link_boleto_email": false,
+    "imprime_boleto": false,
+    "created_at": "2018-07-30T14:34:22.000-03:00",
+    "updated_at": "2019-03-07T11:07:41.000-03:00",
+    "tipo_convenio": {
+      "id": 11,
+      "descricao": "CONTRIBUICAO ASSISTENCIAL",
+      "created_at": "2016-06-30T15:33:38.000-03:00",
+      "updated_at": "2016-06-30T15:33:38.000-03:00"
+    }
+  },
+  ...
+]
+```
+
+### HTTP Request
+
+`GET https://webapi.afsys.com.br/api/v2/convenios`
+
+
 # Boletos
 
 Esse recurso fornece os recursos necessários para LISTAR, VISUALIZAR, CRIAR e CANCELAR boletos no sistema
@@ -163,7 +209,7 @@ curl -X GET "https://webapi.afsys.com.br/v2/boletos" \
       "nome_fantasia": "Tantô Temakeria"
     },
     "associado": null
-  }
+  },
   ...
 ]
 ```
@@ -400,14 +446,14 @@ motivo_cancelamento   | text    | Boleto com problema
 
 ### HTTP Request
 
-`POST https://webapi.afsys.com.br/v2/contas/previsao_orcamentaria`
+`GET https://webapi.afsys.com.br/v2/contas/previsao_orcamentaria`
 
 ## Previsão orçamentaria
 
 > Exemplo de requisição:
 
 ```shell
-curl -H "Authorization: SEU-TOKEN" -X POST https://webapi.afsys.com.br/v2/contas/previsao_orcamentaria
+curl -H "Authorization: SEU-TOKEN" -X GET https://webapi.afsys.com.br/v2/contas/previsao_orcamentaria
 ```
 
 > Exemplo de resposta:
@@ -418,8 +464,6 @@ curl -H "Authorization: SEU-TOKEN" -X POST https://webapi.afsys.com.br/v2/contas
   "valor": 10,
   "valor_baixado": 10
 }
-
-
 ```
 
 ### Query Parameters
@@ -434,14 +478,14 @@ motivo_cancelamento   | text    | Boleto com problema
 
 ### HTTP Request
 
-`POST https://webapi.afsys.com.br/v2/contas/previsao_orcamentaria`
+`GET https://webapi.afsys.com.br/v2/contas/previsao_orcamentaria`
 
 ## Mensalidades
 
 > Exemplo de requisição:
 
 ```shell
-curl -H "Authorization: SEU-TOKEN" -X POST https://webapi.afsys.com.br/v2/mensalidades
+curl -H "Authorization: SEU-TOKEN" -X GET https://webapi.afsys.com.br/v2/mensalidades
 ```
 
 > Exemplo de resposta:
