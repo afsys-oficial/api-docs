@@ -448,6 +448,13 @@ motivo_cancelamento   | text    | Boleto com problema
 
 `GET https://webapi.afsys.com.br/v2/contas/previsao_orcamentaria`
 
+
+
+
+# Contas
+
+No Afsys os sindicatos possuem uma conta no sistema onde todos os contribuintes, associados, boletos e etc pertecem a essa conta. Para cada conta são criados vários usuários e perfis de acesso, e assim, cada um terá o acesso de acordo com suas responsabilidades no sistema.
+
 ## Previsão orçamentaria
 
 > Exemplo de requisição:
@@ -480,12 +487,15 @@ motivo_cancelamento   | text    | Boleto com problema
 
 `GET https://webapi.afsys.com.br/v2/contas/previsao_orcamentaria`
 
+
 ## Mensalidades
+
+Esse recurso retornará as mensalidades dos clientes Afsys.
 
 > Exemplo de requisição:
 
 ```shell
-curl -H "Authorization: SEU-TOKEN" -X GET https://webapi.afsys.com.br/v2/mensalidades
+curl -H "Authorization: SEU-TOKEN" -X GET https://webapi.afsys.com.br/v2/contas/mensalidades
 ```
 
 > Exemplo de resposta:
@@ -537,4 +547,4 @@ curl -H "Authorization: SEU-TOKEN" -X GET https://webapi.afsys.com.br/v2/mensali
 
 ### HTTP Request
 
-`https://webapi.afsys.com.br/v2/mensalidades`
+`https://webapi.afsys.com.br/v2/contas/mensalidades`
