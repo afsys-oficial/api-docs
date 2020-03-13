@@ -348,7 +348,7 @@ R      | Remetido
 A      | Em aberto
 I      | Rejeitado
 B      | Baixado
-D      | Baixado
+D      | Baixado por não pagamento
 P      | Pago
 V      | Vencido
 C      | Cancelado
