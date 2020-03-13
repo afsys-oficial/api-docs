@@ -336,6 +336,25 @@ seu_numero          | string  | AB0000123456
 \_page              | string  | 1
 \_limit             | string  | 30
 
+### Status dos boletos
+
+No sistema, os status dos boletos são compostos por uma letra. Logo abaixo você pode conferir o significado de cada letra de status:
+
+Status | Descrição
+-------|------------------
+E      | Emitido
+O      | Remessa pendente
+R      | Remetido
+A      | Em aberto
+I      | Rejeitado
+B      | Baixado
+D      | Baixado
+P      | Pago
+V      | Vencido
+C      | Cancelado
+N      | Negociado
+J      | Jurídico
+
 ## Visualizar boleto
 
 > Exemplo de requisição:
