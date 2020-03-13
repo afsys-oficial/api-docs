@@ -326,7 +326,7 @@ Parametro           | Tipo    | Exemplo
 convenio_id         | integer | 123
 cliente_id          | integer | 123
 associado_id        | integer | 123
-status              | string  | O, E, O, R, A, I, B, D, P, V, C, N ou J
+status              | string  | Veja a lista de status
 emissao_inicial     | string  | 01/01/2020 ou 2020-01-01
 emissao_final       | string  | 01/01/2020 ou 2020-01-01
 vencimento_inicial  | string  | 01/01/2020 ou 2020-01-01
@@ -340,20 +340,24 @@ seu_numero          | string  | AB0000123456
 
 No sistema, os status dos boletos são compostos por uma letra. Logo abaixo você pode conferir o significado de cada letra de status:
 
-Status | Descrição
--------|--------------------------
-E      | Emitido
-O      | Remessa pendente
-R      | Remetido
-A      | Em aberto
-I      | Rejeitado
-B      | Baixado
-D      | Baixado por não pagamento
-P      | Pago
-V      | Vencido
-C      | Cancelado
-N      | Negociado
-J      | Jurídico
+Status                | Descrição
+----------------------|---------------------------------------------------
+emitido               | Emitido
+pendente              | Remessa pendente
+pendente_vencido      | Remessa pendente (boleto vencido)
+pendente_nao_vencido  | Remessa pendente (boleto não vencido)
+remetido              | Remetido
+remetido_nao_vencido  | Remetido (boleto não vencido)
+rejeitado             | Rejeitado
+baixados              | Baixado
+pagos                 | Pagos
+aberto                | Em aberto
+aberto_remessa        | Em aberto (boletos registrados e não registrados)
+vencidos              | Vencido
+vencidos_remessa      | Vencido (boletos registrados e não registrados)
+cancelados            | Cancelado
+negociados            | Negociado
+juridico              | Jurídico
 
 ## Visualizar boleto
 
