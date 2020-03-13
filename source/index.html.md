@@ -373,7 +373,6 @@ I      | Rejeitado
 B      | Baixado
 D      | Baixado por não pagamento
 P      | Pago
-V      | Vencido
 C      | Cancelado
 N      | Negociado
 J      | Jurídico
