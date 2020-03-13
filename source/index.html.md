@@ -341,7 +341,7 @@ seu_numero          | string  | AB0000123456
 No sistema, os status dos boletos são compostos por uma letra. Logo abaixo você pode conferir o significado de cada letra de status:
 
 Status | Descrição
--------|------------------
+-------|--------------------------
 E      | Emitido
 O      | Remessa pendente
 R      | Remetido
