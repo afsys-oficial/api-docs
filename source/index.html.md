@@ -326,7 +326,7 @@ Parametro           | Tipo    | Exemplo
 convenio_id         | integer | 123
 cliente_id          | integer | 123
 associado_id        | integer | 123
-status              | string  | Veja a lista de status
+status              | string  | Veja o item "Status dos boletos"
 emissao_inicial     | string  | 01/01/2020 ou 2020-01-01
 emissao_final       | string  | 01/01/2020 ou 2020-01-01
 vencimento_inicial  | string  | 01/01/2020 ou 2020-01-01
@@ -338,7 +338,7 @@ seu_numero          | string  | AB0000123456
 
 ### Status dos boletos
 
-No sistema, os status dos boletos são compostos por uma letra. Logo abaixo você pode conferir o significado de cada letra de status:
+O itens abaixo podem ser utilizados no filtro de boletos por status.
 
 Status                | Descrição
 ----------------------|---------------------------------------------------
@@ -358,6 +358,25 @@ vencidos_remessa      | Vencido (boletos registrados e não registrados)
 cancelados            | Cancelado
 negociados            | Negociado
 juridico              | Jurídico
+
+### Sigla de status dos boletos
+
+No sistema, os status dos boletos são compostos por uma letra. Logo abaixo você pode conferir o significado de cada letra de status:
+
+Status | Descrição
+-------|--------------------------
+E      | Emitido
+O      | Remessa pendente
+R      | Remetido
+A      | Em aberto
+I      | Rejeitado
+B      | Baixado
+D      | Baixado por não pagamento
+P      | Pago
+V      | Vencido
+C      | Cancelado
+N      | Negociado
+J      | Jurídico
 
 ## Visualizar boleto
 
