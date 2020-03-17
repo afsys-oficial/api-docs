@@ -315,7 +315,7 @@ curl -X GET "https://webapi.afsys.com.br/v2/boletos" \
 
 ### HTTP Request
 
-`GET https://webapi.afsys.com.br/api/v2/boletos`
+`GET https://webapi.afsys.com.br/v2/boletos`
 
 ### Query Parameters
 
@@ -435,7 +435,7 @@ curl -X GET "https://webapi.afsys.com.br/v2/boletos/123" \
 
 ### HTTP Request
 
-`GET https://webapi.afsys.com.br/api/v2/boletos`
+`GET https://webapi.afsys.com.br/v2/boletos`
 
 ## Criar boleto
 
@@ -515,7 +515,7 @@ enviar_email       | boolean | TRUE ou FALSE
 
 ### HTTP Request
 
-`POST https://webapi.afsys.com.br/api/v2/boletos`
+`POST https://webapi.afsys.com.br/v2/boletos`
 
 ## Cancelar boleto
 
@@ -582,7 +582,7 @@ motivo_cancelamento   | text    | Boleto com problema
 
 ### HTTP Request
 
-`PATCH https://webapi.afsys.com.br/api/v2/boletos/:id/cancelar`
+`PATCH https://webapi.afsys.com.br/v2/boletos/:id/cancelar`
 
 ### HTTP Request
 
