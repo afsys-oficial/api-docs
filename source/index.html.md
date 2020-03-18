@@ -205,6 +205,60 @@ curl -H "Authorization: SEU-TOKEN" -X GET https://webapi.afsys.com.br/v2/contas/
 `https://webapi.afsys.com.br/v2/contas/mensalidades`
 
 
+# Clientes
+
+Com esse recurso você poderá filtrar pelos contribuintes cadastrados no Afsys.
+
+## Listar clientes
+
+> Exemplo de requisição:
+
+```shell
+curl -X GET "https://webapi.afsys.com.br/v2/clientes" \
+     -H "Authorization: Bearer SEU-TOKEN"
+```
+
+> Exemplo de resposta:
+
+```json
+[
+  {
+    "id": 320660,
+    "conta_id": 8,
+    "status": "A",
+    "pessoa_juridica": true,
+    "cpf": null,
+    "nome": null,
+    "cnpj": "12345678901234",
+    "razao_social": "RAZAO SOCIAL DO CLIENTE",
+    "nome_fantasia": "NOME FANTASIA DO CLIENTE"
+  },
+  ...
+]
+```
+
+### HTTP Request
+
+`GET https://webapi.afsys.com.br/v2/clientes`
+
+### Campo Status
+
+Logo abaixo você pode conferir os possíveis valores para o campo `status` do cliente
+
+Status | Descrição
+-------|---------------------------------------------------
+A      | Ativado
+D      | Desativado
+
+### Query Parameters
+
+Você poderá filtrar os clientes pelo parâmetro abaixo:
+
+Parametro  | Tipo    | Exemplo
+---------- | ------- | ----------------------------------------------
+s          | string  | Pesquisa pelo CPF, CNPJ, Nome ou Razão Social
+
+
 # Convênios
 
 Os convênios são utilizados para definir a carteira de cobrança adquirida com banco e as regras de multas, juros e descontos.
