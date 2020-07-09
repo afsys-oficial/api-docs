@@ -211,7 +211,7 @@ Esse recurso retornará os dados da conta no AFSYS.
 > Exemplo de requisição:
 
 ```shell
-curl -H "Authorization: SEU-TOKEN" -X GET https://webapi.afsys.com.br/v2/contas
+curl -H "Authorization: SEU-TOKEN" -X GET https://webapi.afsys.com.br/v2/conta
 ```
 
 > Exemplo de resposta:
@@ -249,7 +249,7 @@ curl -H "Authorization: SEU-TOKEN" -X GET https://webapi.afsys.com.br/v2/contas
 
 ### HTTP Request
 
-`https://webapi.afsys.com.br/v2/contas`
+`https://webapi.afsys.com.br/v2/conta`
 
 
 # Clientes
