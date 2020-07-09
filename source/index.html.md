@@ -204,6 +204,53 @@ curl -H "Authorization: SEU-TOKEN" -X GET https://webapi.afsys.com.br/v2/contas/
 
 `https://webapi.afsys.com.br/v2/contas/mensalidades`
 
+## Visualizar conta
+
+Esse recurso retornará os dados da conta no AFSYS.
+
+> Exemplo de requisição:
+
+```shell
+curl -H "Authorization: SEU-TOKEN" -X GET https://webapi.afsys.com.br/v2/contas
+```
+
+> Exemplo de resposta:
+
+```json
+{
+  "id": 1,
+  "status": "A",
+  "permalink": "nw956klr",
+  "email": "comercial@afsys.com.br",
+  "pessoa_juridica": true,
+  "nome": "",
+  "cpf": "",
+  "cnpj": "81574631000116",
+  "razao_social": "Afsys Apresentação Sindicato",
+  "nome_fantasia": "Sinthoresca",
+  "cnae": "",
+  "cnae_descricao": "",
+  "rateio_federacao": "0.00",
+  "site": "",
+  "telefone_area": "16",
+  "telefone_numero": "33333333",
+  "celular_area": "",
+  "celular_numero": "",
+  "cep": "14000-000",
+  "endereco": "Rua Vicente golfeto",
+  "numero": "2",
+  "complemento": "",
+  "bairro": "CAMPOS",
+  "cidade": "RIBEIRAO PRETO",
+  "uf": "SP",
+  "logo_url": "https://app.afsys.com.br/uploads/contas/1/original/logo.jpg?1520854626"
+}
+```
+
+### HTTP Request
+
+`https://webapi.afsys.com.br/v2/contas`
+
 
 # Clientes
 
