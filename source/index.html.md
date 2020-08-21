@@ -427,6 +427,7 @@ Parametro           | Tipo    | Exemplo
 convenio_id         | integer | 123
 cliente_id          | integer | 123
 associado_id        | integer | 123
+tipo_pagador        | string  | "cliente" ou "associado"
 status              | string  | Veja o item "Status dos boletos"
 emissao_inicial     | string  | 01/01/2020 ou 2020-01-01
 emissao_final       | string  | 01/01/2020 ou 2020-01-01
@@ -477,6 +478,47 @@ P      | Pago
 C      | Cancelado
 N      | Negociado
 J      | Jurídico
+
+
+## Totalizador de boletos
+
+> Exemplo de requisição:
+
+```shell
+curl -X GET "https://webapi.afsys.com.br/v2/boletos/totalizador" \
+     -H "Authorization: Bearer SEU-TOKEN"
+```
+
+> Exemplo de resposta:
+
+```json
+{
+  "quantidade": 50,
+  "valor_total": "10000.10",
+  "total_pago": 1300.00,
+  "total_tarifas": 27.00
+}
+```
+
+### HTTP Request
+
+`GET https://webapi.afsys.com.br/v2/boletos/totalizador`
+
+
+### Query Parameters
+
+Você poderá filtrar os boletos pelos parâmetros abaixo:
+
+Parametro           | Tipo    | Exemplo
+------------------- | ------- | ----------------------------------------
+convenio_id         | integer | 123
+cliente_id          | integer | 123
+associado_id        | integer | 123
+tipo_pagador        | string  | "cliente" ou "associado"
+emissao_inicial     | string  | 01/01/2020 ou 2020-01-01
+emissao_final       | string  | 01/01/2020 ou 2020-01-01
+vencimento_inicial  | string  | 01/01/2020 ou 2020-01-01
+vencimento_final    | string  | 01/01/2020 ou 2020-01-01
 
 ## Visualizar boleto
 
