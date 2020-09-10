@@ -515,6 +515,7 @@ convenio_id         | integer | 123
 cliente_id          | integer | 123
 associado_id        | integer | 123
 tipo_pagador        | string  | "cliente" ou "associado"
+status              | string  | Veja o item "Status dos boletos"
 emissao_inicial     | string  | 01/01/2020 ou 2020-01-01
 emissao_final       | string  | 01/01/2020 ou 2020-01-01
 vencimento_inicial  | string  | 01/01/2020 ou 2020-01-01
