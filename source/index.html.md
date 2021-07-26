@@ -731,3 +731,87 @@ motivo_cancelamento   | text    | Boleto com problema
 ### HTTP Request
 
 `GET https://webapi.afsys.com.br/v2/contas/previsao_orcamentaria`
+
+
+
+
+
+
+
+# Associados Interessados
+
+Os associados interessados são pessoas que desejam se associar ao sindicato. Esses recurso gerará um pré-cadastro de associados que poderá aprovado ou reprovado dentro do sistema.
+
+## Criar associado interessado
+
+> Exemplo de requisição:
+
+```shell
+curl -X POST "https://webapi.afsys.com.br/v2/associado_interessado" \
+     -H "Authorization: Bearer SEU-TOKEN" \
+     -d "associado_interessado[status]=A" \
+     -d "associado_interessado[funcao]=Atendente" \
+     -d "associado_interessado[cpf]=11111111111" \
+     -d "associado_interessado[rg]=11.111.11-X" \
+     -d "associado_interessado[data_expedicao]=2021-01-01" \
+     -d "associado_interessado[nome]=Jose da Silva" \
+     -d "associado_interessado[data_nascimento]=1990-01-01" \
+     -d "associado_interessado[sexo]=masculino" \
+     -d "associado_interessado[email]=email@dominio.com.br" \
+     -d "associado_interessado[nome_pai]=" \
+     -d "associado_interessado[nome_mae]=" \
+     -d "associado_interessado[naturalizacao]=São Paulo" \
+     -d "associado_interessado[estado_civil]=Casado(a)" \
+     -d "associado_interessado[telefone_area]=11" \
+     -d "associado_interessado[telefone_numero]=999999999" \
+     -d "associado_interessado[celular_area]=11" \
+     -d "associado_interessado[celular_numero]=999999999" \
+     -d "associado_interessado[cep]=04843425" \
+     -d "associado_interessado[endereco]=Viela 16" \
+     -d "associado_interessado[numero]=123" \
+     -d "associado_interessado[complemento]=Casa" \
+     -d "associado_interessado[bairro]=Parque São José" \
+     -d "associado_interessado[cidade]=São Paulo" \
+     -d "associado_interessado[uf]=SP" \
+     -d "associado_interessado[tipo_vinculo]=empregado" \
+     -d "associado_interessado[cnpj]=12345678901234" \
+     -d "associado_interessado[carteira_trabalho]=" \
+     -d "associado_interessado[salario_base]=1200"
+```
+
+### Query Parameters
+
+Parametro          | Tipo    | Exemplo
+------------------ | ------- | ----------------------------------------
+status             | string  | A ou D
+funcao             | string  | até 255 caracteres
+cpf                | string  | 12345678911
+rg                 | string  | 12.222.333-X
+data_expedicao     | date    | 2021-01-01
+nome               | string  | até 60 caracteres
+data_nascimento    | date    | 2021-01-01
+sexo               | string  | masculino ou feminino
+email              | string  | até 160 caracteres
+nome_pai           | string  | até 60 caracteres
+nome_mae           | string  | até 60 caracteres
+naturalizacao      | string  | até 160 caracteres
+estado_civil       | string  | Casado(a), Solteiro(a), Divorciado(a), Viúvo(a), Separado(a), Companheiro(a)
+telefone_area      | string  | 11
+telefone_numero    | string  | 999999999
+celular_area       | string  | 11
+celular_numero     | string  | 999999999
+cep                | string  | 11111-000
+endereco           | string  | até 255 caracteres
+numero             | string  | até 15 caracteres
+complemento        | string  | até 255 caracteres
+bairro             | string  | até 255 caracteres
+cidade             | string  | até 60 caracteres
+uf                 | string  | até 2 caracteres
+tipo_vinculo       | string  | empregado, aposentado, sem_vinculo, autonomo
+cnpj               | string  | 11111111111111
+carteira_trabalho  | string  | até 40 caracteres
+salario_base       | float   | 111111.11
+
+### HTTP Request
+
+`POST https://webapi.afsys.com.br/v2/associado_interessado`
