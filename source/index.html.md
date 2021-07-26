@@ -733,11 +733,6 @@ motivo_cancelamento   | text    | Boleto com problema
 `GET https://webapi.afsys.com.br/v2/contas/previsao_orcamentaria`
 
 
-
-
-
-
-
 # Associados Interessados
 
 Os associados interessados são pessoas que desejam se associar ao sindicato. Esses recurso gerará um pré-cadastro de associados que poderá aprovado ou reprovado dentro do sistema.
