@@ -810,3 +810,130 @@ salario_base       | float   | 111111.11
 ### HTTP Request
 
 `POST https://webapi.afsys.com.br/v2/associado_interessado`
+
+
+# Associados
+
+Os associados são pessoas associadas ao sindicato.
+
+## Buscar associados por login
+
+> Exemplo de requisição:
+
+```shell
+curl -X POST "https://webapi.afsys.com.br/v2/associado/login" \
+     -d "cpf=11111111111"
+```
+
+> Exemplo de resposta:
+
+```json
+{
+  "status": true
+}
+```
+
+### Query Parameters
+
+Parametro          | Tipo    | Exemplo
+------------------ | ------- | ----------------------------------------
+cpf                | string  | 12345678911
+
+### HTTP Request
+
+`POST https://webapi.afsys.com.br/v2/associado/login`
+
+## Obter associado logado
+
+> Exemplo de requisição:
+
+```shell
+curl -X POST "https://webapi.afsys.com.br/v2/associado" \
+     -H "Authorization: Bearer SEU-TOKEN"
+```
+
+> Exemplo de resposta:
+
+```json
+{
+  "id": 6,
+  "conta_id": 15,
+  "cliente_id": null,
+  "grupo_id": null,
+  "associado_funcao_id": 1,
+  "sub_sede_id": null,
+  "posto_trabalho_id": null,
+  "ferias": false,
+  "sindicalizado": true,
+  "aposentado": false,
+  "socio_remido": false,
+  "cancelado": false,
+  "oposicao_contribuicao": false,
+  "status_cadastro": "cadastrado",
+  "status": "A",
+  "tipo_vinculo": "",
+  "matricula": "0000000001",
+  "matricula_trabalhador": "T000000003",
+  "titulo_eleitor": "",
+  "cpf": "11111111111",
+  "rg": "",
+  "nome": "ASSOCIADO AFSYS TESTE",
+  "sexo": "masculino",
+  "email": "email@dominio.com",
+  "nome_pai": "PAI",
+  "nome_mae": "MÃE",
+  "naturalizacao": "",
+  "estado_civil": "",
+  "telefone_area": "",
+  "telefone_numero": "",
+  "celular_area": "",
+  "celular_numero": "",
+  "carteira_trabalho": "",
+  "pis": "",
+  "empresa": "",
+  "funcao": "",
+  "salario_base": "0.00",
+  "cep": "14030-570",
+  "endereco": "Rua Gonçalves de Magalhães",
+  "numero": "0",
+  "complemento": "",
+  "bairro": "Jardim Piratininga",
+  "cidade": "Ribeirão Preto",
+  "uf": "SP",
+  "data_nascimento": "1984-05-24",
+  "data_expedicao": null,
+  "data_admissao": null,
+  "data_demissao": null,
+  "data_homologacao": null,
+  "data_sindicalizacao": "2016-06-29",
+  "notas": "",
+  "senha": null,
+  "carta_oposicao": false,
+  "carteirinha_entregue": false,
+  "validade_carteirinha": null,
+  "afastamento_medico": false,
+  "desconto_folha": false,
+  "participa_votacao": true,
+  "data_debito": null,
+  "demitido": true,
+  "data_obito": null,
+  "cartao_convenio": false,
+  "utiliza_convenio": false,
+  "limite_convenio": "",
+  "revisao_cadastro": null,
+  "local_votacao": "empresa",
+  "codigo_convenio": null,
+  "autorizado": false,
+  "recuperar_senha_token": null,
+  "foto_updated_at": null,
+  "foto_file_size": null,
+  "foto_content_type": null,
+  "foto_file_name": null,
+  "created_at": "2016-06-29T18:58:50.000-03:00",
+  "updated_at": "2021-03-16T12:11:03.000-03:00"
+}
+```
+
+### HTTP Request
+
+`POST https://webapi.afsys.com.br/v2/associado`
