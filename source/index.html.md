@@ -822,6 +822,7 @@ Os associados são pessoas associadas ao sindicato.
 
 ```shell
 curl -X POST "https://webapi.afsys.com.br/v2/associado/login" \
+     -d "conta_id=1" \
      -d "cpf=11111111111"
 ```
 
@@ -837,6 +838,7 @@ curl -X POST "https://webapi.afsys.com.br/v2/associado/login" \
 
 Parametro          | Tipo    | Exemplo
 ------------------ | ------- | ----------------------------------------
+conta_id           | integer | 1
 cpf                | string  | 12345678911
 
 ### HTTP Request
