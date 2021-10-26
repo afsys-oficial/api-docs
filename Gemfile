@@ -1,12 +1,12 @@
-ruby '2.6.6'
+ruby '2.7.3'
 source 'https://rubygems.org'
 
 # Middleman
-gem 'middleman', '~>4.2.1'
-gem 'middleman-syntax', '~> 3.0.0'
-gem 'middleman-autoprefixer', '~> 2.7.0'
-gem 'middleman-sprockets', '~> 4.1.0'
-gem 'rouge', '~> 2.0.5'
-gem 'redcarpet', '~> 3.4.0'
-gem 'nokogiri', '~> 1.8.2'
+gem 'middleman'
+gem 'middleman-syntax'
+gem 'middleman-autoprefixer'
+gem 'middleman-sprockets'
+gem 'rouge'
+gem 'redcarpet'
+gem 'nokogiri'
 gem 'therubyracer', platforms: :ruby
