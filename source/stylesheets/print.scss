@@ -1,4 +1,4 @@
-@charset "utf-8";
+@charset 'utf-8';
 @import 'normalize';
 @import 'variables';
 @import 'icon-font';
@@ -143,5 +143,11 @@ body {
 
   aside.success:before {
     @extend %icon-ok-sign;
+  }
+}
+
+.highlight {
+  .nl {
+    background-color: #272822 !important;
   }
 }
