@@ -820,7 +820,7 @@ Os associados são pessoas associadas ao sindicato.
 > Exemplo de requisição:
 
 ```shell
-curl -X POST "https://webapi.afsys.com.br/v2/associado/login" \
+curl -X POST "https://webapi.afsys.com.br/v2/autenticar/associado" \
      -d "conta_id=1" \
      -d "cpf=11111111111"
 ```
@@ -850,10 +850,8 @@ senha              | string  | Ab123456
 > Exemplo de requisição:
 
 ```shell
-curl -X POST "https://webapi.afsys.com.br/v2/autenticar/associado" \
-    -d "conta_id=20" \
-    -d "cpf=12345678910" \
-    -d "senha=Ab123456" \
+curl -X POST "https://webapi.afsys.com.br/v2/associado" \
+    -H "Authorization: Bearer SEU-TOKEN"
 ```
 
 > Exemplo de resposta:
