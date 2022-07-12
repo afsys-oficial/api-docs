@@ -837,20 +837,23 @@ curl -X POST "https://webapi.afsys.com.br/v2/associado/login" \
 
 Parametro          | Tipo    | Exemplo
 ------------------ | ------- | ----------------------------------------
-conta_id           | integer | 1
-cpf                | string  | 12345678911
+conta_id           | integer | 20
+cpf                | string  | 12345678910
+senha              | string  | Ab123456
 
 ### HTTP Request
 
-`POST https://webapi.afsys.com.br/v2/associado/login`
+`POST https://webapi.afsys.com.br/v2/autenticar/associado`
 
-## Obter associado logado
+## Efetuar login de associado e obter token de acesso
 
 > Exemplo de requisição:
 
 ```shell
-curl -X POST "https://webapi.afsys.com.br/v2/associado" \
-     -H "Authorization: Bearer SEU-TOKEN"
+curl -X POST "https://webapi.afsys.com.br/v2/autenticar/associado" \
+    -d "conta_id=20" \
+    -d "cpf=12345678910" \
+    -d "senha=Ab123456" \
 ```
 
 > Exemplo de resposta:
