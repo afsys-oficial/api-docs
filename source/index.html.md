@@ -821,6 +821,38 @@ Os associados são pessoas associadas ao sindicato.
 
 ```shell
 curl -X POST "https://webapi.afsys.com.br/v2/autenticar/associado" \
+     -d "conta_id=20" \
+     -d "cpf=12345678910" \
+     -d "senha=Ab123456"
+```
+
+> Exemplo de resposta:
+
+```json
+{
+  "auth_token": "[JWT-TOKEN-ASSOCIADO]"
+}
+```
+
+### Query Parameters
+
+Parametro          | Tipo    | Exemplo
+------------------ | ------- | ----------------------------------------
+conta_id           | integer | 20
+cpf                | string  | 12345678910
+senha              | string  | Ab123456
+
+### HTTP Request
+
+`POST https://webapi.afsys.com.br/v2/autenticar/associado`
+
+
+## Consultar associado por login
+
+> Exemplo de requisição:
+
+```shell
+curl -X POST "https://webapi.afsys.com.br/v2/associado/login" \
      -d "conta_id=1" \
      -d "cpf=11111111111"
 ```
@@ -839,11 +871,11 @@ Parametro          | Tipo    | Exemplo
 ------------------ | ------- | ----------------------------------------
 conta_id           | integer | 20
 cpf                | string  | 12345678910
-senha              | string  | Ab123456
 
 ### HTTP Request
 
 `POST https://webapi.afsys.com.br/v2/autenticar/associado`
+
 
 ## Obter associado logado
 
@@ -851,7 +883,7 @@ senha              | string  | Ab123456
 
 ```shell
 curl -X POST "https://webapi.afsys.com.br/v2/associado" \
-    -H "Authorization: Bearer SEU-TOKEN"
+     -H "Authorization: Bearer SEU-TOKEN"
 ```
 
 > Exemplo de resposta:
