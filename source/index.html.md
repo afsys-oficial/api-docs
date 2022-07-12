@@ -815,7 +815,7 @@ salario_base       | float   | 111111.11
 
 Os associados são pessoas associadas ao sindicato.
 
-## Buscar associados por login
+## Obter token de acesso do associado
 
 > Exemplo de requisição:
 
@@ -845,7 +845,7 @@ senha              | string  | Ab123456
 
 `POST https://webapi.afsys.com.br/v2/autenticar/associado`
 
-## Efetuar login de associado e obter token de acesso
+## Obter associado logado
 
 > Exemplo de requisição:
 
