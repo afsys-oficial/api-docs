@@ -743,7 +743,6 @@ Os associados interessados são pessoas que desejam se associar ao sindicato. Es
 
 ```shell
 curl -X POST "https://webapi.afsys.com.br/v2/associado_interessado" \
-     -H "Authorization: Bearer SEU-TOKEN" \
      -d "associado_interessado[status]=A" \
      -d "associado_interessado[funcao]=Atendente" \
      -d "associado_interessado[cpf]=11111111111" \
