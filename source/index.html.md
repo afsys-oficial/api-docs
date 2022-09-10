@@ -971,3 +971,208 @@ curl -X POST "https://webapi.afsys.com.br/v2/associado" \
 ### HTTP Request
 
 `POST https://webapi.afsys.com.br/v2/associado`
+
+===========================================================================================================================
+
+# Parceiros
+
+## Listar parceiros
+
+> Exemplo de requisição:
+
+```shell
+curl -X GET "https://webapi.afsys.com.br/v2/parceiros" \
+     -H "Authorization: Bearer SEU-TOKEN"
+```
+
+> Exemplo de resposta:
+
+```json
+[
+  {
+    "id": 123456,
+    "conta_id": 8,
+    "aitvo": true,
+    "pessoa_juridica": true,
+    "nome": null,
+    "razao_social": "RAZAO SOCIAL",
+    "nome_fantasia": "NOME FANTASIA",
+    "created_at": "2018-07-30T14:34:22.000-03:00",
+    "updated_at": "2018-07-30T14:34:22.000-03:00",
+    "imagens" : [
+      "https://webapi.afsys.com.br/imagem-1.png",
+      "https://webapi.afsys.com.br/imagem-2.png"
+    ]
+  },
+  ...
+]
+```
+
+### HTTP Request
+
+`GET https://webapi.afsys.com.br/v2/parceiros`
+
+### Query Parameters
+
+Você poderá filtrar os parceiros pelo parâmetro abaixo:
+
+Parametro  | Tipo    | Exemplo
+---------- | ------- | ----------------------------------------------
+s          | string  | Pesquisa pelo CPF, CNPJ, Nome ou Razão Social
+
+## Listar parceiros
+
+> Exemplo de requisição:
+
+```shell
+curl -X GET "https://webapi.afsys.com.br/v2/parceiros" \
+     -H "Authorization: Bearer SEU-TOKEN"
+```
+
+> Exemplo de resposta:
+
+```json
+[
+  {
+    "id": 123456,
+    "conta_id": 8,
+    "aitvo": true,
+    "pessoa_juridica": true,
+    "nome": null,
+    "razao_social": "RAZAO SOCIAL",
+    "nome_fantasia": "NOME FANTASIA",
+    "created_at": "2018-07-30T14:34:22.000-03:00",
+    "updated_at": "2018-07-30T14:34:22.000-03:00",
+    "imagens" : [
+      "https://webapi.afsys.com.br/imagem-1.png",
+      "https://webapi.afsys.com.br/imagem-2.png"
+    ]
+  },
+  ...
+]
+```
+
+### HTTP Request
+
+`GET https://webapi.afsys.com.br/v2/parceiros`
+
+### Query Parameters
+
+Você poderá filtrar os parceiros pelo parâmetro abaixo:
+
+Parametro  | Tipo    | Exemplo
+---------- | ------- | ----------------------------------------------
+s          | string  | Pesquisa pelo CPF, CNPJ, Nome ou Razão Social
+
+
+===============================================
+
+## Obter parceiro por ID
+
+> Exemplo de requisição:
+
+```shell
+curl -X GET "https://webapi.afsys.com.br/v2/parceiros" \
+     -H "Authorization: Bearer SEU-TOKEN"
+```
+
+> Exemplo de resposta:
+
+```json
+[
+  {
+    "id": 123456,
+    "conta_id": 8,
+    "aitvo": true,
+    "pessoa_juridica": true,
+    "nome": null,
+    "razao_social": "RAZAO SOCIAL",
+    "nome_fantasia": "NOME FANTASIA",
+    "created_at": "2018-07-30T14:34:22.000-03:00",
+    "updated_at": "2018-07-30T14:34:22.000-03:00",
+    "imagens" : [
+      "https://webapi.afsys.com.br/imagem-1.png",
+      "https://webapi.afsys.com.br/imagem-2.png"
+    ]
+  },
+  ...
+]
+```
+
+### HTTP Request
+
+`GET https://webapi.afsys.com.br/v2/parceiros`
+
+### Query Parameters
+
+Você poderá filtrar os parceiros pelo parâmetro abaixo:
+
+Parametro  | Tipo    | Exemplo
+---------- | ------- | ----------------------------------------------
+s          | string  | Pesquisa pelo CPF, CNPJ, Nome ou Razão Social
+
+## Listar parceiros
+
+> Exemplo de requisição:
+
+```shell
+curl -X GET "https://webapi.afsys.com.br/v2/parceiros/:id" \
+     -H "Authorization: Bearer SEU-TOKEN"
+```
+
+> Exemplo de resposta:
+
+```json
+{
+  "id": 87,
+  "conta_id": 8,
+  "ativo": true,
+  "pessoa_juridica": true,
+  "nome": "",
+  "cpf": "",
+  "razao_social": "RAZAO SOCIAL DO PARCEIRO",
+  "nome_fantasia": "NOME FANTASIA DO PARCEIRO",
+  "cnae": "94.20-1-00",
+  "cnae_descricao": "Atividades de organizações sindicais",
+  "site": "",
+  "cnpj": "02971036000148",
+  "crc": "",
+  "contato": "",
+  "telefone_area": "16",
+  "telefone_numero": "8261113",
+  "celular_area": "",
+  "celular_numero": "",
+  "email": "",
+  "email_secundario": "",
+  "cep": "14620-000",
+  "endereco": "AVENIDA NOVE",
+  "numero": "507",
+  "complemento": "",
+  "bairro": "CENTRO",
+  "cidade": "ORLANDIA",
+  "uf": "SP",
+  "notas": "",
+  "aplicacao_desconto": "ate",
+  "tipo_desconto": "porcentagem",
+  "valor_desconto": "0.0",
+  "descricao_produto": null,
+  "created_at": "2019-05-14T15:11:08.000-03:00",
+  "updated_at": "2022-09-07T22:05:39.000-03:00",
+  "imagens": [
+    "http://localhost:3005/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdFFIIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8cfbc52c2475fe722bf9a27c644826cbdae1bd17/Eduardo_Azevedo.jpg",
+    "http://localhost:3005/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdFVIIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--86a0b6259f6fe6c0ea47c29252c0151e1dba38b7/eduardo.jpeg"
+  ]
+}
+```
+
+### HTTP Request
+
+`GET https://webapi.afsys.com.br/v2/parceiros/:id`
+
+### Query Parameters
+
+Você poderá filtrar os parceiros pelo parâmetro abaixo:
+
+Parametro  | Tipo    | Exemplo
+---------- | ------- | ----------------------------------------------
+id         | integer | Identificador do parceiro, ex: 123
