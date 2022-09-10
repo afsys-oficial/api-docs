@@ -1,0 +1,1759 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>API Reference</title>
+
+    <style>
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .gh {
+  color: #999999;
+}
+.highlight .sr {
+  color: #f6aa11;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .nb {
+  color: #f6aa11;
+}
+.highlight .cm {
+  color: #75715e;
+}
+.highlight .cp {
+  color: #75715e;
+}
+.highlight .c1 {
+  color: #75715e;
+}
+.highlight .cs {
+  color: #75715e;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
+  color: #75715e;
+}
+.highlight .err {
+  color: #960050;
+}
+.highlight .gr {
+  color: #960050;
+}
+.highlight .gt {
+  color: #960050;
+}
+.highlight .gd {
+  color: #49483e;
+}
+.highlight .gi {
+  color: #49483e;
+}
+.highlight .ge {
+  color: #49483e;
+}
+.highlight .kc {
+  color: #66d9ef;
+}
+.highlight .kd {
+  color: #66d9ef;
+}
+.highlight .kr {
+  color: #66d9ef;
+}
+.highlight .no {
+  color: #66d9ef;
+}
+.highlight .kt {
+  color: #66d9ef;
+}
+.highlight .mf {
+  color: #ae81ff;
+}
+.highlight .mh {
+  color: #ae81ff;
+}
+.highlight .il {
+  color: #ae81ff;
+}
+.highlight .mi {
+  color: #ae81ff;
+}
+.highlight .mo {
+  color: #ae81ff;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #ae81ff;
+}
+.highlight .sc {
+  color: #ae81ff;
+}
+.highlight .se {
+  color: #ae81ff;
+}
+.highlight .ss {
+  color: #ae81ff;
+}
+.highlight .sd {
+  color: #e6db74;
+}
+.highlight .s2 {
+  color: #e6db74;
+}
+.highlight .sb {
+  color: #e6db74;
+}
+.highlight .sh {
+  color: #e6db74;
+}
+.highlight .si {
+  color: #e6db74;
+}
+.highlight .sx {
+  color: #e6db74;
+}
+.highlight .s1 {
+  color: #e6db74;
+}
+.highlight .s, .highlight .sa, .highlight .dl {
+  color: #e6db74;
+}
+.highlight .na {
+  color: #a6e22e;
+}
+.highlight .nc {
+  color: #a6e22e;
+}
+.highlight .nd {
+  color: #a6e22e;
+}
+.highlight .ne {
+  color: #a6e22e;
+}
+.highlight .nf, .highlight .fm {
+  color: #a6e22e;
+}
+.highlight .vc {
+  color: #ffffff;
+  background-color: #272822;
+}
+.highlight .nn {
+  color: #ffffff;
+  background-color: #272822;
+}
+.highlight .nl {
+  color: #ffffff;
+  background-color: #272822;
+}
+.highlight .ni {
+  color: #ffffff;
+  background-color: #272822;
+}
+.highlight .bp {
+  color: #ffffff;
+  background-color: #272822;
+}
+.highlight .vg {
+  color: #ffffff;
+  background-color: #272822;
+}
+.highlight .vi {
+  color: #ffffff;
+  background-color: #272822;
+}
+.highlight .nv, .highlight .vm {
+  color: #ffffff;
+  background-color: #272822;
+}
+.highlight .w {
+  color: #ffffff;
+  background-color: #272822;
+}
+.highlight {
+  color: #ffffff;
+  background-color: #272822;
+}
+.highlight .n, .highlight .py, .highlight .nx {
+  color: #ffffff;
+  background-color: #272822;
+}
+.highlight .ow {
+  color: #f92672;
+}
+.highlight .nt {
+  color: #f92672;
+}
+.highlight .k, .highlight .kv {
+  color: #f92672;
+}
+.highlight .kn {
+  color: #f92672;
+}
+.highlight .kp {
+  color: #f92672;
+}
+.highlight .o {
+  color: #f92672;
+}
+    </style>
+    <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print.css" rel="stylesheet" media="print" />
+      <script src="javascripts/all.js"></script>
+  </head>
+
+  <body class="index" data-languages="[&quot;shell&quot;]" style="display:none">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="images/navbar.png" alt="" />
+      </span>
+    </a>
+    <div class="toc-wrapper">
+      <div class="logo-content">
+        <img src="images/logo.png" class="logo" alt="" />
+      </div>
+        <div class="lang-selector">
+              <a href="#" data-language-name="shell">cURL</a>
+        </div>
+        <div class="search">
+          <input type="text" class="search" id="input-search" placeholder="Pesquisar">
+        </div>
+        <ul class="search-results"></ul>
+      <ul id="toc" class="toc-list-h1">
+          <li>
+            <a href="#introducao" class="toc-h1 toc-link" data-title="Introdução">Introdução</a>
+          </li>
+          <li>
+            <a href="#visao-geral" class="toc-h1 toc-link" data-title="Visão geral">Visão geral</a>
+          </li>
+          <li>
+            <a href="#codigos-de-status" class="toc-h1 toc-link" data-title="Códigos de status">Códigos de status</a>
+          </li>
+          <li>
+            <a href="#controle-de-retornos" class="toc-h1 toc-link" data-title="Controle de retornos">Controle de retornos</a>
+          </li>
+          <li>
+            <a href="#autenticacao" class="toc-h1 toc-link" data-title="Autenticação">Autenticação</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#obtendo-o-token" class="toc-h2 toc-link" data-title="Obtendo o Token">Obtendo o Token</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#contas" class="toc-h1 toc-link" data-title="Contas">Contas</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#previsao-orcamentaria" class="toc-h2 toc-link" data-title="Previsão orçamentaria">Previsão orçamentaria</a>
+                  </li>
+                  <li>
+                    <a href="#mensalidades" class="toc-h2 toc-link" data-title="Mensalidades">Mensalidades</a>
+                  </li>
+                  <li>
+                    <a href="#visualizar-conta" class="toc-h2 toc-link" data-title="Visualizar conta">Visualizar conta</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#clientes" class="toc-h1 toc-link" data-title="Clientes">Clientes</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#listar-clientes" class="toc-h2 toc-link" data-title="Listar clientes">Listar clientes</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#convenios" class="toc-h1 toc-link" data-title="Convênios">Convênios</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#listar-convenios" class="toc-h2 toc-link" data-title="Listar convênios">Listar convênios</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#boletos" class="toc-h1 toc-link" data-title="Boletos">Boletos</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#listar-boletos" class="toc-h2 toc-link" data-title="Listar boletos">Listar boletos</a>
+                  </li>
+                  <li>
+                    <a href="#totalizador-de-boletos" class="toc-h2 toc-link" data-title="Totalizador de boletos">Totalizador de boletos</a>
+                  </li>
+                  <li>
+                    <a href="#visualizar-boleto" class="toc-h2 toc-link" data-title="Visualizar boleto">Visualizar boleto</a>
+                  </li>
+                  <li>
+                    <a href="#criar-boleto" class="toc-h2 toc-link" data-title="Criar boleto">Criar boleto</a>
+                  </li>
+                  <li>
+                    <a href="#cancelar-boleto" class="toc-h2 toc-link" data-title="Cancelar boleto">Cancelar boleto</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#associados-interessados" class="toc-h1 toc-link" data-title="Associados Interessados">Associados Interessados</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#criar-associado-interessado" class="toc-h2 toc-link" data-title="Criar associado interessado">Criar associado interessado</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#associados" class="toc-h1 toc-link" data-title="Associados">Associados</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#obter-token-de-acesso-do-associado" class="toc-h2 toc-link" data-title="Obter token de acesso do associado">Obter token de acesso do associado</a>
+                  </li>
+                  <li>
+                    <a href="#consultar-associado-por-login" class="toc-h2 toc-link" data-title="Consultar associado por login">Consultar associado por login</a>
+                  </li>
+                  <li>
+                    <a href="#obter-associado-logado" class="toc-h2 toc-link" data-title="Obter associado logado">Obter associado logado</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#parceiros" class="toc-h1 toc-link" data-title="Parceiros">Parceiros</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#listar-parceiros" class="toc-h2 toc-link" data-title="Listar parceiros">Listar parceiros</a>
+                  </li>
+                  <li>
+                    <a href="#obter-parceiro-por-id" class="toc-h2 toc-link" data-title="Obter parceiro por ID">Obter parceiro por ID</a>
+                  </li>
+              </ul>
+          </li>
+      </ul>
+        <ul class="toc-footer">
+            <li><a href="https://afsys.com.br" target="_blank">Afsys - Gestão Sindical</a></li>
+        </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        <h1 id='introducao'>Introdução</h1>
+<p>Disponibilizamos essa API com o intuito de fornecer acesso aos recursos do Afsys - Gestão Sindical por meio da arquitetura RESTful, dessa forma, você poderá fazer uso dos recursos do nosso sistema fora do nosso ambiente UI, e com isso, contextualizar melhor as funcionalidades dentro da sua necessidade.</p>
+<h1 id='visao-geral'>Visão geral</h1>
+<p>O objetivo desta documentação é orientar o desenvolvedor sobre como integrar com o AFSYS-API, descrevendo as funcionalidades, os métodos a serem utilizados, listando informações a serem enviadas e recebidas, e provendo exemplos.</p>
+
+<p>O mecanismo de integração com o AFSYS-API é simples, de modo que apenas conhecimentos intermediários em linguagem de programação para Web, requisições HTTP/HTTPS e manipulação de arquivos JSON são necessários para integrar com o AFSYS-API.</p>
+
+<p>Nesse manual você encontrará a referência sobre todas as operações disponíveis na API REST do AFSYS-API. As operações devem ser executadas utilizando um token de acesso obtido através do recurso de autenticação. Esse token é gerado com base em um usuário e senha ativo no Afsys.</p>
+
+<p>Disponibilizamos abaixo as urls de acesso aos nossos ambientes:</p>
+
+<p><strong>Ambiente Produção:</strong> https://webapi.afsys.com.br</p>
+
+<p><strong>Ambiente Homologação:</strong> https://apphml.afsys.com.br/api</p>
+<h1 id='codigos-de-status'>Códigos de status</h1>
+<p>No AFSYS-API, os status de retorno das requisições devem ser esperados conforme especificado nas situações abaixo:</p>
+
+<table><thead>
+<tr>
+<th>CÓDIGO</th>
+<th>DESCRIÇÃO</th>
+<th>SITUAÇÃO</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td><em>OK</em></td>
+<td>Requisição atendida com sucesso</td>
+</tr>
+<tr>
+<td>201</td>
+<td><em>Created</em></td>
+<td>Registro criado (geralmente em método POST /recurso)</td>
+</tr>
+<tr>
+<td>204</td>
+<td><em>No Content</em></td>
+<td>Registro alterado ou excluído (geralmente em método PATCH ou DELETE /recurso)</td>
+</tr>
+<tr>
+<td>401</td>
+<td><em>Unauthorized</em></td>
+<td>Token ausente, expirado ou não autorizado</td>
+</tr>
+<tr>
+<td>403</td>
+<td><em>Forbidden</em></td>
+<td>Acesso proibido ao recurso requisitado (usuário sem permissão)</td>
+</tr>
+<tr>
+<td>404</td>
+<td><em>Resource Not Found</em></td>
+<td>Registro ou recurso não encontrado</td>
+</tr>
+<tr>
+<td>422</td>
+<td><em>Unprocessable Entity</em></td>
+<td>Quando ocorrer erros de validação, como, um campo obrigatório não informado</td>
+</tr>
+<tr>
+<td>429</td>
+<td><em>Too Many Requests</em></td>
+<td>Excedeu o seu limite de requisições por minuto</td>
+</tr>
+<tr>
+<td>500</td>
+<td><em>Internal Server Error</em></td>
+<td>Quando ocorrer um erro interno no recurso da API</td>
+</tr>
+<tr>
+<td>502</td>
+<td><em>Bad Gateway</em></td>
+<td>Sistema em atualização, voltaremos em poucos segundos</td>
+</tr>
+<tr>
+<td>503</td>
+<td><em>Service Unavailable</em></td>
+<td>No momento estamos offline para manutenção no sistema, tente mais tarde</td>
+</tr>
+</tbody></table>
+<h1 id='controle-de-retornos'>Controle de retornos</h1>
+<p>Cada linguagem de programação adota um tipo de composição diferente para classes, métodos, funções e variáveis. Normalmente, nos deparamos com os tipos <em>CamelCase</em>, <em>snake_case</em> e <em>dash-case</em>, sendo assim, disponibilizamos o atributo <strong>X-Key-Inflection</strong> que poderá ser enviado no HEADER da requisição.</p>
+
+<p>Os valores válidos para esse atributo são: <strong>camel</strong>, <strong>dash</strong>, ou <strong>snake</strong>.</p>
+
+<p>Por padrão, <strong>X-Key-Inflection = snake</strong></p>
+
+<p><strong>Nota</strong>:</p>
+
+<p><em>CamelCase</em> é a prática de escrever palavras compostas ou frases, onde cada palavra é iniciada com maiúsculas e unidas sem espaços.</p>
+
+<p><em>SnakeCase</em> é a prática de escrever palavras compostas ou frases, onde as palavras são separadas por um caractere de sublinhado (_) e sem espaços.</p>
+
+<p><em>DashCase</em> é a prática de escrever palavras compostas ou frases, onde as palavras são separadas por um caractere de traço (-) e sem espaços.</p>
+<h1 id='autenticacao'>Autenticação</h1>
+<p>O processo de autenticação do AFSYS-API é realizado através da requisição <code>POST /auth/login</code>, que deve retornar um token de identificação válido por 24 horas. Esse token tem como objetivo identificar quem é o usuário que está requisitando o recurso do AFSYS-API.</p>
+
+<p>Essa identificação é importante para registrar o requerente e, ao mesmo tempo, verificar se o mesmo tem permissão para acessar o recurso solicitado.</p>
+
+<p>Para obter um token de identificação válido, é necessário passar um usuário e senha ativo no sistema.</p>
+<h2 id='obtendo-o-token'>Obtendo o Token</h2>
+<blockquote>
+<p>Exemplo de requisição:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
+curl <span class="nt">-X</span> POST <span class="s2">"https://webapi.afsys.com.br/v2/autenticar"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="nv">email</span><span class="o">=</span>EMAIL <span class="se">\</span>
+  <span class="nt">-d</span> <span class="nv">senha</span><span class="o">=</span>SENHA <span class="se">\</span>
+</code></pre></div>
+<aside class="notice">
+  Substitua os atributos <code>EMAIL</code> e <code>SENHA</code> pelos dados fornecidos pelo administrador do sistema.
+</aside>
+
+<blockquote>
+<p>Exemplo de resposta:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"auth_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TOKEN"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>O token de identificação é válido por 24 horas.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>POST https://webapi.afsys.com.br/v2/autenticar</code></p>
+<h3 id='query-parameters'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parametro</th>
+<th>Tipo</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>email</td>
+<td>string</td>
+</tr>
+<tr>
+<td>senha</td>
+<td>string</td>
+</tr>
+</tbody></table>
+<h1 id='contas'>Contas</h1>
+<p>No Afsys os sindicatos possuem uma conta no sistema onde todos os contribuintes, associados, boletos e etc pertecem a essa conta. Para cada conta são criados vários usuários e perfis de acesso, e assim, cada um terá o acesso de acordo com suas responsabilidades no sistema.</p>
+<h2 id='previsao-orcamentaria'>Previsão orçamentaria</h2>
+<blockquote>
+<p>Exemplo de requisição:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-H</span> <span class="s2">"Authorization: SEU-TOKEN"</span> <span class="nt">-X</span> GET https://webapi.afsys.com.br/v2/contas/previsao_orcamentaria
+</code></pre></div>
+<blockquote>
+<p>Exemplo de resposta:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"ano"</span><span class="p">:</span><span class="w"> </span><span class="mi">2010</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"valor"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"valor_baixado"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='query-parameters-2'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parametro</th>
+<th>Tipo</th>
+<th>Exemplo</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>motivo_cancelamento</td>
+<td>text</td>
+<td>Boleto com problema</td>
+</tr>
+</tbody></table>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>https://webapi.afsys.com.br/v2/contas/previsao_orcamentaria</code></p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>GET https://webapi.afsys.com.br/v2/contas/previsao_orcamentaria</code></p>
+<h2 id='mensalidades'>Mensalidades</h2>
+<p>Esse recurso retornará as mensalidades dos clientes Afsys.</p>
+
+<blockquote>
+<p>Exemplo de requisição:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-H</span> <span class="s2">"Authorization: SEU-TOKEN"</span> <span class="nt">-X</span> GET https://webapi.afsys.com.br/v2/contas/mensalidades
+</code></pre></div>
+<blockquote>
+<p>Exemplo de resposta:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2257282</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"conta_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">115</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"cliente_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">196825</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"associado_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"convenio_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">516</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"remessa_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"registrado"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"remessa_local"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data_emissao"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-01-31"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data_remessa"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data_pagamento"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data_credito"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"layout"</span><span class="p">:</span><span class="w"> </span><span class="s2">"santander"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"competencia"</span><span class="p">:</span><span class="w"> </span><span class="s2">"04/2018"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"numero_documento"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20039757"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"nosso_numero"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200000039757"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data_vencimento"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-05-10"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"pagador_nome"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NOME DO PAGADOR"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"pagador_documento"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678901234"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"juros"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"multa"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"desconto"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"valor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"163.92"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"valor_pago"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"visualizacao"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"ultima_visualizacao"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data_cancelamento"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"link_boleto"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://app.afsys.com.br/boletos/impresso/M95581049374544003"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"cliente"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">196825</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"conta_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">115</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"pessoa_juridica"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cpf"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"nome"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cnpj"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678901234"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"razao_social"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NOME DO PAGADOR"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"nome_fantasia"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NOME DO PAGADOR"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"associado"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-request-4'>HTTP Request</h3>
+<p><code>https://webapi.afsys.com.br/v2/contas/mensalidades</code></p>
+<h2 id='visualizar-conta'>Visualizar conta</h2>
+<p>Esse recurso retornará os dados da conta no AFSYS.</p>
+
+<blockquote>
+<p>Exemplo de requisição:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-H</span> <span class="s2">"Authorization: SEU-TOKEN"</span> <span class="nt">-X</span> GET https://webapi.afsys.com.br/v2/conta
+</code></pre></div>
+<blockquote>
+<p>Exemplo de resposta:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"permalink"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nw956klr"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"comercial@afsys.com.br"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"pessoa_juridica"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"nome"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"cpf"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"cnpj"</span><span class="p">:</span><span class="w"> </span><span class="s2">"81574631000116"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"razao_social"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Afsys Apresentação Sindicato"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"nome_fantasia"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sinthoresca"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"cnae"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"cnae_descricao"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"rateio_federacao"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"site"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"telefone_area"</span><span class="p">:</span><span class="w"> </span><span class="s2">"16"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"telefone_numero"</span><span class="p">:</span><span class="w"> </span><span class="s2">"33333333"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"celular_area"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"celular_numero"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"cep"</span><span class="p">:</span><span class="w"> </span><span class="s2">"14000-000"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"endereco"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rua Vicente golfeto"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"numero"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"complemento"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"bairro"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CAMPOS"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"cidade"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RIBEIRAO PRETO"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"uf"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SP"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"logo_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://app.afsys.com.br/uploads/contas/1/original/logo.jpg?1520854626"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-request-5'>HTTP Request</h3>
+<p><code>https://webapi.afsys.com.br/v2/conta</code></p>
+<h1 id='clientes'>Clientes</h1>
+<p>Com esse recurso você poderá filtrar pelos contribuintes cadastrados no Afsys.</p>
+<h2 id='listar-clientes'>Listar clientes</h2>
+<blockquote>
+<p>Exemplo de requisição:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET <span class="s2">"https://webapi.afsys.com.br/v2/clientes"</span> <span class="se">\</span>
+     <span class="nt">-H</span> <span class="s2">"Authorization: Bearer SEU-TOKEN"</span>
+</code></pre></div>
+<blockquote>
+<p>Exemplo de resposta:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">320660</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"conta_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"pessoa_juridica"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cpf"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"nome"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cnpj"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678901234"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"razao_social"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RAZAO SOCIAL DO CLIENTE"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"nome_fantasia"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NOME FANTASIA DO CLIENTE"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="err">...</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div><h3 id='http-request-6'>HTTP Request</h3>
+<p><code>GET https://webapi.afsys.com.br/v2/clientes</code></p>
+<h3 id='campo-status'>Campo Status</h3>
+<p>Logo abaixo você pode conferir os possíveis valores para o campo <code>status</code> do cliente</p>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>A</td>
+<td>Ativado</td>
+</tr>
+<tr>
+<td>D</td>
+<td>Desativado</td>
+</tr>
+</tbody></table>
+<h3 id='query-parameters-3'>Query Parameters</h3>
+<p>Você poderá filtrar os clientes pelo parâmetro abaixo:</p>
+
+<table><thead>
+<tr>
+<th>Parametro</th>
+<th>Tipo</th>
+<th>Exemplo</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>s</td>
+<td>string</td>
+<td>Pesquisa pelo CPF, CNPJ, Nome ou Razão Social</td>
+</tr>
+</tbody></table>
+<h1 id='convenios'>Convênios</h1>
+<p>Os convênios são utilizados para definir a carteira de cobrança adquirida com banco e as regras de multas, juros e descontos.</p>
+<h2 id='listar-convenios'>Listar convênios</h2>
+<blockquote>
+<p>Exemplo de requisição:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET <span class="s2">"https://webapi.afsys.com.br/v2/convenios"</span> <span class="se">\</span>
+     <span class="nt">-H</span> <span class="s2">"Authorization: Bearer SEU-TOKEN"</span>
+</code></pre></div>
+<blockquote>
+<p>Exemplo de resposta:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">568</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ativo"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"visualiza"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"padrao"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"competencia"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"mensagem_competencia"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"acordo"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"link_boleto_email"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"imprime_boleto"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-07-30T14:34:22.000-03:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-07T11:07:41.000-03:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"tipo_convenio"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">11</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"descricao"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CONTRIBUICAO ASSISTENCIAL"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-06-30T15:33:38.000-03:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-06-30T15:33:38.000-03:00"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="err">...</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div><h3 id='http-request-7'>HTTP Request</h3>
+<p><code>GET https://webapi.afsys.com.br/v2/convenios</code></p>
+<h1 id='boletos'>Boletos</h1>
+<p>Esse recurso fornece os recursos necessários para LISTAR, VISUALIZAR, CRIAR e CANCELAR boletos no sistema</p>
+<h2 id='listar-boletos'>Listar boletos</h2>
+<blockquote>
+<p>Exemplo de requisição:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET <span class="s2">"https://webapi.afsys.com.br/v2/boletos"</span> <span class="se">\</span>
+     <span class="nt">-H</span> <span class="s2">"Authorization: Bearer SEU-TOKEN"</span>
+</code></pre></div>
+<blockquote>
+<p>Exemplo de resposta:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2257282</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"conta_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">115</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cliente_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">196825</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"associado_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"convenio_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">516</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"remessa_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"registrado"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"remessa_local"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data_emissao"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-01-31"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data_remessa"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data_pagamento"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data_credito"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"O"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"layout"</span><span class="p">:</span><span class="w"> </span><span class="s2">"santander"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"competencia"</span><span class="p">:</span><span class="w"> </span><span class="s2">"04/2018"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"numero_documento"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20039757"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"nosso_numero"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200000039757"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data_vencimento"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-05-10"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"pagador_nome"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NOME DO PAGADOR"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"pagador_documento"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678901234"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"juros"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"multa"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"desconto"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"valor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"163.92"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"valor_pago"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"visualizacao"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ultima_visualizacao"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data_cancelamento"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"link_boleto"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://app.afsys.com.br/boletos/impresso/M15804934474595003"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cliente"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">196825</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"conta_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">115</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"pessoa_juridica"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"cpf"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"nome"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"cnpj"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678901234"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"razao_social"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NOME DO PAGADOR"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"nome_fantasia"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tantô Temakeria"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"associado"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="err">...</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div><h3 id='http-request-8'>HTTP Request</h3>
+<p><code>GET https://webapi.afsys.com.br/v2/boletos</code></p>
+<h3 id='query-parameters-4'>Query Parameters</h3>
+<p>Você poderá filtrar os boletos pelos parâmetros abaixo:</p>
+
+<table><thead>
+<tr>
+<th>Parametro</th>
+<th>Tipo</th>
+<th>Exemplo</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>convenio_id</td>
+<td>integer</td>
+<td>123</td>
+</tr>
+<tr>
+<td>cliente_id</td>
+<td>integer</td>
+<td>123</td>
+</tr>
+<tr>
+<td>associado_id</td>
+<td>integer</td>
+<td>123</td>
+</tr>
+<tr>
+<td>tipo_pagador</td>
+<td>string</td>
+<td>&quot;cliente&quot; ou &quot;associado&quot;</td>
+</tr>
+<tr>
+<td>status</td>
+<td>string</td>
+<td>Veja o item &quot;Status dos boletos&quot;</td>
+</tr>
+<tr>
+<td>emissao_inicial</td>
+<td>string</td>
+<td>01/01/2020 ou 2020-01-01</td>
+</tr>
+<tr>
+<td>emissao_final</td>
+<td>string</td>
+<td>01/01/2020 ou 2020-01-01</td>
+</tr>
+<tr>
+<td>vencimento_inicial</td>
+<td>string</td>
+<td>01/01/2020 ou 2020-01-01</td>
+</tr>
+<tr>
+<td>vencimento_final</td>
+<td>string</td>
+<td>01/01/2020 ou 2020-01-01</td>
+</tr>
+<tr>
+<td>nosso_numero</td>
+<td>string</td>
+<td>AB0000123456</td>
+</tr>
+<tr>
+<td>seu_numero</td>
+<td>string</td>
+<td>AB0000123456</td>
+</tr>
+<tr>
+<td>_page</td>
+<td>string</td>
+<td>1</td>
+</tr>
+<tr>
+<td>_limit</td>
+<td>string</td>
+<td>30</td>
+</tr>
+</tbody></table>
+<h3 id='status-dos-boletos'>Status dos boletos</h3>
+<p>O itens abaixo podem ser utilizados no filtro de boletos por status.</p>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>emitido</td>
+<td>Emitido</td>
+</tr>
+<tr>
+<td>pendente</td>
+<td>Remessa pendente</td>
+</tr>
+<tr>
+<td>pendente_vencido</td>
+<td>Remessa pendente (boleto vencido)</td>
+</tr>
+<tr>
+<td>pendente_nao_vencido</td>
+<td>Remessa pendente (boleto não vencido)</td>
+</tr>
+<tr>
+<td>remetido</td>
+<td>Remetido</td>
+</tr>
+<tr>
+<td>remetido_nao_vencido</td>
+<td>Remetido (boleto não vencido)</td>
+</tr>
+<tr>
+<td>rejeitado</td>
+<td>Rejeitado</td>
+</tr>
+<tr>
+<td>baixados</td>
+<td>Baixado</td>
+</tr>
+<tr>
+<td>pagos</td>
+<td>Pagos</td>
+</tr>
+<tr>
+<td>aberto</td>
+<td>Em aberto</td>
+</tr>
+<tr>
+<td>aberto_remessa</td>
+<td>Em aberto (boletos registrados e não registrados)</td>
+</tr>
+<tr>
+<td>vencidos</td>
+<td>Vencido</td>
+</tr>
+<tr>
+<td>vencidos_remessa</td>
+<td>Vencido (boletos registrados e não registrados)</td>
+</tr>
+<tr>
+<td>cancelados</td>
+<td>Cancelado</td>
+</tr>
+<tr>
+<td>negociados</td>
+<td>Negociado</td>
+</tr>
+<tr>
+<td>juridico</td>
+<td>Jurídico</td>
+</tr>
+</tbody></table>
+<h3 id='sigla-de-status-dos-boletos'>Sigla de status dos boletos</h3>
+<p>No sistema, os status dos boletos são compostos por uma letra. Logo abaixo você pode conferir o significado de cada letra de status:</p>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>E</td>
+<td>Emitido</td>
+</tr>
+<tr>
+<td>O</td>
+<td>Remessa pendente</td>
+</tr>
+<tr>
+<td>R</td>
+<td>Remetido</td>
+</tr>
+<tr>
+<td>A</td>
+<td>Em aberto</td>
+</tr>
+<tr>
+<td>I</td>
+<td>Rejeitado</td>
+</tr>
+<tr>
+<td>B</td>
+<td>Baixado</td>
+</tr>
+<tr>
+<td>D</td>
+<td>Baixado por não pagamento</td>
+</tr>
+<tr>
+<td>P</td>
+<td>Pago</td>
+</tr>
+<tr>
+<td>C</td>
+<td>Cancelado</td>
+</tr>
+<tr>
+<td>N</td>
+<td>Negociado</td>
+</tr>
+<tr>
+<td>J</td>
+<td>Jurídico</td>
+</tr>
+</tbody></table>
+<h2 id='totalizador-de-boletos'>Totalizador de boletos</h2>
+<blockquote>
+<p>Exemplo de requisição:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET <span class="s2">"https://webapi.afsys.com.br/v2/boletos/totalizador"</span> <span class="se">\</span>
+     <span class="nt">-H</span> <span class="s2">"Authorization: Bearer SEU-TOKEN"</span>
+</code></pre></div>
+<blockquote>
+<p>Exemplo de resposta:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"quantidade"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"valor_total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10000.10"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"total_pago"</span><span class="p">:</span><span class="w"> </span><span class="mf">1300.00</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"total_tarifas"</span><span class="p">:</span><span class="w"> </span><span class="mf">27.00</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-request-9'>HTTP Request</h3>
+<p><code>GET https://webapi.afsys.com.br/v2/boletos/totalizador</code></p>
+<h3 id='query-parameters-5'>Query Parameters</h3>
+<p>Você poderá filtrar os boletos pelos parâmetros abaixo:</p>
+
+<table><thead>
+<tr>
+<th>Parametro</th>
+<th>Tipo</th>
+<th>Exemplo</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>convenio_id</td>
+<td>integer</td>
+<td>123</td>
+</tr>
+<tr>
+<td>cliente_id</td>
+<td>integer</td>
+<td>123</td>
+</tr>
+<tr>
+<td>associado_id</td>
+<td>integer</td>
+<td>123</td>
+</tr>
+<tr>
+<td>tipo_pagador</td>
+<td>string</td>
+<td>&quot;cliente&quot; ou &quot;associado&quot;</td>
+</tr>
+<tr>
+<td>status</td>
+<td>string</td>
+<td>Veja o item &quot;Status dos boletos&quot;</td>
+</tr>
+<tr>
+<td>emissao_inicial</td>
+<td>string</td>
+<td>01/01/2020 ou 2020-01-01</td>
+</tr>
+<tr>
+<td>emissao_final</td>
+<td>string</td>
+<td>01/01/2020 ou 2020-01-01</td>
+</tr>
+<tr>
+<td>vencimento_inicial</td>
+<td>string</td>
+<td>01/01/2020 ou 2020-01-01</td>
+</tr>
+<tr>
+<td>vencimento_final</td>
+<td>string</td>
+<td>01/01/2020 ou 2020-01-01</td>
+</tr>
+</tbody></table>
+<h2 id='visualizar-boleto'>Visualizar boleto</h2>
+<blockquote>
+<p>Exemplo de requisição:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET <span class="s2">"https://webapi.afsys.com.br/v2/boletos/123"</span> <span class="se">\</span>
+     <span class="nt">-H</span> <span class="s2">"Authorization: Bearer SEU-TOKEN"</span>
+</code></pre></div>
+<blockquote>
+<p>Exemplo de resposta:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2257282</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"conta_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">115</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"cliente_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">196825</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"associado_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"convenio_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">516</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"remessa_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"registrado"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"remessa_local"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data_emissao"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-01-31"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data_remessa"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data_pagamento"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data_credito"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"O"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"layout"</span><span class="p">:</span><span class="w"> </span><span class="s2">"santander"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"competencia"</span><span class="p">:</span><span class="w"> </span><span class="s2">"04/2018"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"numero_documento"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20039757"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"nosso_numero"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200000039757"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data_vencimento"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-05-10"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"pagador_nome"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NOME DO PAGADOR"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"pagador_documento"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678901234"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"juros"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"multa"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"desconto"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"valor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"163.92"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"valor_pago"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"visualizacao"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"ultima_visualizacao"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data_cancelamento"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"link_boleto"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://app.afsys.com.br/boletos/impresso/M95581049374544003"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"cliente"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">196825</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"conta_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">115</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"pessoa_juridica"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cpf"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"nome"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cnpj"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678901234"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"razao_social"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NOME DO PAGADOR"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"nome_fantasia"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tantô Temakeria"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"associado"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-request-10'>HTTP Request</h3>
+<p><code>GET https://webapi.afsys.com.br/v2/boletos</code></p>
+<h2 id='criar-boleto'>Criar boleto</h2>
+<blockquote>
+<p>Exemplo de requisição:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s2">"https://webapi.afsys.com.br/v2/boletos/123"</span> <span class="se">\</span>
+     <span class="nt">-H</span> <span class="s2">"Authorization: Bearer SEU-TOKEN"</span> <span class="se">\</span>
+     <span class="nt">-d</span> <span class="s2">"boleto[associado_id]=79616"</span> <span class="se">\</span>
+     <span class="nt">-d</span> <span class="s2">"boleto[convenio_id]=80"</span> <span class="se">\</span>
+     <span class="nt">-d</span> <span class="s2">"boleto[data_vencimento]=2020-02-20"</span> <span class="se">\</span>
+     <span class="nt">-d</span> <span class="s2">"boleto[valor]=127.32"</span> <span class="se">\</span>
+     <span class="nt">-d</span> <span class="s2">"boleto[competencia_mes]=2"</span> <span class="se">\</span>
+     <span class="nt">-d</span> <span class="s2">"boleto[competencia_ano]=2020"</span> <span class="se">\</span>
+     <span class="nt">-d</span> <span class="s2">"boleto[enviar_email]=false"</span>
+</code></pre></div><h3 id='query-parameters-6'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parametro</th>
+<th>Tipo</th>
+<th>Exemplo</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>convenio_id</td>
+<td>integer</td>
+<td>123</td>
+</tr>
+<tr>
+<td>cliente_id</td>
+<td>integer</td>
+<td>123</td>
+</tr>
+<tr>
+<td>associado_id</td>
+<td>integer</td>
+<td>123</td>
+</tr>
+<tr>
+<td>data_vencimento</td>
+<td>date</td>
+<td>01/01/2020 ou 2020-01-01</td>
+</tr>
+<tr>
+<td>valor</td>
+<td>integer</td>
+<td>123.12</td>
+</tr>
+<tr>
+<td>competencia_mes</td>
+<td>integer</td>
+<td>01</td>
+</tr>
+<tr>
+<td>competencia_ano</td>
+<td>integer</td>
+<td>2020</td>
+</tr>
+<tr>
+<td>enviar_email</td>
+<td>boolean</td>
+<td>TRUE ou FALSE</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Exemplo de resposta:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2257282</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"conta_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">115</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"cliente_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">196825</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"associado_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"convenio_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">516</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"remessa_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"registrado"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"remessa_local"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data_emissao"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-01-31"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data_remessa"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data_pagamento"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data_credito"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"O"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"layout"</span><span class="p">:</span><span class="w"> </span><span class="s2">"santander"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"competencia"</span><span class="p">:</span><span class="w"> </span><span class="s2">"04/2018"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"numero_documento"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20039757"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"nosso_numero"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200000039757"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data_vencimento"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-05-10"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"pagador_nome"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NOME DO PAGADOR"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"pagador_documento"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678901234"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"juros"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"multa"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"desconto"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"valor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"163.92"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"valor_pago"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"visualizacao"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"ultima_visualizacao"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data_cancelamento"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"link_boleto"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://app.afsys.com.br/boletos/impresso/M95581049374544003"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"cliente"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">196825</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"conta_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">115</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"pessoa_juridica"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cpf"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"nome"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cnpj"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678901234"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"razao_social"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NOME DO PAGADOR"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"nome_fantasia"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tantô Temakeria"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"associado"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-request-11'>HTTP Request</h3>
+<p><code>POST https://webapi.afsys.com.br/v2/boletos</code></p>
+<h2 id='cancelar-boleto'>Cancelar boleto</h2>
+<blockquote>
+<p>Exemplo de requisição:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> PATCH <span class="s2">"https://webapi.afsys.com.br/v2/boletos/123/cancelar"</span> <span class="se">\</span>
+     <span class="nt">-H</span> <span class="s2">"Authorization: Bearer SEU-TOKEN"</span> <span class="se">\</span>
+     <span class="nt">-d</span> <span class="s2">"boleto[motivo_cancelamento]=Mensagem de cancelamento"</span> <span class="se">\</span>
+</code></pre></div>
+<blockquote>
+<p>Exemplo de resposta:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2257282</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"conta_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">115</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"cliente_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">196825</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"associado_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"convenio_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">516</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"remessa_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"registrado"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"remessa_local"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data_emissao"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-01-31"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data_remessa"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data_pagamento"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data_credito"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"layout"</span><span class="p">:</span><span class="w"> </span><span class="s2">"santander"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"competencia"</span><span class="p">:</span><span class="w"> </span><span class="s2">"04/2018"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"numero_documento"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20039757"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"nosso_numero"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200000039757"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data_vencimento"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-05-10"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"pagador_nome"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NOME DO PAGADOR"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"pagador_documento"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678901234"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"juros"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"multa"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"desconto"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"valor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"163.92"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"valor_pago"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"visualizacao"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"ultima_visualizacao"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data_cancelamento"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"link_boleto"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://app.afsys.com.br/boletos/impresso/M95581049374544003"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"cliente"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">196825</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"conta_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">115</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"pessoa_juridica"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cpf"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"nome"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cnpj"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678901234"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"razao_social"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NOME DO PAGADOR"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"nome_fantasia"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NOME DO PAGADOR"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"associado"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='query-parameters-7'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parametro</th>
+<th>Tipo</th>
+<th>Exemplo</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>motivo_cancelamento</td>
+<td>text</td>
+<td>Boleto com problema</td>
+</tr>
+</tbody></table>
+<h3 id='http-request-12'>HTTP Request</h3>
+<p><code>PATCH https://webapi.afsys.com.br/v2/boletos/:id/cancelar</code></p>
+<h3 id='http-request-13'>HTTP Request</h3>
+<p><code>GET https://webapi.afsys.com.br/v2/contas/previsao_orcamentaria</code></p>
+<h1 id='associados-interessados'>Associados Interessados</h1>
+<p>Os associados interessados são pessoas que desejam se associar ao sindicato. Esses recurso gerará um pré-cadastro de associados que poderá aprovado ou reprovado dentro do sistema.</p>
+<h2 id='criar-associado-interessado'>Criar associado interessado</h2>
+<blockquote>
+<p>Exemplo de requisição:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s2">"https://webapi.afsys.com.br/v2/associado_interessado"</span> <span class="se">\</span>
+     <span class="nt">-d</span> <span class="s2">"associado_interessado[status]=A"</span> <span class="se">\</span>
+     <span class="nt">-d</span> <span class="s2">"associado_interessado[funcao]=Atendente"</span> <span class="se">\</span>
+     <span class="nt">-d</span> <span class="s2">"associado_interessado[cpf]=11111111111"</span> <span class="se">\</span>
+     <span class="nt">-d</span> <span class="s2">"associado_interessado[rg]=11.111.11-X"</span> <span class="se">\</span>
+     <span class="nt">-d</span> <span class="s2">"associado_interessado[data_expedicao]=2021-01-01"</span> <span class="se">\</span>
+     <span class="nt">-d</span> <span class="s2">"associado_interessado[nome]=Jose da Silva"</span> <span class="se">\</span>
+     <span class="nt">-d</span> <span class="s2">"associado_interessado[data_nascimento]=1990-01-01"</span> <span class="se">\</span>
+     <span class="nt">-d</span> <span class="s2">"associado_interessado[sexo]=masculino"</span> <span class="se">\</span>
+     <span class="nt">-d</span> <span class="s2">"associado_interessado[email]=email@dominio.com.br"</span> <span class="se">\</span>
+     <span class="nt">-d</span> <span class="s2">"associado_interessado[nome_pai]="</span> <span class="se">\</span>
+     <span class="nt">-d</span> <span class="s2">"associado_interessado[nome_mae]="</span> <span class="se">\</span>
+     <span class="nt">-d</span> <span class="s2">"associado_interessado[naturalizacao]=São Paulo"</span> <span class="se">\</span>
+     <span class="nt">-d</span> <span class="s2">"associado_interessado[estado_civil]=Casado(a)"</span> <span class="se">\</span>
+     <span class="nt">-d</span> <span class="s2">"associado_interessado[telefone_area]=11"</span> <span class="se">\</span>
+     <span class="nt">-d</span> <span class="s2">"associado_interessado[telefone_numero]=999999999"</span> <span class="se">\</span>
+     <span class="nt">-d</span> <span class="s2">"associado_interessado[celular_area]=11"</span> <span class="se">\</span>
+     <span class="nt">-d</span> <span class="s2">"associado_interessado[celular_numero]=999999999"</span> <span class="se">\</span>
+     <span class="nt">-d</span> <span class="s2">"associado_interessado[cep]=04843425"</span> <span class="se">\</span>
+     <span class="nt">-d</span> <span class="s2">"associado_interessado[endereco]=Viela 16"</span> <span class="se">\</span>
+     <span class="nt">-d</span> <span class="s2">"associado_interessado[numero]=123"</span> <span class="se">\</span>
+     <span class="nt">-d</span> <span class="s2">"associado_interessado[complemento]=Casa"</span> <span class="se">\</span>
+     <span class="nt">-d</span> <span class="s2">"associado_interessado[bairro]=Parque São José"</span> <span class="se">\</span>
+     <span class="nt">-d</span> <span class="s2">"associado_interessado[cidade]=São Paulo"</span> <span class="se">\</span>
+     <span class="nt">-d</span> <span class="s2">"associado_interessado[uf]=SP"</span> <span class="se">\</span>
+     <span class="nt">-d</span> <span class="s2">"associado_interessado[tipo_vinculo]=empregado"</span> <span class="se">\</span>
+     <span class="nt">-d</span> <span class="s2">"associado_interessado[cnpj]=12345678901234"</span> <span class="se">\</span>
+     <span class="nt">-d</span> <span class="s2">"associado_interessado[carteira_trabalho]="</span> <span class="se">\</span>
+     <span class="nt">-d</span> <span class="s2">"associado_interessado[salario_base]=1200"</span>
+</code></pre></div><h3 id='query-parameters-8'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parametro</th>
+<th>Tipo</th>
+<th>Exemplo</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>string</td>
+<td>A ou D</td>
+</tr>
+<tr>
+<td>funcao</td>
+<td>string</td>
+<td>até 255 caracteres</td>
+</tr>
+<tr>
+<td>cpf</td>
+<td>string</td>
+<td>12345678911</td>
+</tr>
+<tr>
+<td>rg</td>
+<td>string</td>
+<td>12.222.333-X</td>
+</tr>
+<tr>
+<td>data_expedicao</td>
+<td>date</td>
+<td>2021-01-01</td>
+</tr>
+<tr>
+<td>nome</td>
+<td>string</td>
+<td>até 60 caracteres</td>
+</tr>
+<tr>
+<td>data_nascimento</td>
+<td>date</td>
+<td>2021-01-01</td>
+</tr>
+<tr>
+<td>sexo</td>
+<td>string</td>
+<td>masculino ou feminino</td>
+</tr>
+<tr>
+<td>email</td>
+<td>string</td>
+<td>até 160 caracteres</td>
+</tr>
+<tr>
+<td>nome_pai</td>
+<td>string</td>
+<td>até 60 caracteres</td>
+</tr>
+<tr>
+<td>nome_mae</td>
+<td>string</td>
+<td>até 60 caracteres</td>
+</tr>
+<tr>
+<td>naturalizacao</td>
+<td>string</td>
+<td>até 160 caracteres</td>
+</tr>
+<tr>
+<td>estado_civil</td>
+<td>string</td>
+<td>Casado(a), Solteiro(a), Divorciado(a), Viúvo(a), Separado(a), Companheiro(a)</td>
+</tr>
+<tr>
+<td>telefone_area</td>
+<td>string</td>
+<td>11</td>
+</tr>
+<tr>
+<td>telefone_numero</td>
+<td>string</td>
+<td>999999999</td>
+</tr>
+<tr>
+<td>celular_area</td>
+<td>string</td>
+<td>11</td>
+</tr>
+<tr>
+<td>celular_numero</td>
+<td>string</td>
+<td>999999999</td>
+</tr>
+<tr>
+<td>cep</td>
+<td>string</td>
+<td>11111-000</td>
+</tr>
+<tr>
+<td>endereco</td>
+<td>string</td>
+<td>até 255 caracteres</td>
+</tr>
+<tr>
+<td>numero</td>
+<td>string</td>
+<td>até 15 caracteres</td>
+</tr>
+<tr>
+<td>complemento</td>
+<td>string</td>
+<td>até 255 caracteres</td>
+</tr>
+<tr>
+<td>bairro</td>
+<td>string</td>
+<td>até 255 caracteres</td>
+</tr>
+<tr>
+<td>cidade</td>
+<td>string</td>
+<td>até 60 caracteres</td>
+</tr>
+<tr>
+<td>uf</td>
+<td>string</td>
+<td>até 2 caracteres</td>
+</tr>
+<tr>
+<td>tipo_vinculo</td>
+<td>string</td>
+<td>empregado, aposentado, sem_vinculo, autonomo</td>
+</tr>
+<tr>
+<td>cnpj</td>
+<td>string</td>
+<td>11111111111111</td>
+</tr>
+<tr>
+<td>carteira_trabalho</td>
+<td>string</td>
+<td>até 40 caracteres</td>
+</tr>
+<tr>
+<td>salario_base</td>
+<td>float</td>
+<td>111111.11</td>
+</tr>
+</tbody></table>
+<h3 id='http-request-14'>HTTP Request</h3>
+<p><code>POST https://webapi.afsys.com.br/v2/associado_interessado</code></p>
+<h1 id='associados'>Associados</h1>
+<p>Os associados são pessoas associadas ao sindicato.</p>
+<h2 id='obter-token-de-acesso-do-associado'>Obter token de acesso do associado</h2>
+<blockquote>
+<p>Exemplo de requisição:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s2">"https://webapi.afsys.com.br/v2/autenticar/associado"</span> <span class="se">\</span>
+     <span class="nt">-d</span> <span class="s2">"conta_id=20"</span> <span class="se">\</span>
+     <span class="nt">-d</span> <span class="s2">"cpf=12345678910"</span> <span class="se">\</span>
+     <span class="nt">-d</span> <span class="s2">"senha=Ab123456"</span>
+</code></pre></div>
+<blockquote>
+<p>Exemplo de resposta:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"auth_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"[JWT-TOKEN-ASSOCIADO]"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='query-parameters-9'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parametro</th>
+<th>Tipo</th>
+<th>Exemplo</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>conta_id</td>
+<td>integer</td>
+<td>20</td>
+</tr>
+<tr>
+<td>cpf</td>
+<td>string</td>
+<td>12345678910</td>
+</tr>
+<tr>
+<td>senha</td>
+<td>string</td>
+<td>Ab123456</td>
+</tr>
+</tbody></table>
+<h3 id='http-request-15'>HTTP Request</h3>
+<p><code>POST https://webapi.afsys.com.br/v2/autenticar/associado</code></p>
+<h2 id='consultar-associado-por-login'>Consultar associado por login</h2>
+<blockquote>
+<p>Exemplo de requisição:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s2">"https://webapi.afsys.com.br/v2/associado/login"</span> <span class="se">\</span>
+     <span class="nt">-d</span> <span class="s2">"conta_id=1"</span> <span class="se">\</span>
+     <span class="nt">-d</span> <span class="s2">"cpf=11111111111"</span>
+</code></pre></div>
+<blockquote>
+<p>Exemplo de resposta:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='query-parameters-10'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parametro</th>
+<th>Tipo</th>
+<th>Exemplo</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>conta_id</td>
+<td>integer</td>
+<td>20</td>
+</tr>
+<tr>
+<td>cpf</td>
+<td>string</td>
+<td>12345678910</td>
+</tr>
+</tbody></table>
+<h3 id='http-request-16'>HTTP Request</h3>
+<p><code>POST https://webapi.afsys.com.br/v2/autenticar/associado</code></p>
+<h2 id='obter-associado-logado'>Obter associado logado</h2>
+<blockquote>
+<p>Exemplo de requisição:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s2">"https://webapi.afsys.com.br/v2/associado"</span> <span class="se">\</span>
+     <span class="nt">-H</span> <span class="s2">"Authorization: Bearer SEU-TOKEN"</span>
+</code></pre></div>
+<blockquote>
+<p>Exemplo de resposta:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"conta_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"cliente_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"grupo_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"associado_funcao_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"sub_sede_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"posto_trabalho_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"ferias"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"sindicalizado"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"aposentado"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"socio_remido"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"cancelado"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"oposicao_contribuicao"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"status_cadastro"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cadastrado"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"tipo_vinculo"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"matricula"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0000000001"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"matricula_trabalhador"</span><span class="p">:</span><span class="w"> </span><span class="s2">"T000000003"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"titulo_eleitor"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"cpf"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11111111111"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"rg"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"nome"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ASSOCIADO AFSYS TESTE"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"sexo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"masculino"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"email@dominio.com"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"nome_pai"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PAI"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"nome_mae"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MÃE"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"naturalizacao"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"estado_civil"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"telefone_area"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"telefone_numero"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"celular_area"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"celular_numero"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"carteira_trabalho"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"pis"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"empresa"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"funcao"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"salario_base"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"cep"</span><span class="p">:</span><span class="w"> </span><span class="s2">"14030-570"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"endereco"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rua Gonçalves de Magalhães"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"numero"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"complemento"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"bairro"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jardim Piratininga"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"cidade"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ribeirão Preto"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"uf"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SP"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data_nascimento"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1984-05-24"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data_expedicao"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data_admissao"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data_demissao"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data_homologacao"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data_sindicalizacao"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-06-29"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"notas"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"senha"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"carta_oposicao"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"carteirinha_entregue"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"validade_carteirinha"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"afastamento_medico"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"desconto_folha"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"participa_votacao"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data_debito"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"demitido"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data_obito"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"cartao_convenio"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"utiliza_convenio"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"limite_convenio"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"revisao_cadastro"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"local_votacao"</span><span class="p">:</span><span class="w"> </span><span class="s2">"empresa"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"codigo_convenio"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"autorizado"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"recuperar_senha_token"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"foto_updated_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"foto_file_size"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"foto_content_type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"foto_file_name"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-06-29T18:58:50.000-03:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-16T12:11:03.000-03:00"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-request-17'>HTTP Request</h3>
+<p><code>POST https://webapi.afsys.com.br/v2/associado</code></p>
+<h1 id='parceiros'>Parceiros</h1><h2 id='listar-parceiros'>Listar parceiros</h2>
+<blockquote>
+<p>Exemplo de requisição:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET <span class="s2">"https://webapi.afsys.com.br/v2/parceiros"</span> <span class="se">\</span>
+     <span class="nt">-H</span> <span class="s2">"Authorization: Bearer SEU-TOKEN"</span>
+</code></pre></div>
+<blockquote>
+<p>Exemplo de resposta:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">123456</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"conta_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"aitvo"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"pessoa_juridica"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"nome"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"razao_social"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RAZAO SOCIAL"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"nome_fantasia"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NOME FANTASIA"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-07-30T14:34:22.000-03:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-07-30T14:34:22.000-03:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"imagens"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"https://webapi.afsys.com.br/imagem-1.png"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"https://webapi.afsys.com.br/imagem-2.png"</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="err">...</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div><h3 id='http-request-18'>HTTP Request</h3>
+<p><code>GET https://webapi.afsys.com.br/v2/parceiros</code></p>
+<h3 id='query-parameters-11'>Query Parameters</h3>
+<p>Você poderá filtrar os parceiros pelo parâmetro abaixo:</p>
+
+<table><thead>
+<tr>
+<th>Parametro</th>
+<th>Tipo</th>
+<th>Exemplo</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>s</td>
+<td>string</td>
+<td>Pesquisa pelo CPF, CNPJ, Nome ou Razão Social</td>
+</tr>
+</tbody></table>
+<h2 id='obter-parceiro-por-id'>Obter parceiro por ID</h2>
+<blockquote>
+<p>Exemplo de requisição:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET <span class="s2">"https://webapi.afsys.com.br/v2/parceiros/:id"</span> <span class="se">\</span>
+     <span class="nt">-H</span> <span class="s2">"Authorization: Bearer SEU-TOKEN"</span>
+</code></pre></div>
+<blockquote>
+<p>Exemplo de resposta:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">87</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"conta_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"ativo"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"pessoa_juridica"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"nome"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"cpf"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"razao_social"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RAZAO SOCIAL DO PARCEIRO"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"nome_fantasia"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NOME FANTASIA DO PARCEIRO"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"cnae"</span><span class="p">:</span><span class="w"> </span><span class="s2">"94.20-1-00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"cnae_descricao"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Atividades de organizações sindicais"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"site"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"cnpj"</span><span class="p">:</span><span class="w"> </span><span class="s2">"02971036000148"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"crc"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"contato"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"telefone_area"</span><span class="p">:</span><span class="w"> </span><span class="s2">"16"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"telefone_numero"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8261113"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"celular_area"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"celular_numero"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"email_secundario"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"cep"</span><span class="p">:</span><span class="w"> </span><span class="s2">"14620-000"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"endereco"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AVENIDA NOVE"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"numero"</span><span class="p">:</span><span class="w"> </span><span class="s2">"507"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"complemento"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"bairro"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CENTRO"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"cidade"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ORLANDIA"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"uf"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SP"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"notas"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"aplicacao_desconto"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ate"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"tipo_desconto"</span><span class="p">:</span><span class="w"> </span><span class="s2">"porcentagem"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"valor_desconto"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"descricao_produto"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-14T15:11:08.000-03:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-09-07T22:05:39.000-03:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"imagens"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"http://localhost:3005/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdFFIIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8cfbc52c2475fe722bf9a27c644826cbdae1bd17/Eduardo_Azevedo.jpg"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"http://localhost:3005/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdFVIIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--86a0b6259f6fe6c0ea47c29252c0151e1dba38b7/eduardo.jpeg"</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-request-19'>HTTP Request</h3>
+<p><code>GET https://webapi.afsys.com.br/v2/parceiros/:id</code></p>
+<h3 id='query-parameters-12'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parametro</th>
+<th>Tipo</th>
+<th>Exemplo</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>Identificador do parceiro, ex: 123</td>
+</tr>
+</tbody></table>
+
+      </div>
+      <div class="dark-box">
+          <div class="lang-selector">
+                <a href="#" data-language-name="shell">cURL</a>
+          </div>
+      </div>
+    </div>
+  </body>
+  <script>var n=document.getElementsByTagName("body");"/apidoc"==window.location.pathname?window.location.href="/apidoc/":n[0].style.display="block";</script>
+</html>
