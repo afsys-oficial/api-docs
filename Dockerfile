@@ -1,11 +1,26 @@
-FROM ruby:2.6.4
+FROM ruby:2.6-slim
 
-RUN gem install bundler
+WORKDIR /srv/slate
 
-COPY Gemfile Gemfile.lock ./
+EXPOSE 4567
 
-RUN bundle install
+COPY Gemfile .
+COPY Gemfile.lock .
 
-WORKDIR /usr/src/app
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+        build-essential \
+        git \
+        nodejs \
+    && gem install bundler \
+    && bundle install \
+    && apt-get remove -y build-essential git \
+    && apt-get autoremove -y \
+    && rm -rf /var/lib/apt/lists/*
 
-CMD ["bundle", "exec", "middleman", "server"]
+COPY . /srv/slate
+
+RUN chmod +x /srv/slate/slate.sh
+
+ENTRYPOINT ["/srv/slate/slate.sh"]
+CMD ["build"]

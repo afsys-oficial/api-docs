@@ -1,24 +1,38 @@
 #!/usr/bin/env bash
 set -o errexit #abort if any command fails
+
 me=$(basename "$0")
 
 help_message="\
-Usage: $me [-c FILE] [<options>]
-Deploy generated files to a git branch.
+Usage: $me [<options>] <command> [<command-options>]
+Run commands related to the slate process.
 
-Options:
+Commands:
 
-  -h, --help               Show this help information.
-  -v, --verbose            Increase verbosity. Useful for debugging.
-  -e, --allow-empty        Allow deployment of an empty directory.
-  -m, --message MESSAGE    Specify the message used when committing on the
-                           deploy branch.
-  -n, --no-hash            Don't append the source commit's hash to the deploy
-                           commit's message.
-      --source-only        Only build but not push
-      --push-only          Only push but not build
+  serve                   Run the middleman server process, useful for
+                          development.
+  build                   Run the build process.
+  deploy                  Will build and deploy files to branch. Use
+                          --no-build to only deploy.
+
+Global Options:
+
+  -h, --help              Show this help information.
+  -v, --verbose           Increase verbosity. Useful for debugging.
+
+Deploy options:
+  -e, --allow-empty       Allow deployment of an empty directory.
+  -m, --message MESSAGE   Specify the message used when committing on the
+                          deploy branch.
+  -n, --no-hash           Don't append the source commit's hash to the deploy
+                          commit's message.
+  --no-build              Do not build the source files.
 "
 
+
+run_serve() {
+  exec bundle exec middleman serve --watcher-force-polling
+}
 
 run_build() {
   bundle exec middleman build --clean
@@ -30,13 +44,15 @@ parse_args() {
     source .env
   fi
 
+  command=
+
   # Parse arg flags
   # If something is exposed as an environment variable, set/overwrite it
   # here. Otherwise, set/overwrite the internal variable instead.
   while : ; do
     if [[ $1 = "-h" || $1 = "--help" ]]; then
       echo "$help_message"
-      return 0
+      exit 0
     elif [[ $1 = "-v" || $1 = "--verbose" ]]; then
       verbose=true
       shift
@@ -49,10 +65,25 @@ parse_args() {
     elif [[ $1 = "-n" || $1 = "--no-hash" ]]; then
       GIT_DEPLOY_APPEND_HASH=false
       shift
-    else
+    elif [[ $1 = "--no-build" ]]; then
+      no_build=true
+      shift
+    elif [[ $1 = "serve" || $1 = "build" || $1 = "deploy" ]]; then
+      if [ ! -z "${command}" ]; then
+        >&2 echo "You can only specify one command."
+        exit 1
+      fi
+      command=$1
+      shift
+    elif [ -z $1 ]; then
       break
     fi
   done
+
+  if [ -z "${command}" ]; then
+    >&2 echo "Command not specified."
+    exit 1
+  fi
 
   # Set internal option vars from the environment and arg flags. All internal
   # vars should be declared here, with sane defaults if applicable.
@@ -73,8 +104,6 @@ parse_args() {
 }
 
 main() {
-  parse_args "$@"
-
   enable_expanded_output
 
   if ! git diff --exit-code --quiet --cached; then
@@ -145,7 +174,7 @@ incremental_deploy() {
     0) echo No changes to files in $deploy_directory. Skipping commit.;;
     1) commit+push;;
     *)
-      echo git diff exited with code $diff. Aborting. Staying on branch $deploy_branch so you can debug. To switch back to master, use: git symbolic-ref HEAD refs/heads/master && git reset --mixed >&2
+      echo git diff exited with code $diff. Aborting. Staying on branch $deploy_branch so you can debug. To switch back to main, use: git symbolic-ref HEAD refs/heads/main && git reset --mixed >&2
       return $diff
       ;;
   esac
@@ -205,11 +234,15 @@ sanitize() {
   "$@" 2> >(filter 1>&2) | filter
 }
 
-if [[ $1 = --source-only ]]; then
+parse_args "$@"
+
+if [ "${command}" = "serve" ]; then
+  run_serve
+elif [[ "${command}" = "build" ]]; then
   run_build
-elif [[ $1 = --push-only ]]; then
-  main "$@"
-else
-  run_build
+elif [[ ${command} = "deploy" ]]; then
+  if [[ ${no_build} != true ]]; then
+    run_build
+  fi
   main "$@"
 fi
