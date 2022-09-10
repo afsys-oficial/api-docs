@@ -972,8 +972,6 @@ curl -X POST "https://webapi.afsys.com.br/v2/associado" \
 
 `POST https://webapi.afsys.com.br/v2/associado`
 
-===========================================================================================================================
-
 # Parceiros
 
 ## Listar parceiros
@@ -1020,98 +1018,7 @@ Parametro  | Tipo    | Exemplo
 ---------- | ------- | ----------------------------------------------
 s          | string  | Pesquisa pelo CPF, CNPJ, Nome ou Razão Social
 
-## Listar parceiros
-
-> Exemplo de requisição:
-
-```shell
-curl -X GET "https://webapi.afsys.com.br/v2/parceiros" \
-     -H "Authorization: Bearer SEU-TOKEN"
-```
-
-> Exemplo de resposta:
-
-```json
-[
-  {
-    "id": 123456,
-    "conta_id": 8,
-    "aitvo": true,
-    "pessoa_juridica": true,
-    "nome": null,
-    "razao_social": "RAZAO SOCIAL",
-    "nome_fantasia": "NOME FANTASIA",
-    "created_at": "2018-07-30T14:34:22.000-03:00",
-    "updated_at": "2018-07-30T14:34:22.000-03:00",
-    "imagens" : [
-      "https://webapi.afsys.com.br/imagem-1.png",
-      "https://webapi.afsys.com.br/imagem-2.png"
-    ]
-  },
-  ...
-]
-```
-
-### HTTP Request
-
-`GET https://webapi.afsys.com.br/v2/parceiros`
-
-### Query Parameters
-
-Você poderá filtrar os parceiros pelo parâmetro abaixo:
-
-Parametro  | Tipo    | Exemplo
----------- | ------- | ----------------------------------------------
-s          | string  | Pesquisa pelo CPF, CNPJ, Nome ou Razão Social
-
-
-===============================================
-
 ## Obter parceiro por ID
-
-> Exemplo de requisição:
-
-```shell
-curl -X GET "https://webapi.afsys.com.br/v2/parceiros" \
-     -H "Authorization: Bearer SEU-TOKEN"
-```
-
-> Exemplo de resposta:
-
-```json
-[
-  {
-    "id": 123456,
-    "conta_id": 8,
-    "aitvo": true,
-    "pessoa_juridica": true,
-    "nome": null,
-    "razao_social": "RAZAO SOCIAL",
-    "nome_fantasia": "NOME FANTASIA",
-    "created_at": "2018-07-30T14:34:22.000-03:00",
-    "updated_at": "2018-07-30T14:34:22.000-03:00",
-    "imagens" : [
-      "https://webapi.afsys.com.br/imagem-1.png",
-      "https://webapi.afsys.com.br/imagem-2.png"
-    ]
-  },
-  ...
-]
-```
-
-### HTTP Request
-
-`GET https://webapi.afsys.com.br/v2/parceiros`
-
-### Query Parameters
-
-Você poderá filtrar os parceiros pelo parâmetro abaixo:
-
-Parametro  | Tipo    | Exemplo
----------- | ------- | ----------------------------------------------
-s          | string  | Pesquisa pelo CPF, CNPJ, Nome ou Razão Social
-
-## Listar parceiros
 
 > Exemplo de requisição:
 
@@ -1170,8 +1077,6 @@ curl -X GET "https://webapi.afsys.com.br/v2/parceiros/:id" \
 `GET https://webapi.afsys.com.br/v2/parceiros/:id`
 
 ### Query Parameters
-
-Você poderá filtrar os parceiros pelo parâmetro abaixo:
 
 Parametro  | Tipo    | Exemplo
 ---------- | ------- | ----------------------------------------------
