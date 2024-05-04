@@ -454,6 +454,7 @@ rejeitado             | Rejeitado
 baixados              | Baixado
 pagos                 | Pagos
 aberto                | Em aberto
+aberto_vencidos       | Em aberto e vencidos
 aberto_remessa        | Em aberto (boletos registrados e não registrados)
 vencidos              | Vencido
 vencidos_remessa      | Vencido (boletos registrados e não registrados)
