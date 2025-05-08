@@ -862,7 +862,24 @@ curl -X POST "https://webapi.afsys.com.br/v2/associado/login" \
 
 ```json
 {
-  "status": true
+  "status": true,
+  "sindicalizado": true,
+  "status_cadastro": "cadastrado",
+  "status_sindical": "sindicalizado",
+  "nome": "LUIZ GOMES FAVERO DANIEL",
+  "cpf": "12345678901",
+  "celular_area": "",
+  "celular_numero": "",
+  "data_nascimento": "1985-02-26",
+  "empresas": [
+    {
+      "status": "admitido",
+      "descricao": "EMPRESA CONHECIDA LTDA",
+      "tipo_vinculo": "empregado",
+      "data_admissao": "2022-04-11",
+      "data_demissao": null
+    }
+  ]
 }
 ```
 
