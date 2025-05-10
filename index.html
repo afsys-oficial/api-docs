@@ -1917,35 +1917,7 @@ curl <span class="nt">-X</span> POST <span class="s2">"https://webapi.afsys.com.
      <span class="nt">-d</span> <span class="s2">"agenda[horario]=10:30"</span> <span class="se">\</span>
      <span class="nt">-d</span> <span class="s2">"agenda[observacao]=Nada consta"</span> <span class="se">\</span>
      <span class="nt">-d</span> <span class="s2">"agenda[motivo_cancelamento]=Test"</span>
-</code></pre></div>
-<blockquote>
-<p>Exemplo de resposta:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">41885</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"conta_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">63</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"servico_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">420</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"associado_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"associado_dependente_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"cliente_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"parceiro_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"servico_atendente_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">56</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"tipo_servico"</span><span class="p">:</span><span class="w"> </span><span class="s2">"servico"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"tipo_vinculo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sem_cadastro"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"falta"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"protocolo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JLRDUYEM"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"associado_nome"</span><span class="p">:</span><span class="w"> </span><span class="s2">"não "</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"cliente_nome"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Nenhum registro encontrado"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"dependente_nome"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"solicitante"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jardel Martins "</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-07-17"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"horario"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2000-01-01T15:00:00.000-02:00"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"observacao"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jardel Martins - MP"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"motivo_cancelamento"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-07-17T14:11:11.000-03:00"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-07-17T16:07:56.000-03:00"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='http-request-22'>HTTP Request</h3>
+</code></pre></div><h3 id='http-request-22'>HTTP Request</h3>
 <p><code>POST https://webapi.afsys.com.br/v2/agendas</code></p>
 <h3 id='parametros-e-tipagem'>Parâmetros e tipagem</h3>
 <table><thead>
@@ -2031,7 +2003,36 @@ curl <span class="nt">-X</span> POST <span class="s2">"https://webapi.afsys.com.
 <td>Texto descritivo</td>
 </tr>
 </tbody></table>
-<div class="highlight"><pre class="highlight plaintext"><code></code></pre></div>
+<div class="highlight"><pre class="highlight plaintext"><code>
+
+&gt; Exemplo de resposta:
+
+```json
+{
+  "id": 41885,
+  "conta_id": 63,
+  "servico_id": 420,
+  "associado_id": null,
+  "associado_dependente_id": null,
+  "cliente_id": null,
+  "parceiro_id": null,
+  "servico_atendente_id": 56,
+  "tipo_servico": "servico",
+  "tipo_vinculo": "sem_cadastro",
+  "status": "falta",
+  "protocolo": "JLRDUYEM",
+  "associado_nome": "não ",
+  "cliente_nome": "Nenhum registro encontrado",
+  "dependente_nome": null,
+  "solicitante": "Jardel Martins ",
+  "data": "2023-07-17",
+  "horario": "2000-01-01T15:00:00.000-02:00",
+  "observacao": "Jardel Martins - MP",
+  "motivo_cancelamento": null,
+  "created_at": "2023-07-17T14:11:11.000-03:00",
+  "updated_at": "2023-07-17T16:07:56.000-03:00"
+}
+</code></pre></div>
       </div>
       <div class="dark-box">
           <div class="lang-selector">
