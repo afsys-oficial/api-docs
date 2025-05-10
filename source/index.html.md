@@ -1102,7 +1102,7 @@ id         | integer | Identificador do parceiro, ex: 123
 
 # Agendas
 
-## Listar agendas
+## Listar agendamentos
 
 ### HTTP Request
 
@@ -1158,7 +1158,7 @@ curl -X GET "https://webapi.afsys.com.br/v2/agendas" \
 ]
 ```
 
-## Obter agenda por ID
+## Obter agendamento por ID
 
 ### HTTP Request
 
