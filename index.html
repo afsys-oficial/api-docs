@@ -1986,28 +1986,50 @@ curl <span class="nt">-X</span> POST <span class="s2">"https://webapi.afsys.com.
 <p>Exemplo de requisição:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s2">"https://webapi.afsys.com.br/v2/agendas"</span> <span class="se">\</span>
-     <span class="nt">-H</span> <span class="s2">"Authorization: Bearer SEU-TOKEN"</span>
+     <span class="nt">-H</span> <span class="s2">"Authorization: Bearer SEU-TOKEN"</span> <span class="se">\</span>
+     <span class="nt">-d</span> <span class="s2">"agenda[servico_id]=123"</span> <span class="se">\</span>
+     <span class="nt">-d</span> <span class="s2">"agenda[associado_id]=123"</span> <span class="se">\</span>
+     <span class="nt">-d</span> <span class="s2">"agenda[associado_dependente_id]=123"</span> <span class="se">\</span>
+     <span class="nt">-d</span> <span class="s2">"agenda[cliente_id]=123"</span> <span class="se">\</span>
+     <span class="nt">-d</span> <span class="s2">"agenda[parceiro_id]=123"</span> <span class="se">\</span>
+     <span class="nt">-d</span> <span class="s2">"agenda[servico_atendente_id]=123"</span> <span class="se">\</span>
+     <span class="nt">-d</span> <span class="s2">"agenda[tipo_servico]=servico"</span> <span class="se">\</span>
+     <span class="nt">-d</span> <span class="s2">"agenda[tipo_vinculo]=empregado"</span> <span class="se">\</span>
+     <span class="nt">-d</span> <span class="s2">"agenda[status]=agendado"</span> <span class="se">\</span>
+     <span class="nt">-d</span> <span class="s2">"agenda[associado_nome]=José da Silva"</span> <span class="se">\</span>
+     <span class="nt">-d</span> <span class="s2">"agenda[cliente_nome]=José da Silva"</span> <span class="se">\</span>
+     <span class="nt">-d</span> <span class="s2">"agenda[solicitante]=Luiz Felipe"</span> <span class="se">\</span>
+     <span class="nt">-d</span> <span class="s2">"agenda[data]=2025-01-30"</span> <span class="se">\</span>
+     <span class="nt">-d</span> <span class="s2">"agenda[horario]=10:30"</span> <span class="se">\</span>
+     <span class="nt">-d</span> <span class="s2">"agenda[observacao]=Nada consta"</span> <span class="se">\</span>
+     <span class="nt">-d</span> <span class="s2">"agenda[motivo_cancelamento]=Test"</span>
 </code></pre></div>
 <blockquote>
 <p>Exemplo de resposta:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"servico_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"associado_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"associado_dependente_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"cliente_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"parceiro_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"servico_atendente_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">41885</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"conta_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">63</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"servico_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">420</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"associado_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"associado_dependente_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"cliente_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"parceiro_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"servico_atendente_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">56</span><span class="p">,</span><span class="w">
   </span><span class="nl">"tipo_servico"</span><span class="p">:</span><span class="w"> </span><span class="s2">"servico"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"tipo_vinculo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"empregado"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"agendado"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"associado_nome"</span><span class="p">:</span><span class="w"> </span><span class="s2">"José da Silva"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"cliente_nome"</span><span class="p">:</span><span class="w"> </span><span class="s2">"José da Silva"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"solicitante"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Luiz Felipe"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-01-30"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"horario"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10:30"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"observacao"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Nada consta"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"motivo_cancelamento"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+  </span><span class="nl">"tipo_vinculo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sem_cadastro"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"falta"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"protocolo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JLRDUYEM"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"associado_nome"</span><span class="p">:</span><span class="w"> </span><span class="s2">"não "</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"cliente_nome"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Nenhum registro encontrado"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"dependente_nome"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"solicitante"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jardel Martins "</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-07-17"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"horario"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2000-01-01T15:00:00.000-02:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"observacao"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jardel Martins - MP"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"motivo_cancelamento"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-07-17T14:11:11.000-03:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-07-17T16:07:56.000-03:00"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
       </div>
