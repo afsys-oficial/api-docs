@@ -1248,8 +1248,6 @@ associado_nome          | string  | José da Silva
 cliente_nome            | string  | José da Silva
 observacao              | text    | Texto descritivo
 motivo_cancelamento     | text    | Texto descritivo
-```
-
 
 > Exemplo de resposta:
 
