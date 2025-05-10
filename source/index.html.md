@@ -1225,6 +1225,32 @@ curl -X POST "https://webapi.afsys.com.br/v2/agendas" \
      -d "agenda[motivo_cancelamento]=Test"
 ```
 
+### HTTP Request
+
+`POST https://webapi.afsys.com.br/v2/agendas`
+
+### Parâmetros e tipagem
+
+Parametro               | Tipo    | Exemplo
+----------------------- | ------- | ----------------------------------------
+status                  | string  | agendado, concluido, cancelado, falta
+tipo_servico            | string  | servico, convenio
+tipo_vinculo            | string  | sem_cadastro, empregado, sem_vinculo, aposentado, autonomo, cliente
+servico_id              | integer | 123
+parceiro_id             | integer | 123
+associado_id            | integer | 123
+cliente_id              | integer | 123
+associado_dependente_id | integer | 123
+servico_atendente_id    | integer | 123
+data                    | date    | 2025-01-30
+horario                 | time    | 10:30
+associado_nome          | string  | José da Silva
+cliente_nome            | string  | José da Silva
+observacao              | text    | Texto descritivo
+motivo_cancelamento     | text    | Texto descritivo
+```
+
+
 > Exemplo de resposta:
 
 ```json
@@ -1252,29 +1278,4 @@ curl -X POST "https://webapi.afsys.com.br/v2/agendas" \
   "created_at": "2023-07-17T14:11:11.000-03:00",
   "updated_at": "2023-07-17T16:07:56.000-03:00"
 }
-```
-
-### HTTP Request
-
-`POST https://webapi.afsys.com.br/v2/agendas`
-
-### Parâmetros e tipagem
-
-Parametro               | Tipo    | Exemplo
------------------------ | ------- | ----------------------------------------
-status                  | string  | agendado, concluido, cancelado, falta
-tipo_servico            | string  | servico, convenio
-tipo_vinculo            | string  | sem_cadastro, empregado, sem_vinculo, aposentado, autonomo, cliente
-servico_id              | integer | 123
-parceiro_id             | integer | 123
-associado_id            | integer | 123
-cliente_id              | integer | 123
-associado_dependente_id | integer | 123
-servico_atendente_id    | integer | 123
-data                    | date    | 2025-01-30
-horario                 | time    | 10:30
-associado_nome          | string  | José da Silva
-cliente_nome            | string  | José da Silva
-observacao              | text    | Texto descritivo
-motivo_cancelamento     | text    | Texto descritivo
 ```
