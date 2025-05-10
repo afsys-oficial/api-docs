@@ -1230,28 +1230,50 @@ motivo_cancelamento     | text    | Texto descritivo
 
 ```shell
 curl -X POST "https://webapi.afsys.com.br/v2/agendas" \
-     -H "Authorization: Bearer SEU-TOKEN"
+     -H "Authorization: Bearer SEU-TOKEN" \
+     -d "agenda[servico_id]=123" \
+     -d "agenda[associado_id]=123" \
+     -d "agenda[associado_dependente_id]=123" \
+     -d "agenda[cliente_id]=123" \
+     -d "agenda[parceiro_id]=123" \
+     -d "agenda[servico_atendente_id]=123" \
+     -d "agenda[tipo_servico]=servico" \
+     -d "agenda[tipo_vinculo]=empregado" \
+     -d "agenda[status]=agendado" \
+     -d "agenda[associado_nome]=José da Silva" \
+     -d "agenda[cliente_nome]=José da Silva" \
+     -d "agenda[solicitante]=Luiz Felipe" \
+     -d "agenda[data]=2025-01-30" \
+     -d "agenda[horario]=10:30" \
+     -d "agenda[observacao]=Nada consta" \
+     -d "agenda[motivo_cancelamento]=Test"
 ```
 
 > Exemplo de resposta:
 
 ```json
 {
-  "servico_id": 123,
-  "associado_id": 123,
-  "associado_dependente_id": 123,
-  "cliente_id": 123,
-  "parceiro_id": 123,
-  "servico_atendente_id": 123,
+  "id": 41885,
+  "conta_id": 63,
+  "servico_id": 420,
+  "associado_id": null,
+  "associado_dependente_id": null,
+  "cliente_id": null,
+  "parceiro_id": null,
+  "servico_atendente_id": 56,
   "tipo_servico": "servico",
-  "tipo_vinculo": "empregado",
-  "status": "agendado",
-  "associado_nome": "José da Silva",
-  "cliente_nome": "José da Silva",
-  "solicitante": "Luiz Felipe",
-  "data": "2025-01-30",
-  "horario": "10:30",
-  "observacao": "Nada consta",
-  "motivo_cancelamento": ""
+  "tipo_vinculo": "sem_cadastro",
+  "status": "falta",
+  "protocolo": "JLRDUYEM",
+  "associado_nome": "não ",
+  "cliente_nome": "Nenhum registro encontrado",
+  "dependente_nome": null,
+  "solicitante": "Jardel Martins ",
+  "data": "2023-07-17",
+  "horario": "2000-01-01T15:00:00.000-02:00",
+  "observacao": "Jardel Martins - MP",
+  "motivo_cancelamento": null,
+  "created_at": "2023-07-17T14:11:11.000-03:00",
+  "updated_at": "2023-07-17T16:07:56.000-03:00"
 }
 ```
