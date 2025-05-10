@@ -1099,3 +1099,159 @@ curl -X GET "https://webapi.afsys.com.br/v2/parceiros/:id" \
 Parametro  | Tipo    | Exemplo
 ---------- | ------- | ----------------------------------------------
 id         | integer | Identificador do parceiro, ex: 123
+
+# Agendas
+
+## Listar agendas
+
+### HTTP Request
+
+`GET https://webapi.afsys.com.br/v2/agendas`
+
+### Query Parameters
+
+Parametro          | Tipo    | Exemplo
+------------------ | ------- | ----------------------------------------
+status             | string  | agendado, concluido, cancelado, falta
+servico_id         | integer | 123
+parceiro_id        | integer | 123
+associado_id       | integer | 123
+cliente_id         | integer | 123
+data               | date    | 2025-01-30
+
+> Exemplo de requisição:
+
+```shell
+curl -X GET "https://webapi.afsys.com.br/v2/agendas" \
+     -H "Authorization: Bearer SEU-TOKEN"
+```
+
+> Exemplo de resposta:
+
+```json
+[
+  {
+    "id": 41885,
+    "conta_id": 63,
+    "servico_id": 420,
+    "associado_id": null,
+    "associado_dependente_id": null,
+    "cliente_id": null,
+    "parceiro_id": null,
+    "servico_atendente_id": 56,
+    "tipo_servico": "servico",
+    "tipo_vinculo": "sem_cadastro",
+    "status": "falta",
+    "protocolo": "JLRDUYEM",
+    "associado_nome": "não ",
+    "cliente_nome": "Nenhum registro encontrado",
+    "dependente_nome": null,
+    "solicitante": "Jardel Martins ",
+    "data": "2023-07-17",
+    "horario": "2000-01-01T15:00:00.000-02:00",
+    "observacao": "Jardel Martins - MP",
+    "motivo_cancelamento": null,
+    "created_at": "2023-07-17T14:11:11.000-03:00",
+    "updated_at": "2023-07-17T16:07:56.000-03:00"
+  },
+  ...
+]
+```
+
+## Obter agenda por ID
+
+### HTTP Request
+
+`GET https://webapi.afsys.com.br/v2/agendas/123`
+
+> Exemplo de requisição:
+
+```shell
+curl -X GET "https://webapi.afsys.com.br/v2/agendas/123" \
+     -H "Authorization: Bearer SEU-TOKEN"
+```
+
+> Exemplo de resposta:
+
+```json
+{
+  "id": 41885,
+  "conta_id": 63,
+  "servico_id": 420,
+  "associado_id": null,
+  "associado_dependente_id": null,
+  "cliente_id": null,
+  "parceiro_id": null,
+  "servico_atendente_id": 56,
+  "tipo_servico": "servico",
+  "tipo_vinculo": "sem_cadastro",
+  "status": "falta",
+  "protocolo": "JLRDUYEM",
+  "associado_nome": "não ",
+  "cliente_nome": "Nenhum registro encontrado",
+  "dependente_nome": null,
+  "solicitante": "Jardel Martins ",
+  "data": "2023-07-17",
+  "horario": "2000-01-01T15:00:00.000-02:00",
+  "observacao": "Jardel Martins - MP",
+  "motivo_cancelamento": null,
+  "created_at": "2023-07-17T14:11:11.000-03:00",
+  "updated_at": "2023-07-17T16:07:56.000-03:00"
+}
+```
+
+## Criar agendamento
+
+### HTTP Request
+
+`POST https://webapi.afsys.com.br/v2/agendas`
+
+### Parâmetros e tipagem
+
+Parametro               | Tipo    | Exemplo
+----------------------- | ------- | ----------------------------------------
+status                  | string  | agendado, concluido, cancelado, falta
+tipo_servico            | string  | servico, convenio
+tipo_vinculo            | string  | sem_cadastro, empregado, sem_vinculo, aposentado, autonomo, cliente
+servico_id              | integer | 123
+parceiro_id             | integer | 123
+associado_id            | integer | 123
+cliente_id              | integer | 123
+associado_dependente_id | integer | 123
+servico_atendente_id    | integer | 123
+data                    | date    | 2025-01-30
+horario                 | time    | 10:30
+associado_nome          | string  | José da Silva
+cliente_nome            | string  | José da Silva
+observacao              | text    | Texto descritivo
+motivo_cancelamento     | text    | Texto descritivo
+
+> Exemplo de requisição:
+
+```shell
+curl -X POST "https://webapi.afsys.com.br/v2/agendas" \
+     -H "Authorization: Bearer SEU-TOKEN"
+```
+
+> Exemplo de resposta:
+
+```json
+{
+  "servico_id": 123,
+  "associado_id": 123,
+  "associado_dependente_id": 123,
+  "cliente_id": 123,
+  "parceiro_id": 123,
+  "servico_atendente_id": 123,
+  "tipo_servico": "servico",
+  "tipo_vinculo": "empregado",
+  "status": "agendado",
+  "associado_nome": "José da Silva",
+  "cliente_nome": "José da Silva",
+  "solicitante": "Luiz Felipe",
+  "data": "2025-01-30",
+  "horario": "10:30",
+  "observacao": "Nada consta",
+  "motivo_cancelamento": ""
+}
+```
