@@ -1252,6 +1252,7 @@ curl -X POST "https://webapi.afsys.com.br/v2/agendas" \
   "created_at": "2023-07-17T14:11:11.000-03:00",
   "updated_at": "2023-07-17T16:07:56.000-03:00"
 }
+```
 
 ### HTTP Request
 
