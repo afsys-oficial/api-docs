@@ -1945,31 +1945,93 @@ curl <span class="nt">-X</span> POST <span class="s2">"https://webapi.afsys.com.
   </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-07-17T14:11:11.000-03:00"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-07-17T16:07:56.000-03:00"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
-</span><span class="err">###</span><span class="w"> </span><span class="err">HTTP</span><span class="w"> </span><span class="err">Request</span><span class="w">
-
-</span><span class="err">`POST</span><span class="w"> </span><span class="err">https://webapi.afsys.com.br/v</span><span class="mi">2</span><span class="err">/agendas`</span><span class="w">
-
-</span><span class="err">###</span><span class="w"> </span><span class="err">Parâmetros</span><span class="w"> </span><span class="err">e</span><span class="w"> </span><span class="err">tipagem</span><span class="w">
-
-</span><span class="err">Parametro</span><span class="w">               </span><span class="err">|</span><span class="w"> </span><span class="err">Tipo</span><span class="w">    </span><span class="err">|</span><span class="w"> </span><span class="err">Exemplo</span><span class="w">
-</span><span class="err">-----------------------</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">-------</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">----------------------------------------</span><span class="w">
-</span><span class="err">status</span><span class="w">                  </span><span class="err">|</span><span class="w"> </span><span class="err">string</span><span class="w">  </span><span class="err">|</span><span class="w"> </span><span class="err">agendado,</span><span class="w"> </span><span class="err">concluido,</span><span class="w"> </span><span class="err">cancelado,</span><span class="w"> </span><span class="err">falta</span><span class="w">
-</span><span class="err">tipo_servico</span><span class="w">            </span><span class="err">|</span><span class="w"> </span><span class="err">string</span><span class="w">  </span><span class="err">|</span><span class="w"> </span><span class="err">servico,</span><span class="w"> </span><span class="err">convenio</span><span class="w">
-</span><span class="err">tipo_vinculo</span><span class="w">            </span><span class="err">|</span><span class="w"> </span><span class="err">string</span><span class="w">  </span><span class="err">|</span><span class="w"> </span><span class="err">sem_cadastro,</span><span class="w"> </span><span class="err">empregado,</span><span class="w"> </span><span class="err">sem_vinculo,</span><span class="w"> </span><span class="err">aposentado,</span><span class="w"> </span><span class="err">autonomo,</span><span class="w"> </span><span class="err">cliente</span><span class="w">
-</span><span class="err">servico_id</span><span class="w">              </span><span class="err">|</span><span class="w"> </span><span class="err">integer</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="mi">123</span><span class="w">
-</span><span class="err">parceiro_id</span><span class="w">             </span><span class="err">|</span><span class="w"> </span><span class="err">integer</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="mi">123</span><span class="w">
-</span><span class="err">associado_id</span><span class="w">            </span><span class="err">|</span><span class="w"> </span><span class="err">integer</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="mi">123</span><span class="w">
-</span><span class="err">cliente_id</span><span class="w">              </span><span class="err">|</span><span class="w"> </span><span class="err">integer</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="mi">123</span><span class="w">
-</span><span class="err">associado_dependente_id</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">integer</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="mi">123</span><span class="w">
-</span><span class="err">servico_atendente_id</span><span class="w">    </span><span class="err">|</span><span class="w"> </span><span class="err">integer</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="mi">123</span><span class="w">
-</span><span class="err">data</span><span class="w">                    </span><span class="err">|</span><span class="w"> </span><span class="err">date</span><span class="w">    </span><span class="err">|</span><span class="w"> </span><span class="mi">2025-01-30</span><span class="w">
-</span><span class="err">horario</span><span class="w">                 </span><span class="err">|</span><span class="w"> </span><span class="err">time</span><span class="w">    </span><span class="err">|</span><span class="w"> </span><span class="mi">10</span><span class="err">:</span><span class="mi">30</span><span class="w">
-</span><span class="err">associado_nome</span><span class="w">          </span><span class="err">|</span><span class="w"> </span><span class="err">string</span><span class="w">  </span><span class="err">|</span><span class="w"> </span><span class="err">José</span><span class="w"> </span><span class="err">da</span><span class="w"> </span><span class="err">Silva</span><span class="w">
-</span><span class="err">cliente_nome</span><span class="w">            </span><span class="err">|</span><span class="w"> </span><span class="err">string</span><span class="w">  </span><span class="err">|</span><span class="w"> </span><span class="err">José</span><span class="w"> </span><span class="err">da</span><span class="w"> </span><span class="err">Silva</span><span class="w">
-</span><span class="err">observacao</span><span class="w">              </span><span class="err">|</span><span class="w"> </span><span class="err">text</span><span class="w">    </span><span class="err">|</span><span class="w"> </span><span class="err">Texto</span><span class="w"> </span><span class="err">descritivo</span><span class="w">
-</span><span class="err">motivo_cancelamento</span><span class="w">     </span><span class="err">|</span><span class="w"> </span><span class="err">text</span><span class="w">    </span><span class="err">|</span><span class="w"> </span><span class="err">Texto</span><span class="w"> </span><span class="err">descritivo</span><span class="w">
-</span></code></pre></div>
+</span></code></pre></div><h3 id='http-request-22'>HTTP Request</h3>
+<p><code>POST https://webapi.afsys.com.br/v2/agendas</code></p>
+<h3 id='parametros-e-tipagem'>Parâmetros e tipagem</h3>
+<table><thead>
+<tr>
+<th>Parametro</th>
+<th>Tipo</th>
+<th>Exemplo</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>string</td>
+<td>agendado, concluido, cancelado, falta</td>
+</tr>
+<tr>
+<td>tipo_servico</td>
+<td>string</td>
+<td>servico, convenio</td>
+</tr>
+<tr>
+<td>tipo_vinculo</td>
+<td>string</td>
+<td>sem_cadastro, empregado, sem_vinculo, aposentado, autonomo, cliente</td>
+</tr>
+<tr>
+<td>servico_id</td>
+<td>integer</td>
+<td>123</td>
+</tr>
+<tr>
+<td>parceiro_id</td>
+<td>integer</td>
+<td>123</td>
+</tr>
+<tr>
+<td>associado_id</td>
+<td>integer</td>
+<td>123</td>
+</tr>
+<tr>
+<td>cliente_id</td>
+<td>integer</td>
+<td>123</td>
+</tr>
+<tr>
+<td>associado_dependente_id</td>
+<td>integer</td>
+<td>123</td>
+</tr>
+<tr>
+<td>servico_atendente_id</td>
+<td>integer</td>
+<td>123</td>
+</tr>
+<tr>
+<td>data</td>
+<td>date</td>
+<td>2025-01-30</td>
+</tr>
+<tr>
+<td>horario</td>
+<td>time</td>
+<td>10:30</td>
+</tr>
+<tr>
+<td>associado_nome</td>
+<td>string</td>
+<td>José da Silva</td>
+</tr>
+<tr>
+<td>cliente_nome</td>
+<td>string</td>
+<td>José da Silva</td>
+</tr>
+<tr>
+<td>observacao</td>
+<td>text</td>
+<td>Texto descritivo</td>
+</tr>
+<tr>
+<td>motivo_cancelamento</td>
+<td>text</td>
+<td>Texto descritivo</td>
+</tr>
+</tbody></table>
+<div class="highlight"><pre class="highlight plaintext"><code></code></pre></div>
       </div>
       <div class="dark-box">
           <div class="lang-selector">
