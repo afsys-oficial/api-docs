@@ -238,6 +238,17 @@
             <a href="#visao-geral" class="toc-h1 toc-link" data-title="Visão geral">Visão geral</a>
           </li>
           <li>
+            <a href="#paginacao" class="toc-h1 toc-link" data-title="Paginação">Paginação</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#query-parameters" class="toc-h2 toc-link" data-title="Query Parameters">Query Parameters</a>
+                  </li>
+                  <li>
+                    <a href="#response-headers" class="toc-h2 toc-link" data-title="Response Headers">Response Headers</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#codigos-de-status" class="toc-h1 toc-link" data-title="Códigos de status">Códigos de status</a>
           </li>
           <li>
@@ -348,6 +359,22 @@
                   </li>
               </ul>
           </li>
+          <li>
+            <a href="#usuarios" class="toc-h1 toc-link" data-title="Usuários">Usuários</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#verificar-credenciais" class="toc-h2 toc-link" data-title="Verificar credenciais">Verificar credenciais</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#webhooks" class="toc-h1 toc-link" data-title="Webhooks">Webhooks</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#conciliacao-de-boletos-banking-gateway" class="toc-h2 toc-link" data-title="Conciliação de boletos (Banking Gateway)">Conciliação de boletos (Banking Gateway)</a>
+                  </li>
+              </ul>
+          </li>
       </ul>
         <ul class="toc-footer">
             <li><a href="https://afsys.com.br" target="_blank">Afsys - Gestão Sindical</a></li>
@@ -370,6 +397,62 @@
 <p><strong>Ambiente Produção:</strong> https://webapi.afsys.com.br</p>
 
 <p><strong>Ambiente Homologação:</strong> https://apphml.afsys.com.br/api</p>
+<h1 id='paginacao'>Paginação</h1>
+<p>Os endpoints que retornam listas paginadas aceitam os parâmetros <code>_page</code> e <code>_limit</code> na query string e retornam o total de registros através do <strong>HEADER de resposta</strong> <code>X-Total-Count</code>.</p>
+
+<blockquote>
+<p>Exemplo de requisição com paginação:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET <span class="s2">"https://webapi.afsys.com.br/v2/boletos?_page=2&amp;_limit=30"</span> <span class="se">\</span>
+     <span class="nt">-H</span> <span class="s2">"Authorization: Bearer SEU-TOKEN"</span> <span class="se">\</span>
+     <span class="nt">-i</span>
+</code></pre></div>
+<blockquote>
+<p>Exemplo de cabeçalhos retornados:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">X-Total-Count</span><span class="p">:</span> <span class="s">245</span>
+<span class="na">Access-Control-Expose-Headers</span><span class="p">:</span> <span class="s">X-Total-Count</span>
+</code></pre></div><h3 id='query-parameters'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parametro</th>
+<th>Tipo</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>_page</td>
+<td>integer</td>
+<td>Número da página solicitada (default: 1)</td>
+</tr>
+<tr>
+<td>_limit</td>
+<td>integer</td>
+<td>Quantidade de registros por página (default: 30)</td>
+</tr>
+</tbody></table>
+<h3 id='response-headers'>Response Headers</h3>
+<table><thead>
+<tr>
+<th>Header</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>X-Total-Count</td>
+<td>Quantidade total de registros (sem paginação) da consulta</td>
+</tr>
+<tr>
+<td>Access-Control-Expose-Headers</td>
+<td>Lista de headers expostos pela API (inclui <code>X-Total-Count</code>)</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+O header <code>X-Total-Count</code> é retornado em <strong>todos</strong> os endpoints que devolvem coleções paginadas (boletos, clientes, agendas, parceiros etc). Use-o para calcular o número de páginas e exibir totalizadores na sua aplicação.
+</aside>
 <h1 id='codigos-de-status'>Códigos de status</h1>
 <p>No AFSYS-API, os status de retorno das requisições devem ser esperados conforme especificado nas situações abaixo:</p>
 
@@ -479,7 +562,7 @@ curl <span class="nt">-X</span> POST <span class="s2">"https://webapi.afsys.com.
 <p>O token de identificação é válido por 24 horas.</p>
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>POST https://webapi.afsys.com.br/v2/autenticar</code></p>
-<h3 id='query-parameters'>Query Parameters</h3>
+<h3 id='query-parameters-2'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parametro</th>
@@ -511,23 +594,7 @@ curl <span class="nt">-X</span> POST <span class="s2">"https://webapi.afsys.com.
   </span><span class="nl">"valor"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
   </span><span class="nl">"valor_baixado"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='query-parameters-2'>Query Parameters</h3>
-<table><thead>
-<tr>
-<th>Parametro</th>
-<th>Tipo</th>
-<th>Exemplo</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>motivo_cancelamento</td>
-<td>text</td>
-<td>Boleto com problema</td>
-</tr>
-</tbody></table>
-<h3 id='http-request-2'>HTTP Request</h3>
-<p><code>https://webapi.afsys.com.br/v2/contas/previsao_orcamentaria</code></p>
-<h3 id='http-request-3'>HTTP Request</h3>
+</span></code></pre></div><h3 id='http-request-2'>HTTP Request</h3>
 <p><code>GET https://webapi.afsys.com.br/v2/contas/previsao_orcamentaria</code></p>
 <h2 id='mensalidades'>Mensalidades</h2>
 <p>Esse recurso retornará as mensalidades dos clientes Afsys.</p>
@@ -582,8 +649,22 @@ curl <span class="nt">-X</span> POST <span class="s2">"https://webapi.afsys.com.
   </span><span class="p">},</span><span class="w">
   </span><span class="nl">"associado"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='http-request-4'>HTTP Request</h3>
-<p><code>https://webapi.afsys.com.br/v2/contas/mensalidades</code></p>
+</span></code></pre></div><h3 id='http-request-3'>HTTP Request</h3>
+<p><code>GET https://webapi.afsys.com.br/v2/contas/mensalidades</code></p>
+<h3 id='query-parameters-3'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parametro</th>
+<th>Tipo</th>
+<th>Exemplo</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>string</td>
+<td>Veja o item &quot;Status dos boletos&quot; (suporta ainda <code>aberto</code> e <code>vencidos</code>)</td>
+</tr>
+</tbody></table>
 <h2 id='visualizar-conta'>Visualizar conta</h2>
 <p>Esse recurso retornará os dados da conta no AFSYS.</p>
 
@@ -623,8 +704,8 @@ curl <span class="nt">-X</span> POST <span class="s2">"https://webapi.afsys.com.
   </span><span class="nl">"uf"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SP"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"logo_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://app.afsys.com.br/uploads/contas/1/original/logo.jpg?1520854626"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='http-request-5'>HTTP Request</h3>
-<p><code>https://webapi.afsys.com.br/v2/conta</code></p>
+</span></code></pre></div><h3 id='http-request-4'>HTTP Request</h3>
+<p><code>GET https://webapi.afsys.com.br/v2/conta</code></p>
 <h1 id='clientes'>Clientes</h1>
 <p>Com esse recurso você poderá filtrar pelos contribuintes cadastrados no Afsys.</p>
 <h2 id='listar-clientes'>Listar clientes</h2>
@@ -651,7 +732,7 @@ curl <span class="nt">-X</span> POST <span class="s2">"https://webapi.afsys.com.
   </span><span class="p">},</span><span class="w">
   </span><span class="err">...</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre></div><h3 id='http-request-6'>HTTP Request</h3>
+</span></code></pre></div><h3 id='http-request-5'>HTTP Request</h3>
 <p><code>GET https://webapi.afsys.com.br/v2/clientes</code></p>
 <h3 id='campo-status'>Campo Status</h3>
 <p>Logo abaixo você pode conferir os possíveis valores para o campo <code>status</code> do cliente</p>
@@ -671,7 +752,7 @@ curl <span class="nt">-X</span> POST <span class="s2">"https://webapi.afsys.com.
 <td>Desativado</td>
 </tr>
 </tbody></table>
-<h3 id='query-parameters-3'>Query Parameters</h3>
+<h3 id='query-parameters-4'>Query Parameters</h3>
 <p>Você poderá filtrar os clientes pelo parâmetro abaixo:</p>
 
 <table><thead>
@@ -721,7 +802,7 @@ curl <span class="nt">-X</span> POST <span class="s2">"https://webapi.afsys.com.
   </span><span class="p">},</span><span class="w">
   </span><span class="err">...</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre></div><h3 id='http-request-7'>HTTP Request</h3>
+</span></code></pre></div><h3 id='http-request-6'>HTTP Request</h3>
 <p><code>GET https://webapi.afsys.com.br/v2/convenios</code></p>
 <h1 id='boletos'>Boletos</h1>
 <p>Esse recurso fornece os recursos necessários para LISTAR, VISUALIZAR, CRIAR e CANCELAR boletos no sistema</p>
@@ -780,9 +861,9 @@ curl <span class="nt">-X</span> POST <span class="s2">"https://webapi.afsys.com.
   </span><span class="p">},</span><span class="w">
   </span><span class="err">...</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre></div><h3 id='http-request-8'>HTTP Request</h3>
+</span></code></pre></div><h3 id='http-request-7'>HTTP Request</h3>
 <p><code>GET https://webapi.afsys.com.br/v2/boletos</code></p>
-<h3 id='query-parameters-4'>Query Parameters</h3>
+<h3 id='query-parameters-5'>Query Parameters</h3>
 <p>Você poderá filtrar os boletos pelos parâmetros abaixo:</p>
 
 <table><thead>
@@ -1006,9 +1087,9 @@ curl <span class="nt">-X</span> POST <span class="s2">"https://webapi.afsys.com.
   </span><span class="nl">"total_pago"</span><span class="p">:</span><span class="w"> </span><span class="mf">1300.00</span><span class="p">,</span><span class="w">
   </span><span class="nl">"total_tarifas"</span><span class="p">:</span><span class="w"> </span><span class="mf">27.00</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='http-request-9'>HTTP Request</h3>
+</span></code></pre></div><h3 id='http-request-8'>HTTP Request</h3>
 <p><code>GET https://webapi.afsys.com.br/v2/boletos/totalizador</code></p>
-<h3 id='query-parameters-5'>Query Parameters</h3>
+<h3 id='query-parameters-6'>Query Parameters</h3>
 <p>Você poderá filtrar os boletos pelos parâmetros abaixo:</p>
 
 <table><thead>
@@ -1116,13 +1197,13 @@ curl <span class="nt">-X</span> POST <span class="s2">"https://webapi.afsys.com.
   </span><span class="p">},</span><span class="w">
   </span><span class="nl">"associado"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='http-request-10'>HTTP Request</h3>
-<p><code>GET https://webapi.afsys.com.br/v2/boletos</code></p>
+</span></code></pre></div><h3 id='http-request-9'>HTTP Request</h3>
+<p><code>GET https://webapi.afsys.com.br/v2/boletos/:id</code></p>
 <h2 id='criar-boleto'>Criar boleto</h2>
 <blockquote>
 <p>Exemplo de requisição:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s2">"https://webapi.afsys.com.br/v2/boletos/123"</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s2">"https://webapi.afsys.com.br/v2/boletos"</span> <span class="se">\</span>
      <span class="nt">-H</span> <span class="s2">"Authorization: Bearer SEU-TOKEN"</span> <span class="se">\</span>
      <span class="nt">-d</span> <span class="s2">"boleto[associado_id]=79616"</span> <span class="se">\</span>
      <span class="nt">-d</span> <span class="s2">"boleto[convenio_id]=80"</span> <span class="se">\</span>
@@ -1131,7 +1212,7 @@ curl <span class="nt">-X</span> POST <span class="s2">"https://webapi.afsys.com.
      <span class="nt">-d</span> <span class="s2">"boleto[competencia_mes]=2"</span> <span class="se">\</span>
      <span class="nt">-d</span> <span class="s2">"boleto[competencia_ano]=2020"</span> <span class="se">\</span>
      <span class="nt">-d</span> <span class="s2">"boleto[enviar_email]=false"</span>
-</code></pre></div><h3 id='query-parameters-6'>Query Parameters</h3>
+</code></pre></div><h3 id='query-parameters-7'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parametro</th>
@@ -1226,7 +1307,7 @@ curl <span class="nt">-X</span> POST <span class="s2">"https://webapi.afsys.com.
   </span><span class="p">},</span><span class="w">
   </span><span class="nl">"associado"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='http-request-11'>HTTP Request</h3>
+</span></code></pre></div><h3 id='http-request-10'>HTTP Request</h3>
 <p><code>POST https://webapi.afsys.com.br/v2/boletos</code></p>
 <h2 id='cancelar-boleto'>Cancelar boleto</h2>
 <blockquote>
@@ -1281,7 +1362,7 @@ curl <span class="nt">-X</span> POST <span class="s2">"https://webapi.afsys.com.
   </span><span class="p">},</span><span class="w">
   </span><span class="nl">"associado"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='query-parameters-7'>Query Parameters</h3>
+</span></code></pre></div><h3 id='query-parameters-8'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parametro</th>
@@ -1295,10 +1376,8 @@ curl <span class="nt">-X</span> POST <span class="s2">"https://webapi.afsys.com.
 <td>Boleto com problema</td>
 </tr>
 </tbody></table>
-<h3 id='http-request-12'>HTTP Request</h3>
+<h3 id='http-request-11'>HTTP Request</h3>
 <p><code>PATCH https://webapi.afsys.com.br/v2/boletos/:id/cancelar</code></p>
-<h3 id='http-request-13'>HTTP Request</h3>
-<p><code>GET https://webapi.afsys.com.br/v2/contas/previsao_orcamentaria</code></p>
 <h1 id='associados-interessados'>Associados Interessados</h1>
 <p>Os associados interessados são pessoas que desejam se associar ao sindicato. Esses recurso gerará um pré-cadastro de associados que poderá aprovado ou reprovado dentro do sistema.</p>
 <h2 id='criar-associado-interessado'>Criar associado interessado</h2>
@@ -1334,7 +1413,7 @@ curl <span class="nt">-X</span> POST <span class="s2">"https://webapi.afsys.com.
      <span class="nt">-d</span> <span class="s2">"associado_interessado[cnpj]=12345678901234"</span> <span class="se">\</span>
      <span class="nt">-d</span> <span class="s2">"associado_interessado[carteira_trabalho]="</span> <span class="se">\</span>
      <span class="nt">-d</span> <span class="s2">"associado_interessado[salario_base]=1200"</span>
-</code></pre></div><h3 id='query-parameters-8'>Query Parameters</h3>
+</code></pre></div><h3 id='query-parameters-9'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parametro</th>
@@ -1483,7 +1562,7 @@ curl <span class="nt">-X</span> POST <span class="s2">"https://webapi.afsys.com.
 <td>111111.11</td>
 </tr>
 </tbody></table>
-<h3 id='http-request-14'>HTTP Request</h3>
+<h3 id='http-request-12'>HTTP Request</h3>
 <p><code>POST https://webapi.afsys.com.br/v2/associado_interessado</code></p>
 <h1 id='associados'>Associados</h1>
 <p>Os associados são pessoas associadas ao sindicato.</p>
@@ -1502,7 +1581,7 @@ curl <span class="nt">-X</span> POST <span class="s2">"https://webapi.afsys.com.
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"auth_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"[JWT-TOKEN-ASSOCIADO]"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='query-parameters-9'>Query Parameters</h3>
+</span></code></pre></div><h3 id='query-parameters-10'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parametro</th>
@@ -1526,7 +1605,7 @@ curl <span class="nt">-X</span> POST <span class="s2">"https://webapi.afsys.com.
 <td>Ab123456</td>
 </tr>
 </tbody></table>
-<h3 id='http-request-15'>HTTP Request</h3>
+<h3 id='http-request-13'>HTTP Request</h3>
 <p><code>POST https://webapi.afsys.com.br/v2/autenticar/associado</code></p>
 <h2 id='consultar-associado-por-login'>Consultar associado por login</h2>
 <blockquote>
@@ -1559,7 +1638,7 @@ curl <span class="nt">-X</span> POST <span class="s2">"https://webapi.afsys.com.
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='query-parameters-10'>Query Parameters</h3>
+</span></code></pre></div><h3 id='query-parameters-11'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parametro</th>
@@ -1578,13 +1657,13 @@ curl <span class="nt">-X</span> POST <span class="s2">"https://webapi.afsys.com.
 <td>12345678910</td>
 </tr>
 </tbody></table>
-<h3 id='http-request-16'>HTTP Request</h3>
-<p><code>POST https://webapi.afsys.com.br/v2/autenticar/associado</code></p>
+<h3 id='http-request-14'>HTTP Request</h3>
+<p><code>POST https://webapi.afsys.com.br/v2/associado/login</code></p>
 <h2 id='obter-associado-logado'>Obter associado logado</h2>
 <blockquote>
 <p>Exemplo de requisição:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s2">"https://webapi.afsys.com.br/v2/associado"</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET <span class="s2">"https://webapi.afsys.com.br/v2/associado"</span> <span class="se">\</span>
      <span class="nt">-H</span> <span class="s2">"Authorization: Bearer SEU-TOKEN"</span>
 </code></pre></div>
 <blockquote>
@@ -1667,8 +1746,8 @@ curl <span class="nt">-X</span> POST <span class="s2">"https://webapi.afsys.com.
   </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-06-29T18:58:50.000-03:00"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-16T12:11:03.000-03:00"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='http-request-17'>HTTP Request</h3>
-<p><code>POST https://webapi.afsys.com.br/v2/associado</code></p>
+</span></code></pre></div><h3 id='http-request-15'>HTTP Request</h3>
+<p><code>GET https://webapi.afsys.com.br/v2/associado</code></p>
 <h1 id='parceiros'>Parceiros</h1><h2 id='listar-parceiros'>Listar parceiros</h2>
 <blockquote>
 <p>Exemplo de requisição:</p>
@@ -1697,9 +1776,9 @@ curl <span class="nt">-X</span> POST <span class="s2">"https://webapi.afsys.com.
   </span><span class="p">},</span><span class="w">
   </span><span class="err">...</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre></div><h3 id='http-request-18'>HTTP Request</h3>
+</span></code></pre></div><h3 id='http-request-16'>HTTP Request</h3>
 <p><code>GET https://webapi.afsys.com.br/v2/parceiros</code></p>
-<h3 id='query-parameters-11'>Query Parameters</h3>
+<h3 id='query-parameters-12'>Query Parameters</h3>
 <p>Você poderá filtrar os parceiros pelo parâmetro abaixo:</p>
 
 <table><thead>
@@ -1765,9 +1844,9 @@ curl <span class="nt">-X</span> POST <span class="s2">"https://webapi.afsys.com.
     </span><span class="s2">"http://localhost:3005/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdFVIIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--86a0b6259f6fe6c0ea47c29252c0151e1dba38b7/eduardo.jpeg"</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='http-request-19'>HTTP Request</h3>
+</span></code></pre></div><h3 id='http-request-17'>HTTP Request</h3>
 <p><code>GET https://webapi.afsys.com.br/v2/parceiros/:id</code></p>
-<h3 id='query-parameters-12'>Query Parameters</h3>
+<h3 id='query-parameters-13'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parametro</th>
@@ -1818,9 +1897,9 @@ curl <span class="nt">-X</span> POST <span class="s2">"https://webapi.afsys.com.
   </span><span class="p">},</span><span class="w">
   </span><span class="err">...</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre></div><h3 id='http-request-20'>HTTP Request</h3>
+</span></code></pre></div><h3 id='http-request-18'>HTTP Request</h3>
 <p><code>GET https://webapi.afsys.com.br/v2/agendas</code></p>
-<h3 id='query-parameters-13'>Query Parameters</h3>
+<h3 id='query-parameters-14'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parametro</th>
@@ -1859,7 +1938,7 @@ curl <span class="nt">-X</span> POST <span class="s2">"https://webapi.afsys.com.
 <td>2025-01-30</td>
 </tr>
 </tbody></table>
-<h2 id='obter-agendamento-por-id'>Obter agendamento por ID</h2><h3 id='http-request-21'>HTTP Request</h3>
+<h2 id='obter-agendamento-por-id'>Obter agendamento por ID</h2><h3 id='http-request-19'>HTTP Request</h3>
 <p><code>GET https://webapi.afsys.com.br/v2/agendas/123</code></p>
 
 <blockquote>
@@ -1917,7 +1996,7 @@ curl <span class="nt">-X</span> POST <span class="s2">"https://webapi.afsys.com.
      <span class="nt">-d</span> <span class="s2">"agenda[horario]=10:30"</span> <span class="se">\</span>
      <span class="nt">-d</span> <span class="s2">"agenda[observacao]=Nada consta"</span> <span class="se">\</span>
      <span class="nt">-d</span> <span class="s2">"agenda[motivo_cancelamento]=Test"</span>
-</code></pre></div><h3 id='http-request-22'>HTTP Request</h3>
+</code></pre></div><h3 id='http-request-20'>HTTP Request</h3>
 <p><code>POST https://webapi.afsys.com.br/v2/agendas</code></p>
 <h3 id='parametros-e-tipagem'>Parâmetros e tipagem</h3>
 <table><thead>
@@ -2031,7 +2110,123 @@ curl <span class="nt">-X</span> POST <span class="s2">"https://webapi.afsys.com.
   </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-07-17T14:11:11.000-03:00"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-07-17T16:07:56.000-03:00"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div>
+</span></code></pre></div><h1 id='usuarios'>Usuários</h1><h2 id='verificar-credenciais'>Verificar credenciais</h2>
+<p>Verifica se um usuário e senha são válidos no AFSYS, retornando os dados do usuário autenticado. Útil para integrações que precisam confirmar credenciais antes de gerar token.</p>
+
+<blockquote>
+<p>Exemplo de requisição:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s2">"https://webapi.afsys.com.br/v2/usuarios/verificar"</span> <span class="se">\</span>
+     <span class="nt">-d</span> <span class="s2">"email=usuario@dominio.com.br"</span> <span class="se">\</span>
+     <span class="nt">-d</span> <span class="s2">"senha=Ab123456"</span>
+</code></pre></div>
+<blockquote>
+<p>Exemplo de resposta:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"conta_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"nome"</span><span class="p">:</span><span class="w"> </span><span class="s2">"José da Silva"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"usuario@dominio.com.br"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='query-parameters-15'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parametro</th>
+<th>Tipo</th>
+<th>Exemplo</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>email</td>
+<td>string</td>
+<td>usuario@dominio.com.br</td>
+</tr>
+<tr>
+<td>senha</td>
+<td>string</td>
+<td>Ab123456</td>
+</tr>
+</tbody></table>
+<h3 id='http-request-21'>HTTP Request</h3>
+<p><code>POST https://webapi.afsys.com.br/v2/usuarios/verificar</code></p>
+<h1 id='webhooks'>Webhooks</h1>
+<p>Endpoints destinados ao recebimento de notificações de sistemas externos.</p>
+<h2 id='conciliacao-de-boletos-banking-gateway'>Conciliação de boletos (Banking Gateway)</h2>
+<p>Endpoint para recebimento de notificações de conciliação de boletos enviadas pelo gateway bancário (AFPAY). A autenticação ocorre via assinatura HMAC SHA256 enviada no header <code>X-Signature</code>.</p>
+
+<blockquote>
+<p>Exemplo de requisição:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s2">"https://webapi.afsys.com.br/v2/webhooks/banking_gateway/CODIGO-DA-CONTA"</span> <span class="se">\</span>
+     <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+     <span class="nt">-H</span> <span class="s2">"X-Signature: HMAC-SHA256-DO-PAYLOAD"</span> <span class="se">\</span>
+     <span class="nt">-d</span> <span class="s1">'{
+       "billing": {
+         "reference_code": "115-2257282",
+         "status": "paid",
+         "paid_at": "2025-01-30T10:00:00-03:00",
+         "amount": 163.92
+       }
+     }'</span>
+</code></pre></div>
+<blockquote>
+<p>Exemplo de resposta:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Webhook recebido com sucesso"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='cabecalhos-da-requisicao'>Cabeçalhos da requisição</h3>
+<table><thead>
+<tr>
+<th>Header</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>X-Signature</td>
+<td>Assinatura HMAC SHA256 do corpo da requisição usando o <code>webhook_secret</code> configurado na conta corrente do convênio</td>
+</tr>
+</tbody></table>
+<h3 id='path-parameters'>Path Parameters</h3>
+<table><thead>
+<tr>
+<th>Parametro</th>
+<th>Tipo</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>conta_codigo</td>
+<td>string</td>
+<td>Código (<code>codigo</code>) da conta destinatária do webhook</td>
+</tr>
+</tbody></table>
+<h3 id='body-json'>Body (JSON)</h3>
+<p>O parâmetro <code>billing.reference_code</code> deve seguir o formato <code>&lt;conta_id&gt;-&lt;boleto_id&gt;</code>, identificando unicamente o boleto a ser conciliado. Os demais campos do objeto <code>billing</code> são repassados ao job <code>BankingGateway::ProcessarWebhookBoletoJob</code> para processamento assíncrono.</p>
+<h3 id='codigos-de-retorno'>Códigos de retorno</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>202</td>
+<td>Webhook aceito e enfileirado para processamento</td>
+</tr>
+<tr>
+<td>401</td>
+<td><code>X-Signature</code> ausente, inválida ou <code>webhook_secret</code> não configurado</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Conta ou boleto não encontrado a partir do <code>reference_code</code> informado</td>
+</tr>
+</tbody></table>
+<h3 id='http-request-22'>HTTP Request</h3>
+<p><code>POST https://webapi.afsys.com.br/v2/webhooks/banking_gateway/:conta_codigo</code></p>
+
       </div>
       <div class="dark-box">
           <div class="lang-selector">
