@@ -706,6 +706,38 @@ curl <span class="nt">-X</span> POST <span class="s2">"https://webapi.afsys.com.
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h3 id='http-request-4'>HTTP Request</h3>
 <p><code>GET https://webapi.afsys.com.br/v2/conta</code></p>
+<h3 id='campo-status'>Campo <code>status</code></h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>A</td>
+<td>Ativado</td>
+</tr>
+<tr>
+<td>D</td>
+<td>Desativado</td>
+</tr>
+</tbody></table>
+<h3 id='campo-pessoa_juridica'>Campo <code>pessoa_juridica</code></h3>
+<table><thead>
+<tr>
+<th>Tipo</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>true</td>
+<td>Pessoa jurídica — utiliza os campos <code>cnpj</code>, <code>razao_social</code> e <code>nome_fantasia</code></td>
+</tr>
+<tr>
+<td>false</td>
+<td>Pessoa física — utiliza os campos <code>cpf</code> e <code>nome</code></td>
+</tr>
+</tbody></table>
 <h1 id='clientes'>Clientes</h1>
 <p>Com esse recurso você poderá filtrar pelos contribuintes cadastrados no Afsys.</p>
 <h2 id='listar-clientes'>Listar clientes</h2>
@@ -734,7 +766,7 @@ curl <span class="nt">-X</span> POST <span class="s2">"https://webapi.afsys.com.
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div><h3 id='http-request-5'>HTTP Request</h3>
 <p><code>GET https://webapi.afsys.com.br/v2/clientes</code></p>
-<h3 id='campo-status'>Campo Status</h3>
+<h3 id='campo-status-2'>Campo Status</h3>
 <p>Logo abaixo você pode conferir os possíveis valores para o campo <code>status</code> do cliente</p>
 
 <table><thead>
@@ -1039,6 +1071,10 @@ curl <span class="nt">-X</span> POST <span class="s2">"https://webapi.afsys.com.
 <td>Remetido</td>
 </tr>
 <tr>
+<td>L</td>
+<td>Remetido (em lote)</td>
+</tr>
+<tr>
 <td>A</td>
 <td>Em aberto</td>
 </tr>
@@ -1069,6 +1105,35 @@ curl <span class="nt">-X</span> POST <span class="s2">"https://webapi.afsys.com.
 <tr>
 <td>J</td>
 <td>Jurídico</td>
+</tr>
+</tbody></table>
+<h3 id='demais-campos-do-boleto'>Demais campos do boleto</h3>
+<table><thead>
+<tr>
+<th>Campo</th>
+<th>Tipo</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>registrado</td>
+<td>boolean</td>
+<td><code>true</code> quando o boleto foi efetivamente registrado no banco</td>
+</tr>
+<tr>
+<td>remessa_local</td>
+<td>boolean</td>
+<td><code>true</code> quando o boleto foi gerado como remessa local (sem registro bancário)</td>
+</tr>
+<tr>
+<td>layout</td>
+<td>string</td>
+<td>Layout do banco utilizado (ex: <code>santander</code>, <code>bradesco</code>, <code>cef</code>, <code>bb</code>, <code>itau</code>, <code>sicoob</code>, <code>afpay</code>)</td>
+</tr>
+<tr>
+<td>tipo_pagador</td>
+<td>string</td>
+<td><code>cliente</code> (contribuinte) ou <code>associado</code></td>
 </tr>
 </tbody></table>
 <h2 id='totalizador-de-boletos'>Totalizador de boletos</h2>
@@ -1459,7 +1524,7 @@ curl <span class="nt">-X</span> POST <span class="s2">"https://webapi.afsys.com.
 <tr>
 <td>sexo</td>
 <td>string</td>
-<td>masculino ou feminino</td>
+<td>masculino, feminino ou nao_declarado</td>
 </tr>
 <tr>
 <td>email</td>
@@ -1564,6 +1629,98 @@ curl <span class="nt">-X</span> POST <span class="s2">"https://webapi.afsys.com.
 </tbody></table>
 <h3 id='http-request-12'>HTTP Request</h3>
 <p><code>POST https://webapi.afsys.com.br/v2/associado_interessado</code></p>
+<h3 id='campo-status-3'>Campo <code>status</code></h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>A</td>
+<td>Ativado</td>
+</tr>
+<tr>
+<td>D</td>
+<td>Desativado</td>
+</tr>
+</tbody></table>
+<h3 id='campo-tipo_vinculo'>Campo <code>tipo_vinculo</code></h3>
+<table><thead>
+<tr>
+<th>Valor</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>empregado</td>
+<td>Trabalhador empregado (com CNPJ da empresa)</td>
+</tr>
+<tr>
+<td>aposentado</td>
+<td>Aposentado</td>
+</tr>
+<tr>
+<td>sem_vinculo</td>
+<td>Sem vínculo empregatício</td>
+</tr>
+<tr>
+<td>autonomo</td>
+<td>Autônomo</td>
+</tr>
+</tbody></table>
+<h3 id='campo-sexo'>Campo <code>sexo</code></h3>
+<table><thead>
+<tr>
+<th>Valor</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>masculino</td>
+<td>Masculino</td>
+</tr>
+<tr>
+<td>feminino</td>
+<td>Feminino</td>
+</tr>
+<tr>
+<td>nao_declarado</td>
+<td>Não declarado</td>
+</tr>
+</tbody></table>
+<h3 id='campo-estado_civil'>Campo <code>estado_civil</code></h3>
+<table><thead>
+<tr>
+<th>Valor</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Casado(a)</td>
+<td>Casado(a)</td>
+</tr>
+<tr>
+<td>Solteiro(a)</td>
+<td>Solteiro(a)</td>
+</tr>
+<tr>
+<td>Divorciado(a)</td>
+<td>Divorciado(a)</td>
+</tr>
+<tr>
+<td>Viúvo(a)</td>
+<td>Viúvo(a)</td>
+</tr>
+<tr>
+<td>Separado(a)</td>
+<td>Separado(a)</td>
+</tr>
+<tr>
+<td>Companheiro(a)</td>
+<td>União estável</td>
+</tr>
+</tbody></table>
 <h1 id='associados'>Associados</h1>
 <p>Os associados são pessoas associadas ao sindicato.</p>
 <h2 id='obter-token-de-acesso-do-associado'>Obter token de acesso do associado</h2>
@@ -1659,6 +1816,98 @@ curl <span class="nt">-X</span> POST <span class="s2">"https://webapi.afsys.com.
 </tbody></table>
 <h3 id='http-request-14'>HTTP Request</h3>
 <p><code>POST https://webapi.afsys.com.br/v2/associado/login</code></p>
+<h3 id='campo-status_cadastro'>Campo <code>status_cadastro</code></h3>
+<table><thead>
+<tr>
+<th>Valor</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>cadastrado</td>
+<td>Cadastro completo no sindicato</td>
+</tr>
+<tr>
+<td>autorizado</td>
+<td>Cadastro autorizado pelo associado mas ainda não confirmado</td>
+</tr>
+<tr>
+<td>nao_cadastrado</td>
+<td>Não há cadastro no sindicato</td>
+</tr>
+</tbody></table>
+<h3 id='campo-status_sindical'>Campo <code>status_sindical</code></h3>
+<table><thead>
+<tr>
+<th>Valor</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>sindicalizado</td>
+<td>Sindicalizado</td>
+</tr>
+<tr>
+<td>nao_sindicalizado</td>
+<td>Não sindicalizado</td>
+</tr>
+<tr>
+<td>opositor</td>
+<td>Opositor</td>
+</tr>
+<tr>
+<td>socio_usuario</td>
+<td>Sócio usuário</td>
+</tr>
+<tr>
+<td>desfiliacao_sindical</td>
+<td>Desfiliação sindical</td>
+</tr>
+</tbody></table>
+<h3 id='campo-empresas-status'>Campo <code>empresas[].status</code></h3>
+<table><thead>
+<tr>
+<th>Valor</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>admitido</td>
+<td>Admitido</td>
+</tr>
+<tr>
+<td>demitido</td>
+<td>Demitido</td>
+</tr>
+<tr>
+<td>cancelado</td>
+<td>Vínculo cancelado</td>
+</tr>
+</tbody></table>
+<h3 id='campo-empresas-tipo_vinculo'>Campo <code>empresas[].tipo_vinculo</code></h3>
+<table><thead>
+<tr>
+<th>Valor</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>empregado</td>
+<td>Trabalhador empregado</td>
+</tr>
+<tr>
+<td>aposentado</td>
+<td>Aposentado</td>
+</tr>
+<tr>
+<td>sem_vinculo</td>
+<td>Sem vínculo empregatício</td>
+</tr>
+<tr>
+<td>autonomo</td>
+<td>Autônomo</td>
+</tr>
+</tbody></table>
 <h2 id='obter-associado-logado'>Obter associado logado</h2>
 <blockquote>
 <p>Exemplo de requisição:</p>
@@ -1748,6 +1997,182 @@ curl <span class="nt">-X</span> POST <span class="s2">"https://webapi.afsys.com.
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h3 id='http-request-15'>HTTP Request</h3>
 <p><code>GET https://webapi.afsys.com.br/v2/associado</code></p>
+<h3 id='campo-status-4'>Campo <code>status</code></h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>A</td>
+<td>Ativado</td>
+</tr>
+<tr>
+<td>D</td>
+<td>Desativado</td>
+</tr>
+</tbody></table>
+<h3 id='campo-status_cadastro-2'>Campo <code>status_cadastro</code></h3>
+<table><thead>
+<tr>
+<th>Valor</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>cadastrado</td>
+<td>Cadastro completo no sindicato</td>
+</tr>
+<tr>
+<td>autorizado</td>
+<td>Cadastro autorizado pelo associado mas ainda não confirmado</td>
+</tr>
+<tr>
+<td>nao_cadastrado</td>
+<td>Não há cadastro no sindicato</td>
+</tr>
+</tbody></table>
+<h3 id='campo-sexo-2'>Campo <code>sexo</code></h3>
+<table><thead>
+<tr>
+<th>Valor</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>masculino</td>
+<td>Masculino</td>
+</tr>
+<tr>
+<td>feminino</td>
+<td>Feminino</td>
+</tr>
+<tr>
+<td>nao_declarado</td>
+<td>Não declarado</td>
+</tr>
+</tbody></table>
+<h3 id='campo-tipo_vinculo-2'>Campo <code>tipo_vinculo</code></h3>
+<table><thead>
+<tr>
+<th>Valor</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>empregado</td>
+<td>Trabalhador empregado</td>
+</tr>
+<tr>
+<td>aposentado</td>
+<td>Aposentado</td>
+</tr>
+<tr>
+<td>sem_vinculo</td>
+<td>Sem vínculo empregatício</td>
+</tr>
+<tr>
+<td>autonomo</td>
+<td>Autônomo</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+Em registros mais antigos o campo <code>tipo_vinculo</code> pode estar armazenado em formato de letra única: <strong>F</strong> = Empregado, <strong>A</strong> = Aposentado, <strong>S</strong> = Sem vínculo, <strong>I</strong> = Autônomo.
+</aside>
+<h3 id='campo-local_votacao'>Campo <code>local_votacao</code></h3>
+<table><thead>
+<tr>
+<th>Valor</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>empresa</td>
+<td>Vota na empresa</td>
+</tr>
+<tr>
+<td>sindicato</td>
+<td>Vota na sede do sindicato</td>
+</tr>
+<tr>
+<td>sub_sede</td>
+<td>Vota em uma subsede</td>
+</tr>
+<tr>
+<td>posto</td>
+<td>Vota em um posto de trabalho</td>
+</tr>
+</tbody></table>
+<h3 id='campos-booleanos-relevantes'>Campos booleanos relevantes</h3>
+<table><thead>
+<tr>
+<th>Campo</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>sindicalizado</td>
+<td>Associado é sindicalizado</td>
+</tr>
+<tr>
+<td>aposentado</td>
+<td>Associado está aposentado</td>
+</tr>
+<tr>
+<td>socio_remido</td>
+<td>Sócio remido (isento de mensalidades)</td>
+</tr>
+<tr>
+<td>cancelado</td>
+<td>Cadastro cancelado</td>
+</tr>
+<tr>
+<td>oposicao_contribuicao</td>
+<td>Possui oposição às contribuições</td>
+</tr>
+<tr>
+<td>ferias</td>
+<td>Em férias</td>
+</tr>
+<tr>
+<td>afastamento_medico</td>
+<td>Em afastamento médico</td>
+</tr>
+<tr>
+<td>desconto_folha</td>
+<td>Mensalidade descontada em folha</td>
+</tr>
+<tr>
+<td>participa_votacao</td>
+<td>Participa de votações sindicais</td>
+</tr>
+<tr>
+<td>demitido</td>
+<td>Foi demitido da empresa atual</td>
+</tr>
+<tr>
+<td>cartao_convenio</td>
+<td>Possui cartão de convênio</td>
+</tr>
+<tr>
+<td>utiliza_convenio</td>
+<td>Utiliza convênio</td>
+</tr>
+<tr>
+<td>carta_oposicao</td>
+<td>Manifestou carta de oposição</td>
+</tr>
+<tr>
+<td>carteirinha_entregue</td>
+<td>Carteirinha já foi entregue</td>
+</tr>
+<tr>
+<td>autorizado</td>
+<td>Cadastro foi autorizado pelo associado</td>
+</tr>
+</tbody></table>
 <h1 id='parceiros'>Parceiros</h1><h2 id='listar-parceiros'>Listar parceiros</h2>
 <blockquote>
 <p>Exemplo de requisição:</p>
@@ -1860,6 +2285,70 @@ curl <span class="nt">-X</span> POST <span class="s2">"https://webapi.afsys.com.
 <td>Identificador do parceiro, ex: 123</td>
 </tr>
 </tbody></table>
+<h3 id='campo-ativo'>Campo <code>ativo</code></h3>
+<table><thead>
+<tr>
+<th>Valor</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>true</td>
+<td>Parceiro ativo</td>
+</tr>
+<tr>
+<td>false</td>
+<td>Parceiro inativo</td>
+</tr>
+</tbody></table>
+<h3 id='campo-aplicacao_desconto'>Campo <code>aplicacao_desconto</code></h3>
+<table><thead>
+<tr>
+<th>Valor</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ate</td>
+<td>Aplicar desconto de até X (limite máximo)</td>
+</tr>
+<tr>
+<td>de</td>
+<td>Aplicar desconto a partir de X (valor fixo)</td>
+</tr>
+</tbody></table>
+<h3 id='campo-tipo_desconto'>Campo <code>tipo_desconto</code></h3>
+<table><thead>
+<tr>
+<th>Valor</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>porcentagem</td>
+<td>Desconto em porcentagem (%)</td>
+</tr>
+<tr>
+<td>valor</td>
+<td>Desconto em valor monetário (R$)</td>
+</tr>
+</tbody></table>
+<h3 id='campo-pessoa_juridica-2'>Campo <code>pessoa_juridica</code></h3>
+<table><thead>
+<tr>
+<th>Tipo</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>true</td>
+<td>Pessoa jurídica — usa <code>cnpj</code>, <code>razao_social</code>, <code>nome_fantasia</code></td>
+</tr>
+<tr>
+<td>false</td>
+<td>Pessoa física — usa <code>cpf</code> e <code>nome</code></td>
+</tr>
+</tbody></table>
 <h1 id='agendas'>Agendas</h1><h2 id='listar-agendamentos'>Listar agendamentos</h2>
 <blockquote>
 <p>Exemplo de requisição:</p>
@@ -1936,6 +2425,78 @@ curl <span class="nt">-X</span> POST <span class="s2">"https://webapi.afsys.com.
 <td>data</td>
 <td>date</td>
 <td>2025-01-30</td>
+</tr>
+</tbody></table>
+<h3 id='campo-status-5'>Campo <code>status</code></h3>
+<table><thead>
+<tr>
+<th>Valor</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>agendado</td>
+<td>Agendado</td>
+</tr>
+<tr>
+<td>concluido</td>
+<td>Concluído</td>
+</tr>
+<tr>
+<td>cancelado</td>
+<td>Cancelado</td>
+</tr>
+<tr>
+<td>falta</td>
+<td>Falta (associado/cliente não compareceu)</td>
+</tr>
+</tbody></table>
+<h3 id='campo-tipo_servico'>Campo <code>tipo_servico</code></h3>
+<table><thead>
+<tr>
+<th>Valor</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>servico</td>
+<td>Atendimento de serviço próprio do sindicato (exige <code>servico_id</code> e <code>servico_atendente_id</code>)</td>
+</tr>
+<tr>
+<td>convenio</td>
+<td>Atendimento via parceiro/convênio (exige <code>parceiro_id</code>)</td>
+</tr>
+</tbody></table>
+<h3 id='campo-tipo_vinculo-3'>Campo <code>tipo_vinculo</code></h3>
+<table><thead>
+<tr>
+<th>Valor</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>sem_cadastro</td>
+<td>Solicitante não cadastrado no sistema</td>
+</tr>
+<tr>
+<td>empregado</td>
+<td>Trabalhador empregado</td>
+</tr>
+<tr>
+<td>sem_vinculo</td>
+<td>Sem vínculo empregatício</td>
+</tr>
+<tr>
+<td>aposentado</td>
+<td>Aposentado</td>
+</tr>
+<tr>
+<td>autonomo</td>
+<td>Autônomo</td>
+</tr>
+<tr>
+<td>cliente</td>
+<td>Atendimento de contribuinte (PJ)</td>
 </tr>
 </tbody></table>
 <h2 id='obter-agendamento-por-id'>Obter agendamento por ID</h2><h3 id='http-request-19'>HTTP Request</h3>
