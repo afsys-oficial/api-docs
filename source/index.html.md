@@ -28,6 +28,45 @@ Disponibilizamos abaixo as urls de acesso aos nossos ambientes:
 
 **Ambiente Homologação:** https://apphml.afsys.com.br/api
 
+# Paginação
+
+Os endpoints que retornam listas paginadas aceitam os parâmetros `_page` e `_limit` na query string e retornam o total de registros através do **HEADER de resposta** `X-Total-Count`.
+
+> Exemplo de requisição com paginação:
+
+```shell
+curl -X GET "https://webapi.afsys.com.br/v2/boletos?_page=2&_limit=30" \
+     -H "Authorization: Bearer SEU-TOKEN" \
+     -i
+```
+
+> Exemplo de cabeçalhos retornados:
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+X-Total-Count: 245
+Access-Control-Expose-Headers: X-Total-Count
+```
+
+### Query Parameters
+
+Parametro | Tipo    | Descrição
+--------- | ------- | ------------------------------------------------------------------
+\_page    | integer | Número da página solicitada (default: 1)
+\_limit   | integer | Quantidade de registros por página (default: 30)
+
+### Response Headers
+
+Header                          | Descrição
+------------------------------- | --------------------------------------------------
+X-Total-Count                   | Quantidade total de registros (sem paginação) da consulta
+Access-Control-Expose-Headers   | Lista de headers expostos pela API (inclui `X-Total-Count`)
+
+<aside class="notice">
+O header <code>X-Total-Count</code> é retornado em <strong>todos</strong> os endpoints que devolvem coleções paginadas (boletos, clientes, agendas, parceiros etc). Use-o para calcular o número de páginas e exibir totalizadores na sua aplicação.
+</aside>
+
 # Códigos de status
 
 No AFSYS-API, os status de retorno das requisições devem ser esperados conforme especificado nas situações abaixo:
@@ -128,16 +167,6 @@ curl -H "Authorization: SEU-TOKEN" -X GET https://webapi.afsys.com.br/v2/contas/
 }
 ```
 
-### Query Parameters
-
-Parametro             | Tipo    | Exemplo
---------------------- | ------- | ----------------------------------------
-motivo_cancelamento   | text    | Boleto com problema
-
-### HTTP Request
-
-`https://webapi.afsys.com.br/v2/contas/previsao_orcamentaria`
-
 ### HTTP Request
 
 `GET https://webapi.afsys.com.br/v2/contas/previsao_orcamentaria`
@@ -202,7 +231,13 @@ curl -H "Authorization: SEU-TOKEN" -X GET https://webapi.afsys.com.br/v2/contas/
 
 ### HTTP Request
 
-`https://webapi.afsys.com.br/v2/contas/mensalidades`
+`GET https://webapi.afsys.com.br/v2/contas/mensalidades`
+
+### Query Parameters
+
+Parametro  | Tipo    | Exemplo
+---------- | ------- | ----------------------------------------------
+status     | string  | Veja o item "Status dos boletos" (suporta ainda `aberto` e `vencidos`)
 
 ## Visualizar conta
 
@@ -249,7 +284,7 @@ curl -H "Authorization: SEU-TOKEN" -X GET https://webapi.afsys.com.br/v2/conta
 
 ### HTTP Request
 
-`https://webapi.afsys.com.br/v2/conta`
+`GET https://webapi.afsys.com.br/v2/conta`
 
 
 # Clientes
@@ -580,14 +615,14 @@ curl -X GET "https://webapi.afsys.com.br/v2/boletos/123" \
 
 ### HTTP Request
 
-`GET https://webapi.afsys.com.br/v2/boletos`
+`GET https://webapi.afsys.com.br/v2/boletos/:id`
 
 ## Criar boleto
 
 > Exemplo de requisição:
 
 ```shell
-curl -X POST "https://webapi.afsys.com.br/v2/boletos/123" \
+curl -X POST "https://webapi.afsys.com.br/v2/boletos" \
      -H "Authorization: Bearer SEU-TOKEN" \
      -d "boleto[associado_id]=79616" \
      -d "boleto[convenio_id]=80" \
@@ -728,10 +763,6 @@ motivo_cancelamento   | text    | Boleto com problema
 ### HTTP Request
 
 `PATCH https://webapi.afsys.com.br/v2/boletos/:id/cancelar`
-
-### HTTP Request
-
-`GET https://webapi.afsys.com.br/v2/contas/previsao_orcamentaria`
 
 
 # Associados Interessados
@@ -892,7 +923,7 @@ cpf                | string  | 12345678910
 
 ### HTTP Request
 
-`POST https://webapi.afsys.com.br/v2/autenticar/associado`
+`POST https://webapi.afsys.com.br/v2/associado/login`
 
 
 ## Obter associado logado
@@ -900,7 +931,7 @@ cpf                | string  | 12345678910
 > Exemplo de requisição:
 
 ```shell
-curl -X POST "https://webapi.afsys.com.br/v2/associado" \
+curl -X GET "https://webapi.afsys.com.br/v2/associado" \
      -H "Authorization: Bearer SEU-TOKEN"
 ```
 
@@ -988,7 +1019,7 @@ curl -X POST "https://webapi.afsys.com.br/v2/associado" \
 
 ### HTTP Request
 
-`POST https://webapi.afsys.com.br/v2/associado`
+`GET https://webapi.afsys.com.br/v2/associado`
 
 # Parceiros
 
@@ -1277,3 +1308,101 @@ motivo_cancelamento     | text    | Texto descritivo
   "updated_at": "2023-07-17T16:07:56.000-03:00"
 }
 ```
+
+
+# Usuários
+
+## Verificar credenciais
+
+Verifica se um usuário e senha são válidos no AFSYS, retornando os dados do usuário autenticado. Útil para integrações que precisam confirmar credenciais antes de gerar token.
+
+> Exemplo de requisição:
+
+```shell
+curl -X POST "https://webapi.afsys.com.br/v2/usuarios/verificar" \
+     -d "email=usuario@dominio.com.br" \
+     -d "senha=Ab123456"
+```
+
+> Exemplo de resposta:
+
+```json
+{
+  "id": 123,
+  "conta_id": 8,
+  "nome": "José da Silva",
+  "email": "usuario@dominio.com.br"
+}
+```
+
+### Query Parameters
+
+Parametro | Tipo    | Exemplo
+--------- | ------- | ----------------------------------
+email     | string  | usuario@dominio.com.br
+senha     | string  | Ab123456
+
+### HTTP Request
+
+`POST https://webapi.afsys.com.br/v2/usuarios/verificar`
+
+
+# Webhooks
+
+Endpoints destinados ao recebimento de notificações de sistemas externos.
+
+## Conciliação de boletos (Banking Gateway)
+
+Endpoint para recebimento de notificações de conciliação de boletos enviadas pelo gateway bancário (AFPAY). A autenticação ocorre via assinatura HMAC SHA256 enviada no header `X-Signature`.
+
+> Exemplo de requisição:
+
+```shell
+curl -X POST "https://webapi.afsys.com.br/v2/webhooks/banking_gateway/CODIGO-DA-CONTA" \
+     -H "Content-Type: application/json" \
+     -H "X-Signature: HMAC-SHA256-DO-PAYLOAD" \
+     -d '{
+       "billing": {
+         "reference_code": "115-2257282",
+         "status": "paid",
+         "paid_at": "2025-01-30T10:00:00-03:00",
+         "amount": 163.92
+       }
+     }'
+```
+
+> Exemplo de resposta:
+
+```json
+{
+  "message": "Webhook recebido com sucesso"
+}
+```
+
+### Cabeçalhos da requisição
+
+Header        | Descrição
+------------- | ----------------------------------------------------------------
+X-Signature   | Assinatura HMAC SHA256 do corpo da requisição usando o `webhook_secret` configurado na conta corrente do convênio
+
+### Path Parameters
+
+Parametro       | Tipo    | Descrição
+--------------- | ------- | ----------------------------------------------------
+conta_codigo    | string  | Código (`codigo`) da conta destinatária do webhook
+
+### Body (JSON)
+
+O parâmetro `billing.reference_code` deve seguir o formato `<conta_id>-<boleto_id>`, identificando unicamente o boleto a ser conciliado. Os demais campos do objeto `billing` são repassados ao job `BankingGateway::ProcessarWebhookBoletoJob` para processamento assíncrono.
+
+### Códigos de retorno
+
+Status | Descrição
+-------|----------------------------------------------------------------------
+202    | Webhook aceito e enfileirado para processamento
+401    | `X-Signature` ausente, inválida ou `webhook_secret` não configurado
+404    | Conta ou boleto não encontrado a partir do `reference_code` informado
+
+### HTTP Request
+
+`POST https://webapi.afsys.com.br/v2/webhooks/banking_gateway/:conta_codigo`
