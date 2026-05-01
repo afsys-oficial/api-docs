@@ -286,6 +286,20 @@ curl -H "Authorization: SEU-TOKEN" -X GET https://webapi.afsys.com.br/v2/conta
 
 `GET https://webapi.afsys.com.br/v2/conta`
 
+### Campo `status`
+
+Status | Descrição
+-------|-----------------
+A      | Ativado
+D      | Desativado
+
+### Campo `pessoa_juridica`
+
+Tipo    | Descrição
+------- | ----------------------------------------------------------------
+true    | Pessoa jurídica — utiliza os campos `cnpj`, `razao_social` e `nome_fantasia`
+false   | Pessoa física — utiliza os campos `cpf` e `nome`
+
 
 # Clientes
 
@@ -506,6 +520,7 @@ Status | Descrição
 E      | Emitido
 O      | Remessa pendente
 R      | Remetido
+L      | Remetido (em lote)
 A      | Em aberto
 I      | Rejeitado
 B      | Baixado
@@ -514,6 +529,15 @@ P      | Pago
 C      | Cancelado
 N      | Negociado
 J      | Jurídico
+
+### Demais campos do boleto
+
+Campo            | Tipo     | Descrição
+---------------- | -------- | -------------------------------------------------------------
+registrado       | boolean  | `true` quando o boleto foi efetivamente registrado no banco
+remessa_local    | boolean  | `true` quando o boleto foi gerado como remessa local (sem registro bancário)
+layout           | string   | Layout do banco utilizado (ex: `santander`, `bradesco`, `cef`, `bb`, `itau`, `sicoob`, `afpay`)
+tipo_pagador     | string   | `cliente` (contribuinte) ou `associado`
 
 
 ## Totalizador de boletos
@@ -816,7 +840,7 @@ rg                 | string  | 12.222.333-X
 data_expedicao     | date    | 2021-01-01
 nome               | string  | até 60 caracteres
 data_nascimento    | date    | 2021-01-01
-sexo               | string  | masculino ou feminino
+sexo               | string  | masculino, feminino ou nao_declarado
 email              | string  | até 160 caracteres
 nome_pai           | string  | até 60 caracteres
 nome_mae           | string  | até 60 caracteres
@@ -841,6 +865,41 @@ salario_base       | float   | 111111.11
 ### HTTP Request
 
 `POST https://webapi.afsys.com.br/v2/associado_interessado`
+
+### Campo `status`
+
+Status | Descrição
+-------|-----------------
+A      | Ativado
+D      | Desativado
+
+### Campo `tipo_vinculo`
+
+Valor         | Descrição
+------------- | ------------------------------------------------------
+empregado     | Trabalhador empregado (com CNPJ da empresa)
+aposentado    | Aposentado
+sem_vinculo   | Sem vínculo empregatício
+autonomo      | Autônomo
+
+### Campo `sexo`
+
+Valor          | Descrição
+-------------- | -----------------
+masculino      | Masculino
+feminino       | Feminino
+nao_declarado  | Não declarado
+
+### Campo `estado_civil`
+
+Valor           | Descrição
+--------------- | -----------------
+Casado(a)       | Casado(a)
+Solteiro(a)     | Solteiro(a)
+Divorciado(a)   | Divorciado(a)
+Viúvo(a)        | Viúvo(a)
+Separado(a)     | Separado(a)
+Companheiro(a)  | União estável
 
 
 # Associados
@@ -924,6 +983,41 @@ cpf                | string  | 12345678910
 ### HTTP Request
 
 `POST https://webapi.afsys.com.br/v2/associado/login`
+
+### Campo `status_cadastro`
+
+Valor           | Descrição
+--------------- | ------------------------------------------------------------
+cadastrado      | Cadastro completo no sindicato
+autorizado      | Cadastro autorizado pelo associado mas ainda não confirmado
+nao_cadastrado  | Não há cadastro no sindicato
+
+### Campo `status_sindical`
+
+Valor                    | Descrição
+------------------------ | ---------------------------------
+sindicalizado            | Sindicalizado
+nao_sindicalizado        | Não sindicalizado
+opositor                 | Opositor
+socio_usuario            | Sócio usuário
+desfiliacao_sindical     | Desfiliação sindical
+
+### Campo `empresas[].status`
+
+Valor      | Descrição
+---------- | -----------------
+admitido   | Admitido
+demitido   | Demitido
+cancelado  | Vínculo cancelado
+
+### Campo `empresas[].tipo_vinculo`
+
+Valor         | Descrição
+------------- | ----------------------------
+empregado     | Trabalhador empregado
+aposentado    | Aposentado
+sem_vinculo   | Sem vínculo empregatício
+autonomo      | Autônomo
 
 
 ## Obter associado logado
@@ -1020,6 +1114,72 @@ curl -X GET "https://webapi.afsys.com.br/v2/associado" \
 ### HTTP Request
 
 `GET https://webapi.afsys.com.br/v2/associado`
+
+### Campo `status`
+
+Status | Descrição
+-------|-----------------
+A      | Ativado
+D      | Desativado
+
+### Campo `status_cadastro`
+
+Valor           | Descrição
+--------------- | ------------------------------------------------------------
+cadastrado      | Cadastro completo no sindicato
+autorizado      | Cadastro autorizado pelo associado mas ainda não confirmado
+nao_cadastrado  | Não há cadastro no sindicato
+
+### Campo `sexo`
+
+Valor          | Descrição
+-------------- | -----------------
+masculino      | Masculino
+feminino       | Feminino
+nao_declarado  | Não declarado
+
+### Campo `tipo_vinculo`
+
+Valor         | Descrição
+------------- | -------------------------
+empregado     | Trabalhador empregado
+aposentado    | Aposentado
+sem_vinculo   | Sem vínculo empregatício
+autonomo      | Autônomo
+
+<aside class="notice">
+Em registros mais antigos o campo <code>tipo_vinculo</code> pode estar armazenado em formato de letra única: <strong>F</strong> = Empregado, <strong>A</strong> = Aposentado, <strong>S</strong> = Sem vínculo, <strong>I</strong> = Autônomo.
+</aside>
+
+### Campo `local_votacao`
+
+Valor       | Descrição
+----------- | ----------------------------------
+empresa     | Vota na empresa
+sindicato   | Vota na sede do sindicato
+sub_sede    | Vota em uma subsede
+posto       | Vota em um posto de trabalho
+
+### Campos booleanos relevantes
+
+Campo                        | Descrição
+---------------------------- | ----------------------------------------------------------
+sindicalizado                | Associado é sindicalizado
+aposentado                   | Associado está aposentado
+socio_remido                 | Sócio remido (isento de mensalidades)
+cancelado                    | Cadastro cancelado
+oposicao_contribuicao        | Possui oposição às contribuições
+ferias                       | Em férias
+afastamento_medico           | Em afastamento médico
+desconto_folha               | Mensalidade descontada em folha
+participa_votacao            | Participa de votações sindicais
+demitido                     | Foi demitido da empresa atual
+cartao_convenio              | Possui cartão de convênio
+utiliza_convenio             | Utiliza convênio
+carta_oposicao               | Manifestou carta de oposição
+carteirinha_entregue         | Carteirinha já foi entregue
+autorizado                   | Cadastro foi autorizado pelo associado
+
 
 # Parceiros
 
@@ -1131,6 +1291,35 @@ Parametro  | Tipo    | Exemplo
 ---------- | ------- | ----------------------------------------------
 id         | integer | Identificador do parceiro, ex: 123
 
+### Campo `ativo`
+
+Valor   | Descrição
+------- | ---------------
+true    | Parceiro ativo
+false   | Parceiro inativo
+
+### Campo `aplicacao_desconto`
+
+Valor   | Descrição
+------- | -------------------------------------------------
+ate     | Aplicar desconto de até X (limite máximo)
+de      | Aplicar desconto a partir de X (valor fixo)
+
+### Campo `tipo_desconto`
+
+Valor        | Descrição
+------------ | -------------------------
+porcentagem  | Desconto em porcentagem (%)
+valor        | Desconto em valor monetário (R$)
+
+### Campo `pessoa_juridica`
+
+Tipo    | Descrição
+------- | ---------------------------------------------------------
+true    | Pessoa jurídica — usa `cnpj`, `razao_social`, `nome_fantasia`
+false   | Pessoa física — usa `cpf` e `nome`
+
+
 # Agendas
 
 ## Listar agendamentos
@@ -1188,6 +1377,34 @@ parceiro_id        | integer | 123
 associado_id       | integer | 123
 cliente_id         | integer | 123
 data               | date    | 2025-01-30
+
+### Campo `status`
+
+Valor       | Descrição
+----------- | ----------------
+agendado    | Agendado
+concluido   | Concluído
+cancelado   | Cancelado
+falta       | Falta (associado/cliente não compareceu)
+
+### Campo `tipo_servico`
+
+Valor      | Descrição
+---------- | ----------------------------------------
+servico    | Atendimento de serviço próprio do sindicato (exige `servico_id` e `servico_atendente_id`)
+convenio   | Atendimento via parceiro/convênio (exige `parceiro_id`)
+
+### Campo `tipo_vinculo`
+
+Valor          | Descrição
+-------------- | ---------------------------------------
+sem_cadastro   | Solicitante não cadastrado no sistema
+empregado      | Trabalhador empregado
+sem_vinculo    | Sem vínculo empregatício
+aposentado     | Aposentado
+autonomo       | Autônomo
+cliente        | Atendimento de contribuinte (PJ)
+
 
 ## Obter agendamento por ID
 
