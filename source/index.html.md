@@ -303,14 +303,43 @@ false   | Pessoa física — utiliza os campos `cpf` e `nome`
 
 # Clientes
 
-Com esse recurso você poderá filtrar pelos contribuintes cadastrados no Afsys.
+Com esse recurso você poderá consultar, cadastrar, atualizar e excluir os contribuintes cadastrados no Afsys.
+
+Todas as operações são restritas à conta do usuário dono do token. Contribuinte de outra conta responde `404`, nunca `403` — a API não confirma a existência de registros de outras contas. Se o usuário do token estiver restrito a sub-sedes, ele enxerga apenas os contribuintes das suas sub-sedes (ou sem sub-sede definida).
+
+Operação           | Método | Endpoint
+------------------ | ------ | -------------------------------
+Listar clientes    | GET    | `/v2/clientes`
+Visualizar cliente | GET    | `/v2/clientes/:id`
+Criar cliente      | POST   | `/v2/clientes`
+Atualizar cliente  | PATCH  | `/v2/clientes/:id`
+Excluir cliente    | DELETE | `/v2/clientes/:id`
+
+### Campo Status
+
+Logo abaixo você pode conferir os possíveis valores para o campo `status` do cliente
+
+Status | Descrição
+-------|---------------------------------------------------
+A      | Ativado
+D      | Desativado
+
+### Campo Status Cadastro
+
+Indica a origem e a situação da aprovação do cadastro. Contribuintes criados pela API nascem como `cadastrado`.
+
+Status Cadastro | Descrição
+--------------- | ---------------------------------------------------------
+cadastrado      | Cadastrado diretamente no Afsys ou via API
+pendente        | Cadastrado pelo portal do contribuinte, aguardando aprovação
+autorizado      | Cadastro do portal já aprovado pelo sindicato
 
 ## Listar clientes
 
 > Exemplo de requisição:
 
 ```shell
-curl -X GET "https://webapi.afsys.com.br/v2/clientes" \
+curl -X GET "https://webapi.afsys.com.br/v2/clientes?status=A&_page=1&_limit=30" \
      -H "Authorization: Bearer SEU-TOKEN"
 ```
 
@@ -322,12 +351,21 @@ curl -X GET "https://webapi.afsys.com.br/v2/clientes" \
     "id": 320660,
     "conta_id": 8,
     "status": "A",
+    "status_cadastro": "cadastrado",
     "pessoa_juridica": true,
     "cpf": null,
     "nome": null,
     "cnpj": "12345678901234",
     "razao_social": "RAZAO SOCIAL DO CLIENTE",
-    "nome_fantasia": "NOME FANTASIA DO CLIENTE"
+    "nome_fantasia": "NOME FANTASIA DO CLIENTE",
+    "documento": "12.345.678/9012-34",
+    "email": "contato@empresa.com.br",
+    "cep": "01226-000",
+    "endereco": "RUA MARTIN FRANCISCO",
+    "numero": "604",
+    "bairro": "SANTA CECÍLIA",
+    "cidade": "SAO PAULO",
+    "uf": "SP"
   },
   ...
 ]
@@ -337,22 +375,357 @@ curl -X GET "https://webapi.afsys.com.br/v2/clientes" \
 
 `GET https://webapi.afsys.com.br/v2/clientes`
 
-### Campo Status
-
-Logo abaixo você pode conferir os possíveis valores para o campo `status` do cliente
-
-Status | Descrição
--------|---------------------------------------------------
-A      | Ativado
-D      | Desativado
-
 ### Query Parameters
 
-Você poderá filtrar os clientes pelo parâmetro abaixo:
+Você poderá filtrar os clientes pelos parâmetros abaixo:
 
-Parametro  | Tipo    | Exemplo
----------- | ------- | ----------------------------------------------
-s          | string  | Pesquisa pelo CPF, CNPJ, Nome ou Razão Social
+Parametro        | Tipo    | Exemplo
+---------------- | ------- | -------------------------------------------------------------
+s                | string  | Pesquisa pelo CPF, CNPJ, Nome ou Razão Social
+status           | string  | A ou D
+pessoa_juridica  | boolean | true (somente PJ) ou false (somente PF)
+grupo_id         | integer | 123
+categoria_id     | integer | 123
+contabilidade_id | integer | 123, ou `todos_com_vinculo` para todos que possuem contabilidade
+sub_sede_id      | integer | 123
+setor_id         | integer | 123
+matricula        | string  | C000000123
+data_inicio      | date    | 2026-01-01 (período de cadastro)
+data_fim         | date    | 2026-12-31 (período de cadastro)
+\_page           | integer | Número da página solicitada (default: 1)
+\_limit          | integer | Registros por página (default: 30, máximo: 100)
+
+<aside class="notice">
+O filtro por período só é aplicado quando <code>data_inicio</code> <strong>e</strong> <code>data_fim</code> são informados. Datas inválidas nesses parâmetros são ignoradas, sem gerar erro.
+</aside>
+
+A listagem devolve apenas os campos do contribuinte. As coleções aninhadas (endereços, contatos, sócios etc.) são retornadas em `GET /v2/clientes/:id`, `POST` e `PATCH`.
+
+## Visualizar cliente
+
+> Exemplo de requisição:
+
+```shell
+curl -X GET "https://webapi.afsys.com.br/v2/clientes/320660" \
+     -H "Authorization: Bearer SEU-TOKEN"
+```
+
+> Exemplo de resposta:
+
+```json
+{
+  "id": 320660,
+  "conta_id": 8,
+  "contabilidade_id": null,
+  "grupo_id": null,
+  "categoria_id": null,
+  "sub_sede_id": null,
+  "setor_id": null,
+  "posicao_cobranca_id": null,
+  "texto_posicao_cobranca": null,
+  "status": "A",
+  "status_cadastro": "cadastrado",
+  "autorizado": true,
+  "pessoa_juridica": true,
+  "tipo_empresa": null,
+  "matricula": null,
+  "associado": false,
+  "mei": false,
+  "cadastra_emissao": false,
+  "nome": null,
+  "razao_social": "RAZAO SOCIAL DO CLIENTE",
+  "nome_fantasia": "NOME FANTASIA DO CLIENTE",
+  "descricao": "RAZAO SOCIAL DO CLIENTE",
+  "documento": "01.000.000/0001-54",
+  "cpf": null,
+  "cnpj": "01000000000154",
+  "email": "contato@empresa.com.br",
+  "email_receita_federal": null,
+  "site": null,
+  "data_cadastro": null,
+  "data_abertura": "2017-01-01",
+  "data_associacao": null,
+  "data_situacao": null,
+  "situacao": null,
+  "motivo_situacao": null,
+  "natureza_juridica": null,
+  "cnae": "94.20-1-00",
+  "cnae_descricao": "Atividades de organizações sindicais",
+  "capital_social": "1000.00",
+  "capital_social_contribuicao": null,
+  "quantidade_funcionarios": 12,
+  "contato_principal": null,
+  "telefone_area": "16",
+  "telefone_numero": "956654111",
+  "telefone_ramal": null,
+  "celular_area": null,
+  "celular_numero": null,
+  "cep": "01226-000",
+  "endereco": "RUA MARTIN FRANCISCO",
+  "numero": "604",
+  "complemento": null,
+  "bairro": "SANTA CECÍLIA",
+  "cidade": "SAO PAULO",
+  "uf": "SP",
+  "comentarios": null,
+  "ultima_atualizacao": null,
+  "created_at": "2026-08-07T00:08:30.000-03:00",
+  "updated_at": "2026-08-07T00:08:30.000-03:00",
+  "enderecos": [
+    {
+      "id": 13663,
+      "tipo": "cobranca",
+      "cep": "01226-000",
+      "logradouro": "RUA MARTIN FRANCISCO",
+      "numero": "604",
+      "complemento": null,
+      "bairro": "SANTA CECÍLIA",
+      "cidade": "SAO PAULO",
+      "uf": "SP"
+    }
+  ],
+  "atividades": [
+    {
+      "id": 17,
+      "tipo": "S",
+      "codigo": "01.11-3",
+      "descricao": "Cultivo de cereais"
+    }
+  ],
+  "socios": [],
+  "contatos": [
+    {
+      "id": 1797,
+      "nome": "Contato Um",
+      "email": "contato@empresa.com.br",
+      "data_nascimento": "1990-05-10",
+      "cargo": null,
+      "contato_cargo_id": null,
+      "telefone_area": null,
+      "telefone_numero": null,
+      "telefone_ramal": null,
+      "recebe_email": true,
+      "assina_pela_empresa": false
+    }
+  ],
+  "metas": [],
+  "ceis": [],
+  "cobrancas_automaticas": []
+}
+```
+
+### HTTP Request
+
+`GET https://webapi.afsys.com.br/v2/clientes/:id`
+
+## Criar cliente
+
+> Exemplo de requisição:
+
+```shell
+curl -X POST "https://webapi.afsys.com.br/v2/clientes" \
+     -H "Authorization: Bearer SEU-TOKEN" \
+     -d "cliente[pessoa_juridica]=true" \
+     -d "cliente[cnpj]=48528161000189" \
+     -d "cliente[razao_social]=Razão social da empresa" \
+     -d "cliente[nome_fantasia]=Nome fantasia da empresa" \
+     -d "cliente[status]=A" \
+     -d "cliente[email]=contato@empresa.com.br" \
+     -d "cliente[data_abertura]=2017-01-01" \
+     -d "cliente[cnae]=94.20-1-00" \
+     -d "cliente[cnae_descricao]=Atividades de organizações sindicais" \
+     -d "cliente[telefone_area]=16" \
+     -d "cliente[telefone_numero]=956654111" \
+     -d "cliente[enderecos_attributes][][tipo]=cobranca" \
+     -d "cliente[enderecos_attributes][][cep]=14340-000" \
+     -d "cliente[enderecos_attributes][][logradouro]=Rua Teste" \
+     -d "cliente[enderecos_attributes][][numero]=4511" \
+     -d "cliente[enderecos_attributes][][bairro]=Centro" \
+     -d "cliente[enderecos_attributes][][cidade]=Ribeirão Preto" \
+     -d "cliente[enderecos_attributes][][uf]=SP"
+```
+
+Responde `201 Created` com o cliente criado, no mesmo formato de **Visualizar cliente**.
+
+### HTTP Request
+
+`POST https://webapi.afsys.com.br/v2/clientes`
+
+<aside class="warning">
+Todo contribuinte precisa de <strong>exatamente um</strong> endereço com <code>tipo: "cobranca"</code>. Enviar nenhum ou mais de um resulta em <code>422</code>.
+</aside>
+
+### Parâmetros e tipagem
+
+Parametro                   | Tipo     | Descrição
+--------------------------- | -------- | ----------------------------------------------------------------
+status                      | string   | A ou D
+pessoa_juridica             | boolean  | Define quais campos são obrigatórios
+tipo_empresa                | string   | matriz ou filial
+nome                        | string   | Obrigatório se pessoa física. Mínimo 5, máximo 255 caracteres
+cpf                         | string   | Obrigatório se pessoa física. 11 dígitos, único por conta
+razao_social                | string   | Obrigatório se pessoa jurídica. Mínimo 2, máximo 255 caracteres
+nome_fantasia               | string   | Obrigatório se pessoa jurídica. Mínimo 2, máximo 255 caracteres
+cnpj                        | string   | Obrigatório se pessoa jurídica. 14 caracteres, único por conta. Aceita CNPJ alfanumérico
+email                       | string   | Máximo 160 caracteres
+email_receita_federal       | string   | Máximo 160 caracteres
+site                        | string   | Máximo 160 caracteres. O prefixo `http://` ou `https://` é removido
+telefone_area, celular_area | string   | Máximo 2 dígitos
+telefone_numero, celular_numero | string | Máximo 9 dígitos. Caracteres não numéricos são removidos
+telefone_ramal              | string   | Máximo 4 dígitos
+contato_principal           | string   | Máximo 255 caracteres
+data_abertura               | date     | 2017-01-01
+data_associacao             | date     | 2017-01-01
+data_cadastro               | date     | 2017-01-01
+data_situacao               | date     | 2017-01-01
+ultima_atualizacao          | datetime | 2026-08-07T10:30:00
+situacao, motivo_situacao   | string   | Máximo 255 caracteres
+natureza_juridica           | string   | Máximo 255 caracteres
+cnae                        | string   | Máximo 30 caracteres
+cnae_descricao              | string   | Máximo 255 caracteres
+capital_social              | decimal  | 1000.00 (máximo 999999999999.99)
+capital_social_contribuicao | decimal  | 1000.00 (máximo 999999999999.99)
+quantidade_funcionarios     | integer  | Zero ou positivo
+matricula                   | string   | Máximo 10 caracteres
+associado, mei, cadastra_emissao | boolean | true ou false
+comentarios                 | text     | Texto descritivo
+contabilidade_id            | integer  | 123
+grupo_id                    | integer  | 123
+categoria_id                | integer  | 123
+sub_sede_id                 | integer  | 123
+setor_id                    | integer  | 123
+posicao_cobranca_id         | integer  | 123
+texto_posicao_cobranca      | string   | Máximo 255 caracteres
+
+<aside class="warning">
+O campo <code>capital_social</code> enviado como <strong>texto</strong> é interpretado em centavos: <code>"1000,00"</code> resulta em R$ 1.000,00, mas <code>"1000"</code> resulta em R$ 10,00. Envie sempre com as duas casas decimais.
+</aside>
+
+<aside class="notice">
+Os campos <code>conta_id</code>, <code>status_cadastro</code>, <code>senha</code> e <code>senha_portal</code> não são aceitos: a conta é definida pelo token e as credenciais do portal do contribuinte não são gerenciadas por esta API.
+</aside>
+
+### Coleções aninhadas
+
+Cada coleção aceita no máximo **100 registros** por requisição.
+
+Coleção                          | Campos
+-------------------------------- | ----------------------------------------------------------
+enderecos_attributes             | tipo (`cobranca`), cep, logradouro, numero, complemento, bairro, cidade, uf
+atividades_attributes            | tipo (`P` ou `S`), codigo, descricao
+socios_attributes                | codigo, funcao, nome, cpf
+contatos_attributes              | nome, email, data_nascimento, cargo, contato_cargo_id, telefone_area, telefone_numero, telefone_ramal, recebe_email, assina_pela_empresa
+metas_attributes                 | codigo, descricao, rastreador, data_renovacao
+ceis_attributes                  | convenio_id, codigo, emite_boleto, quantidade_funcionarios, cep, endereco, numero, complemento, bairro, cidade, uf, data_inicio, data_fim
+cobrancas_automaticas_attributes | convenio_id, servico_id, ativo, dia_vencimento (0 a 30), enviar_email (`N`, `CON`, `CNT`, `CEC`), tipo_cobranca (`clientes` ou `dependentes`), mensagem_padrao
+
+Os campos `contabilidade_id`, `grupo_id`, `categoria_id`, `sub_sede_id`, `setor_id`, `posicao_cobranca_id`, `contato_cargo_id`, `convenio_id` e `servico_id` precisam referenciar registros da **mesma conta** do token. Caso contrário, a API responde `422`.
+
+### Validações mais comuns
+
+Campo                | Regra
+-------------------- | ---------------------------------------------------------------
+cep (endereço)       | 8 dígitos, com ou sem hífen: `14340-000` ou `14340000`
+uf (endereço)        | Uma das 27 UFs brasileiras
+endereço             | cep, logradouro, numero, bairro, cidade e uf são obrigatórios
+datas                | Data inexistente é recusada: `2026-02-30` e `2026-13-01` resultam em `422`
+ano das datas        | Deve estar entre 1900 e 2100
+ceis.data_fim        | Maior ou igual a `data_inicio`
+contatos.email       | Obrigatório quando `recebe_email` ou `assina_pela_empresa` for verdadeiro
+
+## Atualizar cliente
+
+> Exemplo de requisição:
+
+```shell
+curl -X PATCH "https://webapi.afsys.com.br/v2/clientes/320660" \
+     -H "Authorization: Bearer SEU-TOKEN" \
+     -d "cliente[nome_fantasia]=Novo nome fantasia" \
+     -d "cliente[comentarios]=Atualizado via API"
+```
+
+> Alterando um registro aninhado existente:
+
+```shell
+curl -X PATCH "https://webapi.afsys.com.br/v2/clientes/320660" \
+     -H "Authorization: Bearer SEU-TOKEN" \
+     -d "cliente[enderecos_attributes][][id]=13663" \
+     -d "cliente[enderecos_attributes][][numero]=1000"
+```
+
+> Removendo um registro aninhado:
+
+```shell
+curl -X PATCH "https://webapi.afsys.com.br/v2/clientes/320660" \
+     -H "Authorization: Bearer SEU-TOKEN" \
+     -d "cliente[contatos_attributes][][id]=1797" \
+     -d "cliente[contatos_attributes][][_destroy]=true"
+```
+
+Responde `200 OK` com o cliente atualizado, no mesmo formato de **Visualizar cliente**.
+
+### HTTP Request
+
+`PATCH https://webapi.afsys.com.br/v2/clientes/:id`
+
+Envie apenas os campos que deseja alterar — os demais permanecem inalterados. Para modificar um registro de uma coleção aninhada, informe o `id` dele; para removê-lo, envie `_destroy=true`. Registros aninhados sem `id` são criados.
+
+<aside class="warning">
+Informar o <code>id</code> de um registro aninhado que pertence a outro contribuinte resulta em <code>404</code>.
+</aside>
+
+## Excluir cliente
+
+> Exemplo de requisição:
+
+```shell
+curl -X DELETE "https://webapi.afsys.com.br/v2/clientes/320660" \
+     -H "Authorization: Bearer SEU-TOKEN"
+```
+
+> Exemplo de resposta:
+
+```json
+{
+  "id": 320660,
+  "excluido": true
+}
+```
+
+### HTTP Request
+
+`DELETE https://webapi.afsys.com.br/v2/clientes/:id`
+
+<aside class="warning">
+A exclusão remove também os boletos, acordos, atendimentos, caixas, contas financeiras e o usuário de portal vinculados ao contribuinte. Contribuintes com boletos vinculados só podem ser excluídos por usuários com a permissão específica para isso — caso contrário, a API responde <code>422</code>.
+</aside>
+
+## Erros
+
+> Exemplo de resposta com erro de validação:
+
+```json
+{
+  "errors": {
+    "cnpj": ["não é válido"],
+    "enderecos.uf": ["não é uma UF válida"]
+  },
+  "full_messages": [
+    "CNPJ não é válido",
+    "UF não é uma UF válida"
+  ]
+}
+```
+
+Código | Situação
+------ | -------------------------------------------------------------------------------
+400    | O objeto `cliente` não foi enviado no corpo da requisição
+401    | Token ausente, inválido ou expirado
+403    | Usuário sem permissão para a operação
+404    | Cliente de outra conta, ID inexistente, ou `id` aninhado de outro contribuinte
+422    | Erro de validação, exclusão com boletos vinculados, ou coleção aninhada acima de 100 registros
+
+O objeto `errors` traz os erros agrupados por campo (registros aninhados usam a notação `colecao.campo`) e `full_messages` traz as mensagens prontas para exibição.
 
 
 # Convênios
